@@ -1,0 +1,33 @@
+- Class: meta
+  Course: BiocSwirl
+  Lesson: Low Level Analyses
+  Author: Paaksum Wong
+  Type: Standard
+  Organization: The University of British Columbia
+  Version: 1.0
+
+#Explain alignment
+
+- Class: text
+  Output: Next-gen sequencers output a FASTQ file for each sequencing read (single-end or paired-end), which will be the first thing you work with in scRNA-seq analysis. Each FASTQ file contains a sequence identifier, the nucleotide sequence as well as quality scores for each nucleotide encoded in ASCII characters. The first step of analysis is to align these FASTQ files to a reference.
+
+- Class: text
+  Output: There are many open source and commercial alignment tools with varying sensitivities and speeds. Which aligner you choose to use depends on available computing power and the acceptable trade-off between accuracy and speed. Commonly used aligners include BWA, Bowtie2, HISAT2, Bfast, and Stampy.
+
+- Class: text
+  Output: In our sample data, 100bp single-end reads were aligned using RSEM to the mm10 mouse genome build with the RefSeq annotation downloaded on 11 June 2013. Raw fastq files are available at Gene Expression Omnibus, accession ID GSE71585.
+
+#Alignment QC
+
+- Class: text
+  Output: The standard output of alignment packages is a BAM file. Before downstream processing of aligned reads (.bam) in R, we must assess the quality of the alignments.
+
+- Class: mult_question
+  Output: What tool can we use to quality check the aligned .bam files?
+  AnswerChoices: FastQC;samtools;STAR;DESeq2
+  CorrectAnswer: FastQC
+  AnswerTests: omnitest(correctVal='FastQC')
+  Hint: Quality Control.
+
+- Class: text
+  Output: Go to https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and follow instructions to perform QC on .bam files.

@@ -1,0 +1,167 @@
+- Class: meta
+  Course: BiocSwirl
+  Lesson: Low Level Analyses
+  Author: Paaksum Wong
+  Type: Standard
+  Organization: The University of British Columbia
+  Version: 1.0
+
+#Introduction
+
+- Class: text
+  Output: Welcome to BiocSwirl - Terminal based Bioconductor Courses. This lesson will cover how to install required packages, loading scRNA data and exploring various visualization methods, and processing raw reads.
+
+- Class: text
+  Output: Install the required software at the following link, https://github.com/lisancao/biocswirl/blob/master/biocswirl_dev/devenv_install.
+
+#Explain alignment
+
+- Class: text
+  Output: Next-gen sequencers output a FASTQ file for each sequencing read (single-end or paired-end), which will be the first thing you work with in scRNA-seq analysis. Each FASTQ file contains a sequence identifier, the nucleotide sequence as well as quality scores for each nucleotide encoded in ASCII characters. The first step of analysis is to align these FASTQ files to a reference.
+
+- Class: text
+  Output: There are many open source and commercial alignment tools with varying sensitivities and speeds. Which aligner you choose to use depends on available computing power and the acceptable trade-off between accuracy and speed. Commonly used aligners include BWA, Bowtie2, HISAT2, Bfast, and Stampy.
+
+- Class: text
+  Output: In our sample data, 100bp single-end reads were aligned using RSEM to the mm10 mouse genome build with the RefSeq annotation downloaded on 11 June 2013. Raw fastq files are available at Gene Expression Omnibus, accession ID GSE71585.
+
+#Alignment QC
+
+- Class: text
+  Output: The standard output of alignment packages is a BAM file. Before downstream processing of aligned reads (.bam) in R, we must assess the quality of the alignments.
+
+- Class: mult_question
+  Output: What tool can we use to quality check the aligned .bam files?
+  AnswerChoices: FastQC;samtools;STAR;DESeq2
+  CorrectAnswer: FastQC
+  AnswerTests: omnitest(correctVal='FastQC')
+  Hint: Quality Control.
+
+- Class: text
+  Output: Go to https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ and follow instructions to perform QC on .bam files.
+
+#Import data into R
+
+- Class: text
+  Output: Now that we have good quality alignment files, let's load our data into R. First, let's install bioconductor and the required packages.
+
+- Class: cmd_question
+  Output: Open a new project in R and install Bioconductor.
+  CorrectAnswer: install.packages("BiocManager")
+    BiocManager::install()
+  AnswerTests: omnitest(install.packages("BiocManager")
+    BiocManager::install()')
+  Hint: Google Bioconductor.
+
+- Class: cmd_question
+  Output: Install the packages tidyverse, ___.
+  CorrectAnswer: BiocManager::install(c("tidyverse","___"))
+  AnswerTests: omnitest(correctExpr='BiocManager::install(c("tidyverse","___"))')
+  Hint: Refer to the bioconductor install page. Use quotations.
+
+- Class: cmd_question
+  Output: Load the installed packages.
+  CorrectAnswer: library("")
+  AnswerTests: omnitest(correctExpr='library("")')
+  Hint: Load each library separately.
+
+- Class: text
+  Output: Set working directory.
+
+- Class: cmd_question
+  Output: Input the .csv metadata file.
+  CorrectAnswer: read_csv("cell_metadata.csv")
+  AnswerTests: omnitest(correctExpr='read_csv("cell_metadata.csv")')
+  Hint: Use tidyverse.
+
+- Class: mult_question
+  Output: How many rows are in the metadata?
+  AnswerChoices: 1680;1679;none of the above
+  CorrectAnswer: 1679
+  AnswerTests: omnitest(correctVal='1679')
+  Hint: Mind the header.
+
+- Class: text
+  Output: Confirm whether your data was imported correctly using the head() function.
+
+# Counting reads
+
+- Class: text
+  Output: From the aligned sequence BAM files and a list of genomic features, we can now count how many reads map to each feature. First we must obtain the list which contains annotated genomic features.
+
+- Class: mult_question
+  Output: Which of the following file types contain annotated genomic features?
+  AnswerChoices: SAM, BAM, VCF, GTF, PDF
+  CorrectAnswer: GTF
+  AnswerTests: omnitest(correctVal='GTF')
+  Hint: Starts with the letter after F.
+
+- Class: text
+  Output: General Transfer Format (GTF) files generally contain the chromosome number, the feature type name, and the nucleotide start/end position of the feature. Find and download your specific species from the Ensembl FTP Downloads https://uswest.ensembl.org/info/data/ftp/index.html.
+
+- Class: text
+  Output: Once the GTF file is downloaded, read counting can proceed. htseq-count is a python script that outputs a table with counts for each feature. Follow https://htseq.readthedocs.io/en/release_0.11.1/install.html for installation instructions.
+
+- Class: cmd_question
+  Output: Write a function that counts the features of a BAM input file, skipping all reads with alignment quality lower than 10. For the file names, use  'sample.gtf' and count all bam files
+  CorrectAnswer: htseq-count -f bam -a *.bam sample.gtf
+  AnswerTests: omnitest(correctExpr='htseq-count -f bam -a *.bam sample.gtf')
+  Hint: Make sure the correct options are used. Recall the bash wildcard when searching for a pattern to return all BAM files.
+
+# Remove low read counts
+
+- Class: text
+  Output: Raw single-cell data is noisy in that read counts contain many genes with zero counts or insignificantly low count numbers. We will be filtering these low counts before proceeding to differential gene expression.
+
+- Class: mult_question
+  Output: For less than how many counts should genes be filtered out?
+  AnswerChoices: 1;5;10;20;it depends
+  CorrectAnswer: it depends
+  AnswerTests: omnitest(correctVal='it depends')
+  Hint: Nothing is certain...
+
+- Class: text
+  Output: The filter threshold will depend on the differential expression algorithm that is being used. Refer to the specific differential expression vignette for details.
+
+- Class: script
+  Output: Write a function to filter out all features with less than 10 total counts in the object 'table'.
+  AnswerTests: low_filter()
+  Hint: Use function to filter sum of total counts across a row.
+  Script: low_filter.R
+
+# Normalization
+
+- Class: text
+  Output: There are many factors to account for which contribute to the number of reads mapped to a gene. Such factors include gene length, GC content, and sequencing depth; during library prep, variability in number of molecules sequenced between samples may contribute to different total read counts for different samples. Normalization is therefore an essential step when converting raw read counts to gene expression values.
+
+- Class: text
+  Output: Normalization methods can be categorized into several types - Normalization by library size, normalization by distribution, and normalization by controls. Proceed to learn more about each method.
+
+- Class: text
+  Output: Normalization by library size removes differences in sequencing depth by dividing total number of reads in each sample. It assumes that the amount of total expression is the same under different experimental conditions. Reads per kilobase per million mapped reads (RPKM) and fragments per kilobase per million mapped reads (FPKM) are common methods that normalize by library size.
+
+- Class: text
+  Output: Normalization by distribution equilibrates expression levels for non-DE genes by comparing distributions of read counts across samples. This method assumes that DE and non-DE genes behave the same, and that there is roughly balanced expression across conditions.
+
+- Class: text
+  Output: Normalization by controls uses control genes which are not affected by biological conditions but the same amount of control molecules are present. A disparity in the number of control molecules sequenced allows for normalization.
+
+- Class: cmd_question
+  Output: Our sample data was normalized by library size. RPKM data was generated by aligning 100bp single-end reads using RSEM to the mm10 mouse genome. Now, import the file containing RPKM values into R.
+  CorrectAnswer: read_csv("genes_rpkm.csv")
+  AnswerTests: omnitest(correctExpr='read_csv("genes_rpkm.csv")')
+  Hint: Import using tidyverse, similarly to the metadata file.
+
+# Dimensionality Reduction
+
+- Class: text
+  Output: Raw single-cell data is noisy in that the data is high dimensional. High dimensional data is complex and can affect the accuracy of downstream algorithms since there is more data that needs to be generalized. Principal component analysis is a common method to perform dimensionality reduction.
+
+- Class: cmd_question
+  Output: Plot a PCA plot of the sample dataset.
+  CorrectAnswer: plotPCA(genes_rpkm)
+  AnswerTests: omnitest(correctExpr='plotPCA(genes_rpkm)')
+  Hint: Use plotPCA.
+
+# References
+#https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6171491/
