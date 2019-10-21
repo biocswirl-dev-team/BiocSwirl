@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo idk
-vim -N -u ~/.biovimrc
-echo test
-
