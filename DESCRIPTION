@@ -1,0 +1,53 @@
+Package: BiocSwirl
+Type: Package
+Title: Interactive Bioinformatics Tutorials
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Lisa",
+           family = "Cao",
+           role = c("aut", "cre"),
+           email = "lisanatashacao@gmail.com"),
+    person(given = "Mariam",
+           family = "Arab",
+           role = c("aut"),
+           email = "arab@sfu.ca"),           
+    person(given = "Kate",
+           family = "Tyshchenko",
+           role = c("aut"),
+           email = "kate.tyshchenko@yandex.ru"),
+    person(given = "Jackie",
+           family = "Lu",
+           role = c("aut"),
+           email = "jql6@sfu.ca"),
+    person(given = "Jeremy",
+           family = "Fan",
+           role = c("aut"),
+           email = "jeremy.fan@ucalgary.ca"),
+    person(given = "Paaksum",
+           family = "Wong",
+           role = c("aut"),
+           email = "paaksumwong@gmail.com"),
+    person(given = "Sourav",
+           family = "Singh",
+           role = c("aut"),
+           email = "ssouravsingh12@gmail.com"))
+Maintainer: Lisa Cao <lisanatashacao@gmail.com>
+Description: BiocSwirl aims to make learning bioinformatics concepts hands on through the development of course material that takes you through the common bioinformatics workflows (with a focus on scRNA-seq).
+URL: https://github.com/lisancao/biocswirl
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports:
+    BiocManager,
+    devtools,
+    usethis,
+    roxygen2,
+    httr,
+    utils
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown,
+    covr
+VignetteBuilder: knitr
