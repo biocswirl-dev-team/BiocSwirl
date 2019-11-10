@@ -1,0 +1,40 @@
+- Class: meta
+  Course: BiocSwirl
+  Lesson: High Level Analyses
+  Author: Sourav Singh
+  Type: Standard
+  Version: 1.0
+
+#Introduction
+
+- Class: text
+  Output: Welcome to the lesson on High level Analyses. This lesson will cover how to conduct high level analyses using clustering methods, differential expression to obtain genes with high expression and so on.
+  
+#Clustering methods
+
+- Class: text
+  Output: K-means and K-medoids analysis are done once the low-level analysis is complete i.e. the data should be properly aligned, normalized and any genes with low expression values be removed. 
+  
+- Class: text
+  Output: For our lesson, we will assume that you have already finished the low-level analyses and are learning about high-level analyses.
+  
+- Class: text
+  Output: For this lesson, we will make use of SC3, although other tools for clustering like Seurat and SINCERA can also be used for clustering.
+  
+- Class: cmd_question
+  Output: Load the packages for clustering analysis.
+  CorrectAnswer: library("")
+  AnswerTests: omnitest(correctExpr='library("")')
+  Hint: Load pcaMethods, SC3, scater, SingleCellExperiment, mclust, pheatmap.
+  
+- Class: cmd_question
+  Output: Run a simple PCA analysis on your dataset by a specific cell type.
+  CorrectAnswer: plotPCA("___", colour_by = "___")
+  AnswerTests: omnitest(correctExpr='plotPCA("___", colour_by = "___")')
+  Hint: Enter the name of the object created by SingleCellExperiment library
+
+- Class: cmd_question
+  Output: Estimate number of clusters for SC3
+  CorrectAnswer: sc3_estimate_k("___")
+  AnswerTests: omnitest(correctExpr='sc3_estimate_k("___")')
+  Hint: Enter the name of the object created by SingleCellExperiment library

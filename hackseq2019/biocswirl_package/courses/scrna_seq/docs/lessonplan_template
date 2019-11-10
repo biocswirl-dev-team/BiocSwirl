@@ -1,0 +1,41 @@
+BASIC LESSON PLANS: 
+                1. Concepts in Bioinformatics 
+                    a. Assay Basic Science (?) 
+                        i. Considerations for analyses 
+                            1. Organism/Cell Type
+                            2. Size 
+                            3. Quality 
+                    b. File types in bioinformatics 
+                        i. Characteristics of gene file types 
+                            1. File size
+                            2. Annotation 
+                            3. Metadata
+                        ii. 
+                2. Git, Lab Notebooks
+                3. Workflow design
+                4. Low level analyses 
+                    a. Importing, raw data preprocessing, 
+                    b. Alignment
+                    c. Quality Control 
+                    d. Normalization (with and without spike ins)
+                    e. Dimensionality Reduction
+                    f. Correcting for batch effects
+                5. High Level analyses 
+                    a. Clustering methods, exploratory analyses  
+                    b. Cell cycle phase classification from gene expression data
+                    c. HVG and marker gene identification
+                6. Visualizations for high throughput data 
+                    a. Plots 
+                        i. tSNE plot 
+                    b. Heatmaps 
+                    c. Gene Association Plots (circular plots) 
+                7. Debugging in Bioinformatics 
+                    a. Reading error messages 
+                8. Code Reproducibility 
+                    a. Open Science Basics 
+                9. How to determine what packages are up to date and what’s not 
+                    a. Contributing to open source 
+                10. Submitting issues and getting support for specific packages 
+EACH LESSON: 
+	BACKGROUND READING + QUESTIONS [THEORY] 
+	HANDS-ON CODING AND DEBUGGING [PRACTICE] 
