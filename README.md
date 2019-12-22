@@ -2,7 +2,7 @@
 
 BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format. This project was the People's Choice Award 
 
-<img src="https://github.com/biocswirl-dev-team/Templates/blob/master/graphics_templates/BiocSwirl_bluegree_Hex.png" img align="center" width="500" height="500">
+<img src="https://github.com/biocswirl-dev-team/Templates/blob/master/graphics_templates/BiocSwirl_bluegree_Hex.png" img align="center" width="250" height="250">
 
 ### Features 
 BiocSwirl includes 
