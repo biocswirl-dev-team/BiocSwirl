@@ -13,13 +13,16 @@ During a 3-day hackathon, we developed `swirlify()`-style console/terminal based
 
 See also ![BiocTerm](https://github.com/biocswirl-dev-team/BiocTerm) for out interface companion to the course materials. The interface (BiocTerm) and R package (BiocSwirl) can be used independently of each other but are best used together for people who are interested in making the most of their learning experience.
 
-
-
-<img src="https://github.com/biocswirl-dev-team/Templates/blob/master/graphics_templates/BiocSwirl_bluegree_Hex.png" img align="center" width="250" height="250">
+<img src="https://cdn.discordapp.com/attachments/658422882312912928/658471825331978260/unknown.png">
 
 ### Features 
 BiocSwirl includes 
 - Interactive course material that goes from beginner's steps (package installation and environment setup) to low level, to high level analyses and visualizations
+
+- Is easily configurable and breaks down complex bioinformatics workflows into simple, easy to chew steps. Includes standardized datasets to work with and checks your work
+
+- Highly emphases good coding practices, open science, reproducibility, and YAML file format and templates make it easy to update a workflow to match current best practices and create/communicate your own workflows for within lab
+
 - Example inputs and outputs 
 - Course-specific package installations and standardized datasets 
 - Ability to start at any point of the course material 
