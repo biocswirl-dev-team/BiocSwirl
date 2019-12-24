@@ -1,3 +1,5 @@
+## THIS REPOSITORY IS NOW DEPRICATED. PLEASE SEE https://github.com/biocswirl-dev-team WHERE THE CONTINUED DEVELOPMENT OF THIS PROJECT, INCLCUDING CLEANED REPOSITORIES AND ISSUES HAVE MOVED. 
+
 # BiocSwirl
 
 BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format. This project was the People's Choice Award for the Vancouver Bioinformatics Hackathon Hackseq2019. 
