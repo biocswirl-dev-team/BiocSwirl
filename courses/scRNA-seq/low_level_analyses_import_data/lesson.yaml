@@ -1,0 +1,51 @@
+- Class: meta
+  Course: BiocSwirl
+  Lesson: Low Level Analyses
+  Author: Paaksum Wong
+  Type: Standard
+  Organization: The University of British Columbia
+  Version: 1.0
+
+#Import data into R
+
+- Class: text
+  Output: Now that we have good quality alignment files, let's load our data into R. First, let's install bioconductor and the required packages.
+
+- Class: cmd_question
+  Output: Open a new project in R and install Bioconductor.
+  CorrectAnswer: install.packages("BiocManager")
+    BiocManager::install()
+  AnswerTests: omnitest(install.packages("BiocManager")
+    BiocManager::install()')
+  Hint: Google Bioconductor.
+
+- Class: cmd_question
+  Output: Install the packages tidyverse, ___.
+  CorrectAnswer: BiocManager::install(c("tidyverse","___"))
+  AnswerTests: omnitest(correctExpr='BiocManager::install(c("tidyverse","___"))')
+  Hint: Refer to the bioconductor install page. Use quotations.
+
+- Class: cmd_question
+  Output: Load the installed packages.
+  CorrectAnswer: library("")
+  AnswerTests: omnitest(correctExpr='library("")')
+  Hint: Load each library separately.
+
+- Class: text
+  Output: Set working directory.
+
+- Class: cmd_question
+  Output: Input the .csv metadata file.
+  CorrectAnswer: read_csv("scRNA-Seq/data_download/cell_metadata.csv")
+  AnswerTests: omnitest(correctExpr='read_csv("scRNA-Seq/data_download/cell_metadata.csv")')
+  Hint: Use tidyverse.
+
+- Class: mult_question
+  Output: How many rows are in the metadata?
+  AnswerChoices: 1680;1679;none of the above
+  CorrectAnswer: 1679
+  AnswerTests: omnitest(correctVal='1679')
+  Hint: Mind the header.
+
+- Class: text
+  Output: Confirm whether your data was imported correctly using the head() function.

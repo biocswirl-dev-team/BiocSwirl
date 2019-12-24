@@ -1,0 +1,52 @@
+- Class: meta
+  Course: BiocSwirl
+  Lesson: Low Level Analyses
+  Author: Paaksum Wong
+  Type: Standard
+  Organization: The University of British Columbia
+  Version: 1.0
+
+# Counting reads
+
+- Class: text
+  Output: From the aligned sequence BAM files and a list of genomic features, we can now count how many reads map to each feature. First we must obtain the list which contains annotated genomic features.
+
+- Class: mult_question
+  Output: Which of the following file types contain annotated genomic features?
+  AnswerChoices: SAM, BAM, VCF, GTF, PDF
+  CorrectAnswer: GTF
+  AnswerTests: omnitest(correctVal='GTF')
+  Hint: Starts with the letter after F.
+
+- Class: text
+  Output: General Transfer Format (GTF) files generally contain the chromosome number, the feature type name, and the nucleotide start/end position of the feature. Find and download your specific species from the Ensembl FTP Downloads https://uswest.ensembl.org/info/data/ftp/index.html.
+
+- Class: text
+  Output: Once the GTF file is downloaded, read counting can proceed. htseq-count is a python script that outputs a table with counts for each feature. Follow https://htseq.readthedocs.io/en/release_0.11.1/install.html for installation instructions.
+
+- Class: cmd_question
+  Output: Write a function that counts the features of a BAM input file, skipping all reads with alignment quality lower than 10. For the file names, use  'sample.gtf' and count all bam files
+  CorrectAnswer: htseq-count -f bam -a *.bam sample.gtf
+  AnswerTests: omnitest(correctExpr='htseq-count -f bam -a *.bam sample.gtf')
+  Hint: Make sure the correct options are used. Recall the bash wildcard when searching for a pattern to return all BAM files.
+
+# Remove low read counts
+
+- Class: text
+  Output: Raw single-cell data is noisy in that read counts contain many genes with zero counts or insignificantly low count numbers. We will be filtering these low counts before proceeding to differential gene expression.
+
+- Class: mult_question
+  Output: For less than how many counts should genes be filtered out?
+  AnswerChoices: 1;5;10;20;it depends
+  CorrectAnswer: it depends
+  AnswerTests: omnitest(correctVal='it depends')
+  Hint: Nothing is certain...
+
+- Class: text
+  Output: The filter threshold will depend on the differential expression algorithm that is being used. Refer to the specific differential expression vignette for details.
+
+- Class: script
+  Output: Write a function to filter out all features with less than 10 total counts in the object 'table'.
+  AnswerTests: low_filter()
+  Hint: Use function to filter sum of total counts across a row.
+  Script: low_filter.R

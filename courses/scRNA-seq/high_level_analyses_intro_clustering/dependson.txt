@@ -1,0 +1,6 @@
+pcaMethods
+SC3
+scater
+SingleCellExperiment
+mclust
+pheatmap
