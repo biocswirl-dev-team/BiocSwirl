@@ -1,4 +1,6 @@
 
+<p align=center><img src="https://raw.githubusercontent.com/biocswirl-dev-team/Templates/master/graphics_templates/BiocSwirl_bluegree_Hex.png" height="300" width="300"></p1>
+
 # BiocSwirl
 
 BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format. This project was the People's Choice Award for the Vancouver Bioinformatics Hackathon Hackseq2019. 
@@ -14,7 +16,7 @@ During a 3-day hackathon, we developed `swirlify()`-style console/terminal based
 
 See also ![BiocTerm](https://github.com/biocswirl-dev-team/BiocTerm) for out interface companion to the course materials. The interface (BiocTerm) and R package (BiocSwirl) can be used independently of each other but are best used together for people who are interested in making the most of their learning experience.
 
-<img src="https://cdn.discordapp.com/attachments/658422882312912928/658471825331978260/unknown.png">
+<p align=center><img src="https://cdn.discordapp.com/attachments/658422882312912928/658471825331978260/unknown.png"></p1>
 
 ### Features 
 BiocSwirl includes 
