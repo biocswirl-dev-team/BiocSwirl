@@ -60,7 +60,7 @@ c. HVG and marker gene identification
 
 We are always looking for pull requests and active contributers, if you are interested in designing a course for us or have a feature in mind please submit an issue before doing a pull request. We are currently looking for help developing on Windows systems, bioinformatics workflows and concepts, and support for even more languages in BiocTerm. 
 
-### Team members:
+### Hackseq 2019 Team members:
 
 | Name | GitHub ID | Work done |
 | ---- | --------- | --------- |
@@ -71,5 +71,17 @@ We are always looking for pull requests and active contributers, if you are inte
 | Kate Tyshchenko | ktyshchenko | Documentation, Course Material |
 | Paaksum Wong | paaksum | Course Material (main) |
 | Sourav Singh | souravsingh | Course Material |   
+
+
+### HackseqRNA 2020 Team members:
+
+| Name | GitHub ID | Work done |
+| ---- | --------- | --------- |
+| Lisa N. Cao | lisancao | User Environment & Interface Development |
+| Julia Philipp | JuliaPhilipp | Course Material (RNA-seq) |
+| Nicolai von Kügelgen | Nicolai-vKuegelgen | Course Material (RNA-seq) |
+| Elizabeth Hutchins | e-hutchins | Course Material (scRNA-seq & snRNA-seq) | 
+| Benson Lee | bensonlee5 | User Environment & Interface Development |
+| Matt Moss | mmoss609 | Course Material (ChIP-seq) |
 
 [Details about hackseq19 project](github.com/lisancao/biocswirl/biocswirl_dev/hackseq_plan)
