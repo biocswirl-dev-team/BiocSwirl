@@ -1,7 +1,19 @@
 - Class: meta
   Course: RNA-seq analysis
-  Lesson: DESeq2
-  Author: your name goes here
+  Lesson: fastq_trimming
+  Author: Nicolai von Kügelgen
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: MDC / BIMSB
   Version: 2.4.5
+
+- Class: text
+  Output: Fastq files you obtain from RNA-seq (whether they were deposited online or you are new data) will almost always contain some reads or bases with very low quality. Additionally some reads might only cover short RNA fragments, which means that the sequencing adapters used to generated the library are also part of the read sequence. In addition to an introduction to removing these reads or bases, this lesson will cover how to generally asses the quality of RNAseq data in fastq format.
+  
+- Class: text
+  Output: Assesmnet of read quality is often checked using the fastQC program. This program will produce a single html report for each fastq file it is run on. An example of such a report is included with the files for this lesson.
+  
+- Class: figure
+  Output: One of the most important details in the quality report is the average sequencing quality of the reads. The picture shown here is very exemplary and depicts a slightly lower quaility at the first few bases of the reads and generally high, but decreasing quality over the length of the average reads.
+  Figure: draw_1.R
+  FigureType: new
+
