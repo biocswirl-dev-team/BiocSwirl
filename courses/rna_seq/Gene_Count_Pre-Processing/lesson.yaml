@@ -5,3 +5,38 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+
+- Class: cmd_question
+  Output: Moving on to gene count pre-processing. We can do that using the Deseq2 package. Let's load it first!
+  CorrectAnswer: library(DESeq2)
+  AnswerTests: omnitest(correctExpr='library(DESeq2)')
+  Hint: Try library(DESeq2)
+
+# making colData
+# this might have to be adjusted according to upstream workflow
+  
+- Class: cmd_question
+  Output:  Make colData object containing the details of the experiment and the comparisons we want to test.
+  CorrectAnswer: colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))
+  AnswerTests: omnitest(correctExpr='colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))')
+  Hint: Try making a dataframe with the sample names in one column and the condition in another
+  
+# making deseqdataset object
+  
+- Class: cmd_question
+  Output: Next, we will load our gene count table (dataset) into a DESeq2 specific R object, that allows us to store all information associated with our experiment. 
+  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "treatment")
+  AnswerTests: omnitest(correctExpr='head(dataset)')
+  Hint: Try DESeqDataSetFromMatrix()
+  
+- Class: cmd_question
+  Output: Not all genes are expressed in all cell types. Therefore, we will end up with lots of zeros in the gene count table. Take a look at the head of the gene count table that we created previously.
+  CorrectAnswer: head(assay(dds))
+  AnswerTests: omnitest(correctExpr='head(assay(dds))')
+  Hint: Try the function head(assay())
+  
+# remove genes with zero counts
+
+
+  
+  
