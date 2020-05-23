@@ -1,0 +1,13 @@
+Introduction
+fastq_download
+fastq_trimming
+genome_alignment
+quasi-alignment_quantification
+Import_Gene_Count_Data
+Gene_Count_Pre-Processing
+k-Means
+PCA
+DESeq2
+Examine_DESEq2_results
+Pathway_Analysis
+Heatmap
