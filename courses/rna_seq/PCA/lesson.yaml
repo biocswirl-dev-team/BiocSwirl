@@ -1,7 +1,80 @@
 - Class: meta
   Course: RNA-seq analysis
   Lesson: PCA
-  Author: your name goes here
+  Author: Julia Philipp
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+
+
+# Plot sample distance
+- Class: text
+  Output: Let's get an overview over our RNA-seq data by checking how similar or different our samples are to begin with.
+  
+- Class: text
+  Output: We can assess the similarity between samples by calculating the so called Euclidean Distance. We do this on the transformed data so that all genes contribute approximately equally to this distance.
+  
+- Class: txt
+  Output: First we need to transpose our matrix because the distance function expects the samples to be in rows and the genes to be in columns. We can do that using the function t(). Remember that you can access the data matrix in dds using assay(). After transforming the matrix that we accessed with assay(), we can use the dist() function to calculate the Euclidean Distance.
+  
+- Class: cmd_question
+  Output: Use assay(), t(), and dist() nested into each other to calculate the sample distance from our transformed data rlog_dds. Assign the results to "sampleDist"
+  CorrectAnswer: sampleDist <- dist(t(assay(rlog_dds)))
+  AnswerTests: omnitest(correctExpr='sampleDist <- dist(t(assay(rlog_dds)))')
+  Hint: Try typing sampleDist <- dist(t(assay(rlog_dds)))
+
+- Class: cmd_question
+  Output: Before we can visualize the similarities between our samples using a heatmap (function pheatmap()), we need to create an appropriate matrix with column and row names that can be used as labels. Convert your sampleDist object to a matrix and assign it to "sampleDistMatrix".
+  CorrectAnswer: sampleDistMatrix <- as.matrix(sampleDist)
+  AnswerTests: omnitest(correctExpr='sampleDistMatrix <- as.matrix(sampleDist)')
+  Hint: Try the as.matrix() function
+  
+- Class: cmd_question
+  Output: Assign rownames based on the experimental conditions and/or your sample names
+  CorrectAnswer: rownames(sampleDistMatrix) <- dds$condition
+  AnswerTests: expr_uses_func('rownames')
+  Hint: Try typing rownames(sampleDistMatrix) <- dds$condition
+  
+- Class: cmd_question
+  Output: Now it's finally time to plot our heatmap. Type ?pheatmap() to understand the arguments needed for this function.
+  CorrectAnswer: ?pheatmap()
+  AnswerTests: omnitest(correctExpr='?pheatmap()')
+
+- Class: cmd_question
+  Output: Use what you just learned to plot the heatmap with pheatmap(). Use sampleDist for both clustering_distance_rows and clustering_distance_cols. Use the predefined "colors" object to color your heatmap.
+  CorrectAnswer: pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDist, clustering_distance_cols = sampleDist, col = colors)
+  AnswerTests: omnitest(correctExpr='pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDist, clustering_distance_cols = sampleDist, col = colors)')
+  Hint: Try this command pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDist, clustering_distance_cols = sampleDist, col = colors) 
+  
+- Class: figure
+  Output: Look at this figure you just created!
+  Figure: pheatmap.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: Which sample is the most different from all the others?
+  AnswerChoices: Series1_NHBE_SARS.Cov.2_2, Series1_NHBE_SARS.Cov.2_3, Series1_NHBE_Mock_3
+  CorrectAnswer: Series1_NHBE_SARS.Cov.2_3
+  AnswerTests: omnitest(correctVal='Series1_NHBE_SARS.Cov.2_3')
+  Hint: The lighter the color, the more different the sample!
+  
+
+# PCA for different way of visualizing sample distance
+- Class: text
+  Output: Another way of visualizing distances between samples is running a principle component analysis. Explain this in more detail.
+  
+- Class: cmd_question
+  Output: Conveniently, the DESeq2 package comes with a function that computes the analysis and visualizes it for us. Try using plotPCA() on your rlog normalized data rlog_dds.
+  CorrectAnswer: plotPCA(rlog_dds)
+  AnswerTests: omnitest(correctExpr='plotPCA(rlog_dds)')
+  Hint: Try plotPCA(rlog_dds)
+  
+- Class: Figure
+  Output: Look at the figure you created
+  Figure: pca.R
+  FigureType: new
+  
+# Question about PCA to check for understanding
+
+
+
