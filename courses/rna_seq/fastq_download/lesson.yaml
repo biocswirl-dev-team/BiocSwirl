@@ -44,12 +44,20 @@
   Hint: Activate the filters for 'Cell_Line' and 'Organism' on the top left of the webpage.
 
 - Class: text
-  Output: While the SRA run selector allows you to filter and select specific samples you may be interest in, it does not actually allow you to download the fastq files directly. To get the fastq files you first need to download a list of the SRR accession IDs. These IDs can be used by programs the SRA toolkit (mainly prefetch and fastq-dump) to diretcly download the fastq-files from the NCBI servers. Further information on how to use the SRA toolkit to download data from NCBI can be found on its documentation: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc
+  Output: While the SRA run selector allows you to filter and select specific samples you may be interest in, it does not actually allow you to download the fastq files directly. To get the fastq files you first need to download a list of the SRR accession IDs. These IDs can be used by programs the SRA toolkit (mainly prefetch and fastq-dump) to diretcly download the fastq-files from the NCBI servers. Further information on how to use the SRA toolkit to download data from NCBI can be found on its documentation: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc. For the remaining lessons dealing with fastq files, you should use the data supplied with this course, which are 6 samples from the GSE147507 dataset, but only contain reads belonging to a simple chromosome to reduce file size & analysis runtime.
 
-- Class: text
-  Output: For the remaining lessons dealing with fastq files, you should use the data supplied with this course, which are 6 samples from the GSE147507 dataset, but only contain reads belonging to a simple chromosome to reduce file size & analysis runtime.
-  
+- Class: test
+  Output: Take a look at the fastq files - the command less is hightly recommended since it can look into the files even when they are compressed to reduce file size.
 
-  
-  
+- Class: exact_question
+  Output: A fastq file usually has many entries - one for each sequence. How many lines are there for each entry?
+  CorrectAnswer: 4
+  AnswerTests: omnitest(correctVal=4)
+  Hint: An entry is composed of a header, the base sequence, a second header or spacer, and the sequence quality for each base
 
+- Class: mult_question
+  Output: The sequence quality for each entry is not encoded in the file with numbers, how is the quality for each read written in the file?
+  AnswerChoices: Hexadecimal single digits for each base;Quality for the whole read encoded in a text-string;Various ASCII characters represent quality for each base
+  CorrectAnswer: Various ASCII characters represent quality for each base
+  AnswerTests: omnitest(correctVal= 'Various ASCII characters represent quality for each base')
+  Hint: Compare the length of the quality and sequence strings for each entry and see which characters are used overall in the file
