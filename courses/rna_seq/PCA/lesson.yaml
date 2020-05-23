@@ -30,7 +30,7 @@
   Hint: Try the as.matrix() function
   
 - Class: cmd_question
-  Output: Assign rownames based on the experimental conditions and/or your sample names
+  Output: Assign rownames to the sampleDistMatrix based on the experimental conditions and/or your sample names
   CorrectAnswer: rownames(sampleDistMatrix) <- dds$condition
   AnswerTests: expr_uses_func('rownames')
   Hint: Try typing rownames(sampleDistMatrix) <- dds$condition
@@ -53,7 +53,7 @@
   
 - Class: mult_question
   Output: Which sample is the most different from all the others?
-  AnswerChoices: Series1_NHBE_SARS.Cov.2_2, Series1_NHBE_SARS.Cov.2_3, Series1_NHBE_Mock_3
+  AnswerChoices: Series1_NHBE_SARS.Cov.2_2;Series1_NHBE_SARS.Cov.2_3;Series1_NHBE_Mock_3
   CorrectAnswer: Series1_NHBE_SARS.Cov.2_3
   AnswerTests: omnitest(correctVal='Series1_NHBE_SARS.Cov.2_3')
   Hint: The lighter the color, the more different the sample!

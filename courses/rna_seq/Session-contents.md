@@ -79,4 +79,9 @@
 
 
 ## References
-Dataset used from "Imbalanced Host Response to SARS-CoV-2 Drives Development of COVID-19", Blanco-Melo et al. 2020, https://doi.org/10.1016/j.cell.2020.04.026
+Dataset used from "Imbalanced Host Response to SARS-CoV-2 Drives Development of COVID-19", Blanco-Melo et al. 2020, https://doi.org/10.1016/j.cell.2020.04.026\
+
+Workflow based on 
+http://bioinformatics.sdstate.edu/idep/
+https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html
+https://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf
