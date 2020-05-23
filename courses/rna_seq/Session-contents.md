@@ -6,9 +6,12 @@
 
 ## fastq_download
 
-- data depository guidelines, how to find datasets
-- description of GEO database
-- how to donwload data (mention ncbi etulis?)
+- Introduction to fastq file format
+- Introduction to GEO database
+- How to find samples on SRA
+- How to download data
+
+maybe/todo: - data depository guidelines, how to find datasets
 
 ## fastq_trimming
 
