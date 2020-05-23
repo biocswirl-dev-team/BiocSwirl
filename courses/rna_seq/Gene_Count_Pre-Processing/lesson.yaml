@@ -25,8 +25,8 @@
   
 - Class: cmd_question
   Output: Next, we will load our gene count table (dataset) into a DESeq2 specific R object, that allows us to store all information associated with our experiment. 
-  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "treatment")
-  AnswerTests: omnitest(correctExpr='head(dataset)')
+  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "condition")
+  AnswerTests: omnitest(correctExpr='dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "condition")')
   Hint: Try DESeqDataSetFromMatrix()
   
 - Class: cmd_question
@@ -36,7 +36,39 @@
   Hint: Try the function head(assay())
   
 # remove genes with zero counts
+- Class: cmd_question
+  Output: Find rows with a rowSum > 1 and assign them a new R object called "keep"
+  CorrectAnswer: keep <- rowSums(counts(dds)) > 1
+  AnswerTests: omnitest(correctExpr='keep <- rowSums(counts(dds)) > 1')
+  Hint: Try typing keep <- rowSums(counts(dds)) > 1
 
-
+- Class: cmd_question
+  Output: Subset the dds object for the rows in "keep". Assign the result to dds again
+  CorrectAnswer: dds <- dds[keep,]
+  AnswerTests: omnitest(correctExpr='dds <- dds[keep,]')
+  Hint: Try typing dds <- dds[keep,]
   
+# rlog transformation
+- Class: text
+  Output: Why do we need to transform our data? ...
+  
+- Class: cmd_question
+  Output: Let's transform our data using rlog and assign the result to rlog_dds
+  CorrectAnswer: rlog_dds <- rlog(dds)
+  AnswerTests: omnitest(correctExpr='rlog_dds <- rlog(dds)')
+  Hint: Try typing rlog_dds <- rlog(dds)
+
+
+# normalize by library size
+  
+- Class: text
+  Output: Why do we need to normalize our data for library size ...
+  
+- Class: cmd_question
+  Output: Let's normalize our data using the DESeq2 function estimateSizeFactors() and assign the result to dds
+  CorrectAnswer: dds <- estimateSizeFactors(dds)
+  AnswerTests: omnitest(correctExpr='dds <- estimateSizeFactors(dds)')
+  Hint: Try typing dds <- estimateSizeFactors(dds)
+  
+# plot count distributions after normalizing
   
