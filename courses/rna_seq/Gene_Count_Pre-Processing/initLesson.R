@@ -14,3 +14,4 @@ dataset <- data.frame(read.table(file.path(.get_course_path(), "rna_seq", "Gene_
 dataset <- dataset[,c(1:6)]
 
 
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)

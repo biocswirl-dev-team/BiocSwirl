@@ -1,7 +1,7 @@
 - Class: meta
   Course: RNA-seq analysis
   Lesson: Pre-Processing
-  Author: your name goes here
+  Author: Julia Philipp
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
@@ -25,15 +25,17 @@
   
 - Class: cmd_question
   Output: Next, we will load our gene count table (dataset) into a DESeq2 specific R object, that allows us to store all information associated with our experiment. 
-  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "condition")
-  AnswerTests: omnitest(correctExpr='dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ "condition")')
+  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)
+  AnswerTests: omnitest(correctExpr='dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)')
   Hint: Try DESeqDataSetFromMatrix()
   
 - Class: cmd_question
-  Output: Not all genes are expressed in all cell types. Therefore, we will end up with lots of zeros in the gene count table. Take a look at the head of the gene count table that we created previously.
+  Output: Not all genes are expressed in all cell types. Therefore, we will end up with lots of zeros in the gene count table. Take a look at the head of the gene count table that we created previously. You can access data from the deseq object using assay().
   CorrectAnswer: head(assay(dds))
   AnswerTests: omnitest(correctExpr='head(assay(dds))')
   Hint: Try the function head(assay())
+  
+# include question here?  
   
 # remove genes with zero counts
 - Class: cmd_question
@@ -47,28 +49,37 @@
   CorrectAnswer: dds <- dds[keep,]
   AnswerTests: omnitest(correctExpr='dds <- dds[keep,]')
   Hint: Try typing dds <- dds[keep,]
+
+
   
 # rlog transformation
 - Class: text
-  Output: Why do we need to transform our data? ...
+  Output: Why do we need to transform our data? Most statistical tests work best on data with the same range of variance. 
+  
+- Class: text
+  Output: For RNA-seq data, the variance typically grows with the mean. If we were to do a PCA (principle component analysis) now to look at the variance in the data, the genes with the highest read counts will contribute the most to the overall variance.
+  
+- Class: text
+  Output: The DESeq2 package offers two different transformations as solutions for this problem. One of them is the regularized-logarithm transformation or rlog.
   
 - Class: cmd_question
-  Output: Let's transform our data using rlog and assign the result to rlog_dds
+  Output: Let's transform our data using rlog() and assign the result to rlog_dds. This might take a moment.
   CorrectAnswer: rlog_dds <- rlog(dds)
   AnswerTests: omnitest(correctExpr='rlog_dds <- rlog(dds)')
   Hint: Try typing rlog_dds <- rlog(dds)
-
-
-# normalize by library size
   
 - Class: text
-  Output: Why do we need to normalize our data for library size ...
+  Output: We also need to normalize our data for library size. Different samples and replicates can be sequenced at different depths (total read count in sample) potentially inflating difference in counts between samples and replicates. This means that gene x in sample A could have five times as many reads than the same gene in sample B because it is actually more highly expressed or because sample A had been sequenced more deeply and has more reads over all. We need to eliminate the second option by normalizing for library size.
   
-- Class: cmd_question
-  Output: Let's normalize our data using the DESeq2 function estimateSizeFactors() and assign the result to dds
-  CorrectAnswer: dds <- estimateSizeFactors(dds)
-  AnswerTests: omnitest(correctExpr='dds <- estimateSizeFactors(dds)')
-  Hint: Try typing dds <- estimateSizeFactors(dds)
+- Class: text
+  Output: Conveniently, the rlog() function has already taken care of that problem for us! Now we can move on to the next lesson and take a first glimpse at out data!
   
-# plot count distributions after normalizing
+
+# compare read count distributions before and after transformation?
+
+- Class: Figure
+  Output: Look at the difference in total counts and variance between raw and rlog transformed counts
+  Figure: transformed_count.R
+  FigureType: new
   
+# include question to prompt understanding of plot?
