@@ -4,9 +4,9 @@
 # throughout the lesson.
 
 .get_course_path <- function(){
-	tryCatch(swirl:::swirl_courses_dir(),
-					 error = function(c) {file.path(find.package("swirl"),"Courses")}
-	)
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
 }
 
-dataset <- read.tsv(file.path(.get_course_path(),"neuroinformatics", "data_download", "NucCellTypes_SampleData.tsv"))
+dataset <- load(file.path(.get_course_path(),"neuroinformatics", "data_download", "start_data.rda"))
