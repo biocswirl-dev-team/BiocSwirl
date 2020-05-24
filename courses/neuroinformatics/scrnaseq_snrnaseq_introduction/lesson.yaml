@@ -16,7 +16,7 @@
 #Dataset
 
 - Class: text
-  Output: The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes.
+  Output: "The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes."
 
 - Class: text
   Output: For the next few questions, use the "sampAll" object.
