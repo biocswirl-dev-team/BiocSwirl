@@ -1,0 +1,4 @@
+DESeq2
+RColorBrewer
+ggplot2
+pheatmap

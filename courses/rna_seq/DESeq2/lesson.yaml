@@ -5,3 +5,42 @@
   Type: Standard
   Organization: your organization's name goes here
   Version: 2.4.5
+
+- Class: text
+  Output: Welcome to the next lesson! After pre-processing our gene counts and having a first glance at our data, we can now run the differential expression analysis.
+  
+- Class: text
+  Output: When RNA-seq experiments are run with multiple conditions, a central aspect of the analysis is to test for significant changes in gene expression between the conditions. This is where the function DESeq() comes into play. This function will run the differential expression pipeline on our raw counts.
+  
+#running differential expression analysis
+
+- Class: cmd_question
+  Output: Run the differential expression analysis by using DESeq() on the R object containing our raw counts and assign the results to "res_dds". The function will output the different steps as it is performing them. This will take a moment!
+  CorrectAnswer: res_dds <- DESeq(dds)
+  AnswerTests: omnitest(correctExpr='res_dds <- DESeq(dds)');expr_creates_var('res_dds')
+  Hint: The R object containing the raw counts is 'dds'.
+  
+#building results table with comparisons
+
+- Class: cmd_question
+  Output: Now, we can build the results table using the function results(). Assign the results table to "res".
+  CorrectAnswer: res <- results(res_dds)
+  AnswerTests: omnitest(correctExpr='res <- results(res_dds)');expr_creates_var('res')
+  Hint: Try typing res <- results(res_dds)
+  
+- Class: text
+  Output: Since our data only contains two conditions, DESeq will automatically make the right comparison. It will compare condition "treatment" to condition "mock". If we had more than two conditions and wanted more sophisticated comparison, we would need to specify them with the contrast attribute to results().
+  
+- Class: video
+  Output: For more information on specifying contrasts, check the bioconductor vignette on RNA-seq and building the results table!
+  VideoLink: 'https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html#building-the-results-table'
+  
+# looking at results table
+# explaining what everything means
+
+#correction for multiple testing
+
+
+#filtering for significant results
+
+# save data

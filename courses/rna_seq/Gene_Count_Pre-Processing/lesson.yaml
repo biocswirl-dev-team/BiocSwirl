@@ -36,6 +36,12 @@
   Hint: Try the function head(assay())
   
 # include question here?  
+- Class: exact_question
+  Output: Which is the first gene in the table with a read count of zero across all samples and replicates?
+  CorrectAnswer: DDX11L1
+  AnswerTests: val_matches('[D|d][D|d][X|x]11[L|l]1')
+  Hint: The gene names are displayed as the rownames of the matrix.
+  
   
 # remove genes with zero counts
 - Class: cmd_question
@@ -72,14 +78,22 @@
   Output: We also need to normalize our data for library size. Different samples and replicates can be sequenced at different depths (total read count in sample) potentially inflating difference in counts between samples and replicates. This means that gene x in sample A could have five times as many reads than the same gene in sample B because it is actually more highly expressed or because sample A had been sequenced more deeply and has more reads over all. We need to eliminate the second option by normalizing for library size.
   
 - Class: text
-  Output: Conveniently, the rlog() function has already taken care of that problem for us! Now we can move on to the next lesson and take a first glimpse at out data!
+  Output: Conveniently, the rlog() function has already taken care of that problem for us!
   
 
-# compare read count distributions before and after transformation?
+# compare read count distributions before and after transformation
 
-- Class: Figure
-  Output: Look at the difference in total counts and variance between raw and rlog transformed counts
+- Class: figure
+  Output: Take a moment to look at the difference in total counts and variance between raw and rlog transformed counts. See, how in the raw data, gene with the highest read counts have the highest variance.
   Figure: transformed_count.R
   FigureType: new
   
-# include question to prompt understanding of plot?
+- Class: exact_question
+  Output: What is the maximum of the x axis of the plot showing the rlog transformed counts
+  CorrectAnswer: 15
+  AnswerTests: omnitest(correctVal = 15)
+  Hint: check the figure!
+  
+- Class: text
+  Output: Good job! You completed the pre-processing lesson. Now we can move on to the next lesson and take a first glimpse at our data!
+
