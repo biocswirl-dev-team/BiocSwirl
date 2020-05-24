@@ -7,3 +7,5 @@
   Version: 2.4.5
 
 #tbd
+- Class: text
+  Output: Welcome to the BiocSwirl RNA-seq course! This lesson is still empty
