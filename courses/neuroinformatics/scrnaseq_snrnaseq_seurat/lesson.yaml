@@ -8,7 +8,7 @@
 #Introduction
 
 - Class: text
-  Output: Welcome to the lesson on snRNA-seq and scRNA-seq in seurat. This lesson further explores differences between scRNA-Seq and snRNA-Seq datasets. We are following the seurat tutorial here: https://scrnaseq-course.cog.sanger.ac.uk/website/seurat-chapter.html.
+  Output: "Welcome to the lesson on snRNA-seq and scRNA-seq in seurat. This lesson further explores differences between scRNA-Seq and snRNA-Seq datasets. We are following the seurat tutorial here: https://scrnaseq-course.cog.sanger.ac.uk/website/seurat-chapter.html."
 
 - Class: text
   Output: For this lesson, we will assume that you have already finished the scrna-snrna introduction lesson.
@@ -16,7 +16,7 @@
 #Dataset
 
 - Class: text
-  Output: The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes.
+  Output: "The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes."
 
 - Class: text
   Output: The "sampAll" object contains sample metrics, and the "countR" object contains raw counts.
