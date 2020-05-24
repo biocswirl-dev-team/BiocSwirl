@@ -3,3 +3,4 @@ RColorBrewer
 ggplot2
 cowplot
 dplyr
+hexbin
