@@ -1,0 +1,247 @@
+
+- Class: meta
+  Course: BiocSwirl
+  Lesson: ChIP-Seq Analysis
+  Author: Matthew A. Moss
+  Type: Standard
+  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Version: 1.0
+
+#Introduction
+
+- Class: text
+  Output: Welcome to BiocSwirl - Terminal based Bioconductor Courses. This lesson will cover the basics of ChIP-seq, from biology to peak annotation.
+
+- Class: text
+  Output: Install the required software at the following link, https://github.com/lisancao/biocswirl/blob/master/biocswirl_dev/devenv_install.
+
+#Explain ChIP-seq
+
+- Class: text
+  Output: Chromatin immunoprecipitation followed by sequencing, commonly referred to as ChIP-seq, as a sequencing methodology that allows the user to profile binding to chromatin at a genome wide scale. This is most commonly used to profile transcription factor binding and chromatin marks. ADD MORE DETAILS HERE ABOUT BIOLOGY/SAMPLE COLLECTION
+
+#Explain The Pipeline
+
+- Class: text
+  Output: Next-gen sequencers output a FASTQ file for each sequencing read (single-end or paired-end), which will be the first thing you work with in ChIP-seq analysis. Each FASTQ file contains a sequence identifier, the nucleotide sequence as well as quality scores for each nucleotide encoded in ASCII characters. Each of these sequences are called a "read," and they represent a region of the genome bound to your factor of interest. When several of these reads are found in the same place on the genome, that is considered to be an identified binding site. How do we find these locations though? Well....! 
+
+#Explain Pre-Alignment QC
+
+- Class: text
+  Output: Before you analyze your data, it is important to make sure your sequencing is of usable quality. 
+
+
+- Class: mult_question
+  Output: What tool can we use to quality check the raw sequencing files?
+  AnswerChoices: FastQC;samtools;bowtie2;macs2
+  CorrectAnswer: FastQC
+  AnswerTests: omnitest(correctVal='FastQC')
+  Hint: Quality Control.
+
+
+- Class: text
+  Output: You should now run this software on both your input control and treatment condition. For the purpose of this less, we will assume the fastq files are of good quality, but it is good to start by doing this when you use new data. 
+
+
+#Explain alignment
+
+- Class: text
+  Output: The first step of analysis is to align these FASTQ files to a reference.
+
+- Class: text
+  Output: There are many open source and commercial alignment tools with varying sensitivities and speeds. Which aligner you choose to use depends on available computing power and the acceptable trade-off between accuracy and speed. Commonly used aligners include BWA, Bowtie2, HISAT2, Bfast, and Stampy. In this lesson, we will be using Bowtie2
+
+- Class: text
+  Output: Using bioconductor, please install Rbowtie2 (if you are not familiar with installation using bioconductor, take a look at that lesson first!). 
+
+- Class: cmd_question
+  Output: Open a new project in R and install Rbowtie2.
+  CorrectAnswer: install.packages("BiocManager")
+  AnswerTests: omnitest('BiocManager::install("Rbowtie2")')
+  Hint: https://bioconductor.org/packages/release/bioc/html/Rbowtie2.html
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("Rbowtie2")
+  AnswerTests: omnitest(library("Rbowtie2"))
+  Hint: The format should be "library(__"packageName"__)
+
+
+- Class: text
+  Output: In addition to needing the software, it is also necessary to have a reference genome to align your reads to. Each species will have its own reference, and most softwares require the reference to be formatted in a software specific way. While it is possible to generate your own bowtie2 reference, that is beyond the scope of this lesson.  Bowtie2 distributes a copy of the mouse and human reference genomes on their website. Please download the most recent mouse reference (mm10) from the bowtie2 website, and save it to an easily accessible folder, before proceeding to the next step!
+
+
+#Status Check
+
+- Class: cmd_question
+  Output: Now that we've collected all of the pieces to begin your analysis, it's time to run some alignments! Before we proceed, do you have your raw reads, reference genome, and bowtie2 installed?Type 'yes' if you do, and if not get what you need and type it to proceed!
+  CorrectAnswer: yes
+  AnswerTests: omnitest('yes')
+  Hint: If you need the reference still, it can be found at http://bowtie-bio.sourceforge.net/bowtie2/index.shtml in the "Indexes" section
+
+
+#Run Alignment
+
+- Class: text
+  Output: Now we're going to align this data to our reference genome. You must align both your treatment and your input to the reference genome, one at a time. The format to the bowtie2 command for paired end reads is as follows, bowtie2(bt2Index, samOutput, seq1, seq2). 
+
+- Class: cmd_question
+  Output: First, try aligning your treatment file! Save this to a file called treatment.sam
+  CorrectAnswer: bowtie2("", treatment.sam,"","")
+  AnswerTests: omnitest(bowtie2("", treatment.sam,"",""))
+  Hint: For ease of use, put all of the files we're using today in the same working directory. 
+
+- Class: cmd_question
+  Output: Now align your input control! Save this to a file called input.sam
+  CorrectAnswer: bowtie2("", input.sam,"","")
+  AnswerTests: omnitest(bowtie2("", input.sam,"",""))
+  Hint: For ease of use, put all of the files we're using today in the same working directory. 
+
+
+
+#Alignment QC
+
+- Class: text
+  Output: The standard output of alignment packages is a BAM file. Before downstream processing of aligned reads (.bam) in R, we must assess the quality of the alignments. In order to do this, we will use the qQCReport, from the QuasR package. First, install this package from bioconductor.
+
+
+- Class: cmd_question
+  Output: Install QuasR
+  CorrectAnswer: BiocManager::install('QuasR')
+  AnswerTests: omnitest(BiocManager::install('QuasR'))
+  Hint: BiocManager::install()
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("QuasR")
+  AnswerTests: omnitest(library("QuasR"))
+  Hint: The format should be "library(__"packageName"__)
+
+
+- Class: cmd_question
+  Output: Now, run the qQCReport function on your treatment bam file
+  CorrectAnswer: qQCReport("")
+  AnswerTests: omnitest(qQCReport(""))
+  Hint: Use ?QuasR::qRCReport to see the help documentation!
+
+- Class: cmd_question
+  Output: Next, run it again on your input control bam file
+  CorrectAnswer: qQCReport("")
+  AnswerTests: omnitest(qQCReport(""))
+  Hint: Use ?QuasR::qRCReport to see the help documentation!
+
+
+#Peak Calling
+
+
+- Class: text
+  Output: Now that we've aligned our treatment and input control to the reference genome, it's time to find our binding sites. In order to do this, we will compare our treatment to controls and find areas on the genome where the treatment has substantially more reads. These regions will be called "peaks" due to the way they look like a peak when the alignments are visualized. In order to do this, we will be using an R package called normr. As usual, we begin by installing the package
+
+- Class: cmd_question
+  Output: Install normr
+  CorrectAnswer: BiocManager::install('normr')
+  AnswerTests: omnitest(BiocManager::install('normr'))
+  Hint: Use BiocManager::install() to get the job done!
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("normr")
+  AnswerTests: omnitest(library("normr"))
+  Hint: The format should be "library(__"packageName"__)
+
+- Class: text
+  Output: We will now use normr to call our binding sites, or peaks. The format for this command is enrichR(treatment = "ChIP_file", control = "input_control", genome = "mm10", verbose = FALSE)
+
+
+- Class: cmd_question
+  Output: Try running it on your data! Save it to a variable called "enrich" for later use
+  CorrectAnswer: enrich <- enrichR(treatment = "", control = "", genome = "mm10", verbose = FALSE)
+  AnswerTests: omnitest(enrich <- enrichR(treatment = "", control = "", genome = "mm10", verbose = FALSE))
+  Hint: Use ?normr::enrichR to see the help documentation!
+
+
+- Class: text
+  Output: Alright, now in order to get that output into something we can use, we're going to rapid fire through a process to extract the data we want from that object. In order, we use the "getRanges" function on our enrich variable to get all of the enriched genomic ranges. Then we use the "getQvalues" function to get our statistical significance. Then we use the "getEnrichment" function to get the enrichment score. We then filter out those peaks that don't meet our enrichment threshold. Finally, we filter based on an even more stringent qvalue threshold and save our newly made bed file!
+
+
+- Class: cmd_question
+  Output: Extract the binding sites using the "getRanges" function on your enrich variable. Save it to a variable called "peaks"
+  CorrectAnswer: peaks <- getRanges(enrich)
+  AnswerTests: omnitest(peaks <- getRanges(enrich))
+  Hint: Use ?normr::getRanges to see the help documentation!
+
+- Class: cmd_question
+  Output: Add qvalue information using the "getQvalues" function and saving it to a column called "qvalue"
+  CorrectAnswer: peaks$qvalue <- getQvalues(enrich)
+  AnswerTests: omnitest(peaks$qvalue <- getQvalues(enrich))
+  Hint: Use ?normr::getQvalues to see the help documentation!
+
+- Class: cmd_question
+  Output: Add enrichment score information using the "getEnrichment" function and saving it to a column called "enrichment"
+  CorrectAnswer: peaks$enrichment <- getEnrichment(enrich)
+  AnswerTests: omnitest(peaks$enrichment <- getEnrichment(enrich))
+  Hint: Use ?normr::getQvalues to see the help documentation!
+
+- Class: cmd_question
+  Output: Filter peaks by enrichment score by subsetting out those that do not have an enriched component value
+  CorrectAnswer: peaks <- subset(peaks, !is.na(component))
+  AnswerTests: omnitest(peaks <- subset(peaks, !is.na(component)))
+  Hint: Take a look at the ranges to see what values can be in the "enrichment" column, and thus what we're trying to filter out
+
+- Class: cmd_question
+  Output: Filter peaks by qvalue by subsetting below a threshold (in this case we'll be stringent and say the qvalue must be below 0.01)
+  CorrectAnswer: peaks <- subset(peaks, qvalue < 0.01)
+  AnswerTests: omnitest(peaks <- subset(peaks, qvalue < 0.01))
+  Hint: Take a look at ?subset to understand how to subset data frames by a value!
+
+- Class: cmd_question
+  Output: Save this file to be used for further analyses. For ease of use, you should remove your row.names, keep your col.names, do not use quotes, and have a tab delimiter (sep = '\t')  
+  CorrectAnswer: write.table(peaks, 'peaks.bed' , row.names=FALSE, col.names=TRUE, quote=FALSE, sep='\t')
+  AnswerTests: omnitest(write.table(peaks, 'peaks.bed' , row.names=FALSE, col.names=TRUE, quote=FALSE, sep='\t'))
+  Hint: Take a look at ?write.table to see how to export a data frame as a file!
+
+- Class: text
+  Output: Congratulations, you now have generated all of the binding sites for your TF or chromatin mark! This is a long process, and good job making it to the end. We will now annotate your peaks so that you can their functional distribution across the genome
+
+
+
+#Annotate Peaks
+
+- Class: text
+  Output: We're now going to determine what type of regulatory elements your ChIP is binding to. In order to do this, we will be using the "annotatePeak" function from the ChIPseeker package. By now I'm sure you're an expert in how to get this set up, but let me walk you through it one last time anyway
+
+
+- Class: cmd_question
+  Output: Install ChIPseeker
+  CorrectAnswer: BiocManager::install('ChIPseeker')
+  AnswerTests: omnitest(BiocManager::install('ChIPseeker'))
+  Hint: Use BiocManager::install() to get the job done!
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("ChIPseeker")
+  AnswerTests: omnitest(library("ChIPseeker"))
+  Hint: The format should be "library(__"packageName"__)
+
+
+- Class: cmd_question
+  Output: And now annotate your peak variable using the annotatePeak function. Save this to a variable named annot
+  CorrectAnswer: annot <- annotatePeak(peak)
+  AnswerTests: omnitest(annot <- annotatePeak(peak))
+  Hint: Use ChIPseeker::annotatePeak to see the help documentation!
+
+
+- Class: cmd_question
+  Output: And to conclude today's lesson, let's generate a plotted result. We'll make a pie chart of the regulatory regions your peaks are found in, using the plotAnnoPie function. All you have to do is run that function on your annot variable!
+  CorrectAnswer: plotAnnoPie(annot)
+  AnswerTests: omnitest(plotAnnoPie(annot))
+  Hint: Use ChIPseeker::plotAnnoPie to see the help documentation!
+
+- Class: text
+  Output: And that's all for this lesson! You've learned a lot by now and should feel a sense of accomplishment. In future lessons, we'll discuss how to functionally annotate your regions using gene ontology, and how to compare them to other treatment conditions. Thanks for completing this lesson!
+
+
+
+
+
+
