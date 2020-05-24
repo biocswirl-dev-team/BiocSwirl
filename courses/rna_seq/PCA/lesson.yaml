@@ -55,10 +55,9 @@
 - Class: mult_question
   Output: Which sample is the most different from all the others?
   AnswerChoices: Series1_NHBE_SARS.Cov.2_2;Series1_NHBE_SARS.Cov.2_3;Series1_NHBE_Mock_3
-  CorrectAnswer: Series1_NHBE_SARS.Cov.2_3
+  CorrectAnswer: Series1_NHBE_Mock_3
   AnswerTests: omnitest(correctVal='Series1_NHBE_SARS.Cov.2_3')
   Hint: The lighter the color, the more different the sample!
-  #Comment: for me Series1_NHBE_Mock_3 looks like the most distant one, is there any way the order of columsn can change?
   
 
 # PCA for different way of visualizing sample distance
