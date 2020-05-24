@@ -25,6 +25,13 @@
   AnswerTests: omnitest(library("ChIPseeker"))
   Hint: The format should be "library(__"packageName"__)
 
+- Class: cmd_question
+  Output: Also, you should load in the peaks file from the peak calling lesson. Load it in as a variable called "peaks". Remember that it has column names (a header), and is delimited with a tab ("\t")
+  CorrectAnswer: peaks <- read.table("", header=TRUE,sep='\t')
+  AnswerTests: omnitest(peaks <- read.table("", header=TRUE,sep='\t'))
+  Hint: Take a look at ?read.table to see how to load in this file, and what options you would use to get it formatted properly!
+
+
 
 - Class: cmd_question
   Output: And now annotate your peak variable using the annotatePeak function. Save this to a variable named annot
