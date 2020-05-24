@@ -37,10 +37,74 @@
   
 # looking at results table
 # explaining what everything means
-
+- Class: cmd_question
+  Output: Let's look at the results table using the head() command.
+  CorrectAnswer: head(res)
+  AnswerTests: omnitest(correctExpr='head(res)')
+  Hint: Try typing head(res)
+  
+- Class: cmd_question
+  Output: As you can see, this dataframe contains several columns with results. Open the meta data of these columns to understand the meaning of them. Use mcols().
+  CorrectAnswer: mcols(res)
+  AnswerTests: omnitest(correctExpr='mcols(res)')
+  Hint: Try typing mcols(res)
+  
+- Class: mult_question
+  Output: Which column contains the Wald test p-value?
+  AnswerChoices: col 1;col 2;col 3;col 4;col 5;col 6
+  CorrectAnswer: col 5
+  AnswerTests: omnitest(correctVal='col 5')
+  Hint: It's column 5
+ 
+- Class: cmd_question
+  Output: We can also summarize the results table with the summary() function. Try it out!
+  CorrectAnswer: summary(res)
+  AnswerTests: omnitest(correctExpr='summary(res)')
+  Hint: Try typing summary(res)
+  
 #correction for multiple testing
-
-
+- Class: text
+  Output: In high-throughout experiments, it is important not to use the raw pvalues but to adjust for multiple testing. Explain the need for multiple testing more
+  
+- Class: text
+  Output: Conveniently, DESeq2 already uses the Benjamini-Hochberg (BH) adjustment. The adjusted pvalue is saved in column 6 of the results table. This adjusted pvalue represents the False Discovery Rate (FDR) for our data.
+  
+- Class: text
+  Output: Let's say we consider 10% false positives acceptable, then we can consider all genes with an adjusted p-value below 10% (0.1) as significant. Let\'s find out how many significant genes we have in this dataset!
+  
 #filtering for significant results
 
-# save data
+- Class: cmd_question
+  Output: Try and filter the results table for an adjusted p-value < 0.1. You could use the subset() function. Assign the results to res_sig.
+  CorrectAnswer: res_sig <- subset(res, padj < 0.1)
+  AnswerTests: omnitest(correctExpr='res_sig <- subset(res, padj < 0.1)')
+  Hint: Try typing res_sig <- subset(res, padj < 0.1)
+  
+- Class: cmd_question
+  Output: Now try sorting the significant results based on the log2FoldChange and look at the top genes. Try using order() and head()
+  CorrectAnswer: head(res_sig[order(res_sig$log2FoldChange),])
+  AnswerTests: omnitest(correctExpr='head(res_sig[order(res_sig$log2FoldChange),])')
+  Hint: Try typing head(res_sig[order(res_sig$log2FoldChange),])
+  
+- Class: text_question
+  Output: Which gene shows the biggest decrease in expression from treatment to mock?
+  CorrectAnswer: 'RBM20'
+  AnswerTests: val_matches('[R|r][B|b][M|m]20')
+  Hint: Gene name starts with R. Check the rownames...
+  
+  
+- Class: cmd_question
+  Output: Try sorting the results by decreasing log2Fc now with the attribute decreasing=TRUE to the order() function
+  CorrectAnswer: head(res_sig[order(res_sig$log2FoldChange, decreasing=TRUE),])
+  AnswerTests: omnitest(correctExpr='head(res_sig[order(res_sig$log2FoldChange, decreasing=TRUE),])')
+  Hint: Try typing head(res_sig[order(res_sig$log2FoldChange, decreasing=TRUE),])
+  
+- Class: text_question
+  Output: Which gene shows the biggest increase in expression from treatment to mock?
+  CorrectAnswer: 'CSF3'
+  AnswerTests: val_matches('[C|c][S|s][F|f]3')
+  Hint: Gene name starts with C. Check the rownames...
+  
+  
+  
+

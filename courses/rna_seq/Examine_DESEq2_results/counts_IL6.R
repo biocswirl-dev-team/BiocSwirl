@@ -1,0 +1,1 @@
+plotCounts(dds, gene = "IL6")
