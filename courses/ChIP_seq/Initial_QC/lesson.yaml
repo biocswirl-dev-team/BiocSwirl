@@ -1,0 +1,51 @@
+- Class: meta
+  Course: ChIP
+  Lesson: Initial QC
+  Author: Matthew Moss
+  Type: Standard
+  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Version: 2.4.5
+
+
+#Introduction
+
+- Class: text
+  Output: Welcome to BiocSwirl - Terminal based Bioconductor Courses. This lesson will cover the basics of ChIP-seq, from biology to peak annotation.
+
+- Class: text
+  Output: Install the required software at the following link, https://github.com/lisancao/biocswirl/blob/master/biocswirl_dev/devenv_install.
+
+#Explain ChIP-seq
+
+- Class: text
+  Output: Chromatin immunoprecipitation followed by sequencing, commonly referred to as ChIP-seq, as a sequencing methodology that allows the user to profile binding to chromatin at a genome wide scale. This is most commonly used to profile transcription factor binding and chromatin marks. This is done by pulling down sites in the genome bound to your precipitate of interest, and then sequencing the sites that it was bound to.
+
+#Download the data
+
+- Class: text
+  Output: For this lesson, we will be using ChIP-seq of H3K27ac from the mammary gland of a mouse. We'll be using bioproject PRJNA544746 from the sra database. Make sure to download pre-pregnancy rep1 both input and H3K27ac!
+
+
+
+#Explain The Pipeline
+
+- Class: text
+  Output: Next-gen sequencers output a FASTQ file for each sequencing read (single-end or paired-end), which will be the first thing you work with in ChIP-seq analysis. Each FASTQ file contains a sequence identifier, the nucleotide sequence as well as quality scores for each nucleotide encoded in ASCII characters. Each of these sequences are called a "read," and they represent a region of the genome bound to your factor of interest. When several of these reads are found in the same place on the genome, that is considered to be an identified binding site. How do we find these locations though? Well....! 
+
+#Explain Pre-Alignment QC
+
+- Class: text
+  Output: Before you analyze your data, it is important to make sure your sequencing is of usable quality. 
+
+
+- Class: mult_question
+  Output: What tool can we use to quality check the raw sequencing files?
+  AnswerChoices: FastQC;samtools;bowtie2;macs2
+  CorrectAnswer: FastQC
+  AnswerTests: omnitest(correctVal='FastQC')
+  Hint: Quality Control.
+
+
+- Class: text
+  Output: You should now run this software on both your input control and treatment condition. For the purpose of this less, we will assume the fastq files are of good quality, but it is good to start by doing this when you use new data. 
+
