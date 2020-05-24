@@ -9,4 +9,4 @@
   )
 }
 
-dataset <- load(file.path(.get_course_path(),"neuroinformatics", "data_download", "start_data.rda"))
+dataset <- load(file.path(.get_course_path(),"neuroinformatics", "data", "start_data.rda"))
