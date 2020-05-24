@@ -61,3 +61,6 @@
   CorrectAnswer: Various ASCII characters represent quality for each base
   AnswerTests: omnitest(correctVal= 'Various ASCII characters represent quality for each base')
   Hint: Compare the length of the quality and sequence strings for each entry and see which characters are used overall in the file
+
+- Class: text
+  Output: Dependening the sequencing strategy used by a given experiment you can either have one (single-end sequencing) or two (paired-end sequencing) fastq files for each sample. The samples for this course used single-end sequencing so there is only one file per sample. The GEO database will also always denote whether samples are single- or paired-end and the SRA toolkit will automatically download both fastq files for paired-end samples. It is important to keep in mind whether your data is single- or paired-end, because many commands for later analysis steps change a bit if you have two files per sample.
