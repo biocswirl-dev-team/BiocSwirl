@@ -14,7 +14,7 @@
 - Class: text
   Output: We can assess the similarity between samples by calculating the so called Euclidean Distance. We do this on the transformed data so that all genes contribute approximately equally to this distance.
   
-- Class: txt
+- Class: text
   Output: First we need to transpose our matrix because the distance function expects the samples to be in rows and the genes to be in columns. We can do that using the function t(). Remember that you can access the data matrix in dds using assay(). After transforming the matrix that we accessed with assay(), we can use the dist() function to calculate the Euclidean Distance.
   
 - Class: cmd_question
@@ -39,6 +39,7 @@
   Output: Now it's finally time to plot our heatmap. Type ?pheatmap() to understand the arguments needed for this function.
   CorrectAnswer: ?pheatmap()
   AnswerTests: omnitest(correctExpr='?pheatmap()')
+  Hint: Type ?pheatmap()
 
 - Class: cmd_question
   Output: Use what you just learned to plot the heatmap with pheatmap(). Use sampleDist for both clustering_distance_rows and clustering_distance_cols. Use the predefined "colors" object to color your heatmap.
@@ -61,7 +62,7 @@
 
 # PCA for different way of visualizing sample distance
 - Class: text
-  Output: Another way of visualizing distances between samples is running a principle component analysis. Explain this in more detail.
+  Output: Another way of visualizing distances between samples is running a Principle Component Analysis (PCA).
   
 - Class: cmd_question
   Output: Conveniently, the DESeq2 package comes with a function that computes the analysis and visualizes it for us. Try using plotPCA() on your rlog normalized data rlog_dds.
@@ -69,12 +70,21 @@
   AnswerTests: omnitest(correctExpr='plotPCA(rlog_dds)')
   Hint: Try plotPCA(rlog_dds)
   
-- Class: Figure
+- Class: figure
   Output: Look at the figure you created
   Figure: pca.R
   FigureType: new
   
-# Question about PCA to check for understanding
+- Class: text
+  Output: PCA shows our samples on a two-dimensional plot where they spread out in the two directions that explain most of the differences between the samples (x axis = most differences, y = second most differences). In a successful RNA-seq experiment these directions frequently represent the difference between experimental conditions and replicates. The percent difference explained by these directions is commonly shown in the axis labels.
+  
+- Class: mult_question
+  Output: Difference between which groups of samples contributes the most to the variance in this dataset?
+  AnswerChoices: replicates;condition
+  CorrectAnswer: condition
+  AnswerTests: omnitest(correctVal='condition')
+  Hint: Check which groups are spacially separated on the x-axis
+  
 
 
 
