@@ -13,5 +13,6 @@ dataset <- data.frame(read.table(file.path(.get_course_path(), "rna_seq", "Gene_
                       header = TRUE, stringsAsFactors = FALSE))
 dataset <- dataset[,c(1:6)]
 
+colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))
 
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)

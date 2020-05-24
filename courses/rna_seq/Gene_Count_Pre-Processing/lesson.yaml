@@ -17,11 +17,12 @@
 # this might have to be adjusted according to upstream workflow
   
 - Class: cmd_question
-  Output:  Make colData object containing the details of the experiment and the comparisons we want to test.
-  CorrectAnswer: colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))
-  AnswerTests: omnitest(correctExpr='colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))')
-  Hint: Try making a dataframe with the sample names in one column and the condition in another
-  #Comment: I don't think it's possible to guess this. Maybe preload the colData via initLesson and ask to inspect & say what the condition var means instead?
+  Output:  Next, we need to prepare a colData object containing the details of the experiment and the comparisons we want to test. Take a look at the preloaded colData object!
+  CorrectAnswer: colData
+  AnswerTests: omnitest(correctExpr='colData')
+  Hint: Try typing colData
+  
+# question about colData here
   
 # making deseqdataset object
   
