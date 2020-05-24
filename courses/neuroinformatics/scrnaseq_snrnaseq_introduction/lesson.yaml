@@ -1,6 +1,6 @@
 - Class: meta
   Course: neuroinformatics
-  Lesson: Differences between snRNA-seq and scRNA-seq
+  Lesson: Differences between snRNA-seq and scRNA-seq, an introduction
   Author: Elizabeth Hutchins
   Type: Standard
   Version: 1.0
@@ -8,15 +8,12 @@
 #Introduction
 
 - Class: text
-  Output: Welcome to the lesson on snRNA-seq and scRNA-seq. Most tools and workflows are written for scRNA-seq data, but there are some differences on the analysis end, particularly in some quality control metrics that are frequently used with scRNA-seq sofrware. This lesson will help you identify characteristics of snRNA-seq data to be aware of for analysis.
-
-- Class: text
-  Output: For this lesson, we will assume that you have already finished the low-level analyses lessons in the scRNA-seq course.
+  Output: Welcome to the lesson on snRNA-seq and scRNA-seq. Most tools and workflows are written for scRNA-seq data, but there are some differences on the analysis end, particularly in some quality control metrics that are frequently used with scRNA-seq sofrware. This lesson will help you identify characteristics of snRNA-seq data to be aware of for analysis. For this lesson, we will assume that you have already finished the low-level analyses lessons in the scRNA-seq course.
 
 #Dataset
 
 - Class: text
-  Output: The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes.
+  Output: "The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types, doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes."
 
 - Class: text
   Output: For the next few questions, use the "sampAll" object.
@@ -28,9 +25,9 @@
 
 - Class: mult_question
   Output: Which method results in cells with a higher mitochondrial rRNA content?
-  AnswerChoices: scRNA-seq, snRNA-seq
+  AnswerChoices: scRNA-seq;snRNA-seq
   AnswerTests: omnitest(correctVal='scRNA-seq')
-  Hint: group by the "Type" column and summarize the mean of the percent_reads_aligned_to_mt_rrna column.
+  Hint: group by the "Type" column and summarize the mean of the "percent_reads_aligned_to_mt_rrna" column.
 
 #Unique genes detected, doublets
 
