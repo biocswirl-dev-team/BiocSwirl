@@ -15,16 +15,14 @@ maybe/todo: - data depository guidelines, how to find datasets
 
 ## fastq_trimming
 
-- quality & adapter trimming 
-- fastqc / multiqc
+- Check read quality with fastqc
+- quality & adapter trimming
 
-## genome_alignment
+## Read_alignment_quantification
 
 - alignment of reads to genome assembly
 - STAR: slow / splice aware / may find intergenic regions
 - mention other aligners? (bowtie2, ...)
-
-## quasi-alignment_quantification
 
 - 'quasi-alignment' of reads to transcriptome
 - aim: quantification only [though it can make fakish bam files]
@@ -33,9 +31,7 @@ maybe/todo: - data depository guidelines, how to find datasets
 
 ## Import_Data
 
-- load count tables
-- raw vs TPM vs ...
-- tximport ?
+-> merge into previous/following lesson
 
 ## Pre-Processing
 

@@ -1,9 +1,7 @@
 Introduction
 fastq_download
 fastq_trimming
-genome_alignment
-quasi-alignment_quantification
-Import_Gene_Count_Data
+Read_alignment_quantification
 Gene_Count_Pre-Processing
 k-Means
 PCA

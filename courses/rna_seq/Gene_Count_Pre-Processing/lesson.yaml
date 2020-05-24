@@ -11,6 +11,7 @@
   CorrectAnswer: library(DESeq2)
   AnswerTests: omnitest(correctExpr='library(DESeq2)')
   Hint: Try library(DESeq2)
+  #Comment: this package may not be installed!
 
 # making colData
 # this might have to be adjusted according to upstream workflow
@@ -20,6 +21,7 @@
   CorrectAnswer: colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))
   AnswerTests: omnitest(correctExpr='colData <- data.frame(names = colnames(dataset), condition = c("mock","mock","mock","treatment","treatment","treatment"))')
   Hint: Try making a dataframe with the sample names in one column and the condition in another
+  #Comment: I don't think it's possible to guess this. Maybe preload the colData via initLesson and ask to inspect & say what the condition var means instead?
   
 # making deseqdataset object
   
@@ -41,6 +43,8 @@
   CorrectAnswer: DDX11L1
   AnswerTests: val_matches('[D|d][D|d][X|x]11[L|l]1')
   Hint: The gene names are displayed as the rownames of the matrix.
+  #Comment: Somehow this needes '' around the answer, maybe a 'text_question' would be better? (as it shouldnt interpret the answer as an r-string)
+  
   
   
 # remove genes with zero counts
@@ -57,7 +61,8 @@
   Hint: Try typing dds <- dds[keep,]
 
 
-  
+#Comment: I think mentioning other common data transformations (i.e TPM) would also be good here?
+
 # rlog transformation
 - Class: text
   Output: Why do we need to transform our data? Most statistical tests work best on data with the same range of variance. 
@@ -87,6 +92,7 @@
   Output: Take a moment to look at the difference in total counts and variance between raw and rlog transformed counts. See, how in the raw data, gene with the highest read counts have the highest variance.
   Figure: transformed_count.R
   FigureType: new
+  #Comment: the figures didn't load, I think some packages are not decalred here (hexbin specifically)
   
 - Class: exact_question
   Output: What is the maximum of the x axis of the plot showing the rlog transformed counts

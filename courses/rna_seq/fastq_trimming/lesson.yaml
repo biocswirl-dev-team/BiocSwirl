@@ -70,7 +70,7 @@
   Hint: trim_galore <filename>
 
 - Class: text
-  Output: trim_galore has a lot of options, however it will usually a quite good good even with default parameters. The options often start becoming relevant when you need to handle specific problems or particularities of the samples.
+  Output: trim_galore has a lot of options, however it will usually a quite good good even with default parameters. One important thing to remeber is to pass the --paired options if you have paired-end files. The other options often start becoming relevant when you need to handle specific problems or particularities of the samples.
 
 - Class: mult_question
   Output: Check the options or trim_galore (trim_galore --help): which of the following measures can the program not utilize to remove reads?

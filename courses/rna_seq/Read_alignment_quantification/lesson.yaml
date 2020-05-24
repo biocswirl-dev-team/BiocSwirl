@@ -1,0 +1,56 @@
+- Class: meta
+  Course: RNA-seq analysis
+  Lesson: Read_alignment_quantification
+  Author: Nicolai von Kügelgen
+  Type: Standard
+  Organization: MDC / BIMSB
+  Version: 2.4.5
+
+- Class: text
+  Output: Once reads have been properly checked for quality they need to be aligned to the genome or transcriptome, so that counts for genes (or transcripts) can be generated. Aliging to the full genome or only the transcriptome are two different approaches, both with different advantages and disadvantages.
+
+- Class: mult_question
+  Output: Which of the following statements is true for mapping reads to the transcriptome?
+  AnswerChoices: Very fast due to smaller search space;Splice sites are not an issue;Unreliable for species with incomplete annotation;All of the other statements
+  CorrectAnswer: All of the other statements
+  AnswerTests: omnitest(correctVal= 'All of the other statements')
+  Hint: Mapping to the transcriptome uses only the final sequences of all known transcripts from a given genome
+  
+- Class: text
+  Output: Compared to mapping to the transcriptome, alignment to the full genome sequence takes much longer, but can possibly identify unkown transcption sites or splice sites.
+  
+- Class: mult_question
+  Output: Alignment of RNAseq data to the full genome needs to take special consideration of splice sites, since reads can cover two exons that are far away from each other in the reference genome. Which of the following genome alignment programs is not 'splice aware'?
+  AnswerChoices: Bowtie2;Tophat;STAR
+  CorrectAnswer: Bowtie2
+  AnswerTests: omnitest(correctVal= 'Bowtie2')
+  Hint: You can check the descriptions of these tools online.
+  
+- Class: text                                          
+  Output: Genome alignment programs will produce files in SAM (sequence alignment map) or BAM (its binary compressed counterpart) format. This file type contains - similarly to fastq files - one entry for each read and saves the genome position the read mapped to in addition to all information that was already saved in the fastq file.  
+
+- Class: text
+  Output: While mapping reads to the genome and primarily save their positions allows for mayn different types analysis, in with RNAseq experiments one is usually interest in the number of reads that belong to each gene or transcript. To obtain these numbrs after mapping reads to the genome, it is also necessary to *count reads*. There are multiple programs available to do so that usually take bam files as input. A common one is htseq, which is based on python and also provides packages to write your own counting scripts in python.
+  #BiocTerm: pythoen / htseq excourse?
+  
+- Class: cmd_question
+  Output: There also exists an R function to count bam files called featureCounts (from the Rusbread package). Use the featureCounts function to assign gene counts for the example bam file included with this course (the file name is stored in the variable bamfile) to an object 'counts'. Remeber that the sample from the exmaple dataset come from human cell lines.
+  CorrectAnswer: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
+  AnswerTests: omnitest(correctExpr="counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')")
+  Hint: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
+  
+- Class: text
+  Output: In contrast to alignment of reads to the full genome, the strategy of mapping reads to the transcriptome allows faster processing and usually directly generates gene or transcript counts in a single step.
+
+- Class: text
+  Output: Many of the tools for transcriptome alignment have become popular in recent years (salmon, sailfish, kallisto among others). One common theme to them is that they deploy a 'quasi-alignment' strategy that skips the generation of clear positional mapping of reads to transcripts. Furthermore they do not just count reads, but actually come with various model to directly calculate read abundance by using normalisation and correction for library size and other features like GC content that can induce bias in reads.
+
+- Class: text
+  Output the tximport package and function allow you to directly import the output of many different quasi-alignment programs into R for further processing.
+
+- Class: cmd_question
+  Output: Use the tximport function to read the counts generated for the SRR11412215 example into an object called txi, do include the txOut=T option, to avoid supplying additional transcript to gene mappings.
+  CorrectAnswer: txi <- tximport(salmon.files, type = 'salmon', txOut=T)
+  AnswerTests: any_of_exprs("txi <- tximport(salmon.files, type = 'salmon', txOut=T)", "txi <- tximport(salmon.files, txOut=T, type = 'salmon')")
+  Hint: txi <- tximport(salmon.files, type = 'salmon', txOut=T)
+  
