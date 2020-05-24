@@ -39,11 +39,9 @@ maybe/todo: - data depository guidelines, how to find datasets
 - rlog transformation of count data
 - normalizing by library size
 - visually comparing raw and transformed counts
-[missing: spike-ins?]
+- missing: spike-ins?
+- missing: other transformations
 
-## k-Means
-
-- tbd, maybe delete?
 
 ## PCA
 
@@ -61,21 +59,16 @@ maybe/todo: - data depository guidelines, how to find datasets
 
 ## Examine_DESEq2_results
 
-- plotting counts for genes of interest/ controls etc
-- MA plot
 - histogram of pvalues (evaluating success of analysis?)
-- volcano plot
-- heatmap
+- plotting counts for genes of interest/ controls etc
+- tbc: MA plot
+- tbc: volcano plot
+- tbc: heatmap
 
 ## Pathway_Analysis
 
 - functional analysis of significant genes
 - Go term, Kegg pathways, etc.
-
-## Heatmap
-
-- delete and put under "examine deseq results"?
-
 
 ## References
 Dataset used from "Imbalanced Host Response to SARS-CoV-2 Drives Development of COVID-19", Blanco-Melo et al. 2020, https://doi.org/10.1016/j.cell.2020.04.026\
