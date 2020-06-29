@@ -5,5 +5,3 @@
 
 .ipynb_checkpoints/
 *-checkpoint.ipynb
-.virtualenvs/
-.tox/
