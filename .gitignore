@@ -2,9 +2,12 @@
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
 
 .ipynb_checkpoints/
 <<<<<<< HEAD
 *-checkpoint.ipynb
 =======
 >>>>>>> 8f85319... upd
+=======
+>>>>>>> parent of 8f85319... upd
