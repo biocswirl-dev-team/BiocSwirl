@@ -1,0 +1,39 @@
+- Class: meta
+  Course: ChIP
+  Lesson: Alignment QC
+  Author: Matthew Moss
+  Type: Standard
+  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Version: 2.4.5
+
+
+#Alignment QC
+
+- Class: text
+  Output: The standard output of alignment packages is a BAM file. Before downstream processing of aligned reads (.bam) in R, we must assess the quality of the alignments. In order to do this, we will use the qQCReport, from the QuasR package. First, install this package from bioconductor.
+
+
+- Class: cmd_question
+  Output: Install QuasR
+  CorrectAnswer: BiocManager::install('QuasR')
+  AnswerTests: omnitest(BiocManager::install('QuasR'))
+  Hint: BiocManager::install()
+
+- Class: cmd_question
+  Output: After installation, make sure to load your package using the "library" function. 
+  CorrectAnswer: library("QuasR")
+  AnswerTests: omnitest(library("QuasR"))
+  Hint: The format should be "library(__"packageName"__)
+
+
+- Class: cmd_question
+  Output: Now, run the qQCReport function on your treatment bam file
+  CorrectAnswer: qQCReport("")
+  AnswerTests: omnitest(qQCReport(""))
+  Hint: Use ?QuasR::qRCReport to see the help documentation!
+
+- Class: cmd_question
+  Output: Next, run it again on your input control bam file
+  CorrectAnswer: qQCReport("")
+  AnswerTests: omnitest(qQCReport(""))
+  Hint: Use ?QuasR::qRCReport to see the help documentation!
