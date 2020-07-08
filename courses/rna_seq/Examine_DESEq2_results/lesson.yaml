@@ -1,0 +1,60 @@
+- Class: meta
+  Course: RNA-seq analysis
+  Lesson: Examine DESEq2 results
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+# plot histogram of pvalues as diagnostic tool
+- Class: cmd_question
+  Output: Histograms of pvalues are really useful diagnostic tools for RNA-seq data analyses. It is best to exclude genes with small counts (baseMean). Draw a histogram of res$pvalue where res$baseMean > 1
+  CorrectAnswer: hist(res$pvalue[res$baseMean > 1])
+  AnswerTests: omnitest(correctExpr='hist(res$pvalue[res$baseMean > 1])')
+  Hint : Try typing hist(res$pvalue[res$baseMean > 1])
+  
+- Class: figure
+  Output: Take a look at the histogram you made!
+  Figure: hist.R
+  FigureType: new
+  
+- Class: text
+  Output: Notice how the first bin (with the smallest p-values) contains the most genes. This is the typical distribution we would expect from our data. If the histogram doesn't look similar to this one, we might have to use different statistical tests for different hypotheses.
+  
+- Class: video
+  Output: For more information, check out this RNA-seq blog post!
+  VideoLink: https://seqqc.wordpress.com/2016/01/27/too-few-or-none-differential-expressed-genes-a-way-to-fix-the-null-hypothesis-in-deseq2/
+  
+# count plot for single genes
+
+- Class: text
+  Output: Next, we can plot the normalized counts (expression) for single genes across the different experimental conditions. This is really helpful for looking at control genes and assessing the success of the experiment. For example, in a knockdown experiment, you can check if the expression of that gene actually decreased.
+
+- Class: cmd_question
+  Output: For this dataset, let's take a look at IL6. You can use the DESEq2 function plotCounts() to extract and plot counts for specific genes (using the attribute gene=). Try it out!
+  CorrectAnswer: plotCounts(dds, gene = "IL6")
+  AnswerTests: omnitest(correctExpr='plotCounts(dds, gene = "IL6")')
+  Hint: Try typing plotCounts(dds, gene = "IL6")
+  
+- Class: figure
+  Output: Take a look at the normalized counts for IL6
+  Figure: counts_IL6.R
+  FigureType: new
+  
+- Class: text_question
+  Output: In which condition is IL6 expressed more highly?
+  CorrectAnswer: 'treatment'
+  AnswerTests: val_matches('[T|t]reatment')
+  Hint: It's the treatment, shown on the right side of the plot.
+  
+# MA plot
+## what is a MA plot
+
+## make one
+
+
+# volcano plot
+
+
+# heatmap
+

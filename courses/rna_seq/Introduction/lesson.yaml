@@ -1,0 +1,10 @@
+- Class: meta
+  Course: rna_seq
+  Lesson: Introduction
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to the BiocSwirl RNA-seq course! This lesson is still empty

@@ -1,0 +1,106 @@
+- Class: meta
+  Course: RNA-seq analysis
+  Lesson: Pre-Processing
+  Author: Julia Philipp
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+- Class: cmd_question
+  Output: Moving on to gene count pre-processing. We can do that using the Deseq2 package. Let's load it first!
+  CorrectAnswer: library(DESeq2)
+  AnswerTests: omnitest(correctExpr='library(DESeq2)')
+  Hint: Try library(DESeq2)
+  #Comment: this package may not be installed!
+
+# making colData
+# this might have to be adjusted according to upstream workflow
+  
+- Class: cmd_question
+  Output:  Next, we need to prepare a colData object containing the details of the experiment and the comparisons we want to test. Take a look at the preloaded colData object!
+  CorrectAnswer: colData
+  AnswerTests: omnitest(correctExpr='colData')
+  Hint: Try typing colData
+  
+# question about colData here
+  
+# making deseqdataset object
+  
+- Class: cmd_question
+  Output: Next, we will load our gene count table (dataset) into a DESeq2 specific R object, that allows us to store all information associated with our experiment. 
+  CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)
+  AnswerTests: omnitest(correctExpr='dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)')
+  Hint: Try DESeqDataSetFromMatrix()
+  
+- Class: cmd_question
+  Output: Not all genes are expressed in all cell types. Therefore, we will end up with lots of zeros in the gene count table. Take a look at the head of the gene count table that we created previously. You can access data from the deseq object using assay().
+  CorrectAnswer: head(assay(dds))
+  AnswerTests: omnitest(correctExpr='head(assay(dds))')
+  Hint: Try the function head(assay())
+  
+# include question here?  
+- Class: exact_question
+  Output: Which is the first gene in the table with a read count of zero across all samples and replicates?
+  CorrectAnswer: DDX11L1
+  AnswerTests: val_matches('[D|d][D|d][X|x]11[L|l]1')
+  Hint: The gene names are displayed as the rownames of the matrix.
+  #Comment: Somehow this needes '' around the answer, maybe a 'text_question' would be better? (as it shouldnt interpret the answer as an r-string)
+  
+  
+  
+# remove genes with zero counts
+- Class: cmd_question
+  Output: Find rows with a rowSum > 1 and assign them a new R object called "keep"
+  CorrectAnswer: keep <- rowSums(counts(dds)) > 1
+  AnswerTests: omnitest(correctExpr='keep <- rowSums(counts(dds)) > 1')
+  Hint: Try typing keep <- rowSums(counts(dds)) > 1
+
+- Class: cmd_question
+  Output: Subset the dds object for the rows in "keep". Assign the result to dds again
+  CorrectAnswer: dds <- dds[keep,]
+  AnswerTests: omnitest(correctExpr='dds <- dds[keep,]')
+  Hint: Try typing dds <- dds[keep,]
+
+
+#Comment: I think mentioning other common data transformations (i.e TPM) would also be good here?
+
+# rlog transformation
+- Class: text
+  Output: Why do we need to transform our data? Most statistical tests work best on data with the same range of variance. 
+  
+- Class: text
+  Output: For RNA-seq data, the variance typically grows with the mean. If we were to do a PCA (principle component analysis) now to look at the variance in the data, the genes with the highest read counts will contribute the most to the overall variance.
+  
+- Class: text
+  Output: The DESeq2 package offers two different transformations as solutions for this problem. One of them is the regularized-logarithm transformation or rlog.
+  
+- Class: cmd_question
+  Output: Let's transform our data using rlog() and assign the result to rlog_dds. This might take a moment.
+  CorrectAnswer: rlog_dds <- rlog(dds)
+  AnswerTests: omnitest(correctExpr='rlog_dds <- rlog(dds)')
+  Hint: Try typing rlog_dds <- rlog(dds)
+  
+- Class: text
+  Output: We also need to normalize our data for library size. Different samples and replicates can be sequenced at different depths (total read count in sample) potentially inflating difference in counts between samples and replicates. This means that gene x in sample A could have five times as many reads than the same gene in sample B because it is actually more highly expressed or because sample A had been sequenced more deeply and has more reads over all. We need to eliminate the second option by normalizing for library size.
+  
+- Class: text
+  Output: Conveniently, the rlog() function has already taken care of that problem for us!
+  
+
+# compare read count distributions before and after transformation
+
+- Class: figure
+  Output: Take a moment to look at the difference in total counts and variance between raw and rlog transformed counts. See, how in the raw data, gene with the highest read counts have the highest variance.
+  Figure: transformed_count.R
+  FigureType: new
+  #Comment: the figures didn't load, I think some packages are not decalred here (hexbin specifically)
+  
+- Class: exact_question
+  Output: What is the maximum of the x axis of the plot showing the rlog transformed counts
+  CorrectAnswer: 15
+  AnswerTests: omnitest(correctVal = 15)
+  Hint: check the figure!
+  
+- Class: text
+  Output: Good job! You completed the pre-processing lesson. Now we can move on to the next lesson and take a first glimpse at our data!
+

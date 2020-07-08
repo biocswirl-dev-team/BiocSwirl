@@ -1,0 +1,80 @@
+- Class: meta
+  Course: RNA-seq analysis
+  Lesson: fastq_trimming
+  Author: Nicolai von Kügelgen
+  Type: Standard
+  Organization: MDC / BIMSB
+  Version: 2.4.5
+
+- Class: text
+  Output: Fastq files you obtain from RNA-seq (whether they were deposited online or you are new data) will almost always contain some reads or bases with very low quality. Additionally some reads might only cover short RNA fragments, which means that the sequencing adapters used to generated the library are also part of the read sequence. In addition to an introduction to removing these reads or bases, this lesson will cover how to generally asses the quality of RNAseq data in fastq format.
+  
+- Class: text
+  Output: Assesmnet of read quality is often checked using the fastQC program.
+
+- Class: text_question
+  # with BiocTerm this could be an expression / command question?
+  # is there a way do dynamically determine where the lesson files are & print the corresponding output?
+  # -> could also make this a question /command with BiocTerm maybe
+  Output: Assume that the fastq files distributed with the previous lesson have beeon copied to your current folder. Give a valid command to run fastQC on the SRR11412215 sample.
+  CorrectAnswer: fastqc -f fastq SRR11412215.chr20.fq.gz
+  AnswerTests: omnitest(correctVal='fastqc -f fastq SRR11412215.chr20.fq.gz')
+  Hint: fastqc -f fastq <filename>
+  
+- Class: text  
+  Output: This program will produce a single html report for each fastq file it is run on, it can also be run on multiple files at the same time. An example of such a report is included with the files for this lesson, if you can't run it yourself.
+  
+- Class: figure
+  Output: One of the most important details in the quality report is the average sequencing quality of the reads. The picture shown here is very exemplary and depicts a slightly lower quaility at the first few bases of the reads and generally high, but decreasing quality over the length of the average reads.
+  Figure: draw_1.R
+  FigureType: new
+
+- Class: figure
+  Output: Another quality measure for RNAseq reads is the distribution of bases over all reads - given the large number of reads generated it should result in mostly random distribution. One common expection is again that the first few sequencing cycles often produce somewhat abberant features.
+  Figure: draw_2.R
+  FigureType: new
+
+- Class: mult_question
+  Output: In what kind of case could a stronger bias for certain bases at the start of the reads be expected, without indicating low read quality?
+  AnswerChoices: Reads are barcoded;Readthrough of short reads;Overrepresented sequences
+  CorrectAnswer: Reads are barcoded
+  AnswerTests: omnitest(correctVal= 'Reads are barcoded')
+  Hint: Only one of these is not a reason for concern!
+  
+- Class: text
+  Output: Reads or UMIs (unique molecular identifiers) can sometimes lead to a strong bias in the first few bases of the reads, even though the barcode/UMI sequences should ideally be fully randomised.
+
+- Class: text
+  Output: One of the most common probelms that can make RNAseq samples virtually unusable for analysis is the overamplification of very few sequences (often from ribosomal RNA), which can then make up a ver large amount of the reads.
+  
+- Class: mult_question
+  Output: Check the fastqc report distributed with this lesson for overrepresented sequences (if this does not work the table from the report is also loaded into R as overrepresentedSequences). Is there a reason for concern regarding overamplification of certain sequences with this sample?
+  AnswerChoices: Yes, the presence of overrepresented Sequences is a concern;No, contribution of overrepresented Sequences is negligible;No, only overrepresneted ribosomal RNA is a reason for concern
+  CorrectAnswer: No, contribution of overrepresented Sequences is negligible
+  AnswerTests: omnitest(correctVal= 'No, contribution of overrepresented Sequences is negligible')
+  Hint: FastQC checks each sample for the most common sequences and checks them against a small database of known sequences.
+  
+- Class: text
+  Output: As with many automated tools, fastQC will almost always detect some sequences that are represnted more often than other in a given ssample, however minor contributions of sequences is usually normal. In doubt blast the sequences to see what the might be!
+  
+- Class: text
+  Output: If fastqc detects a high amount of low quality reads or reads with an high adapter content, it is necessary to remove these low quality reads or read-parts from the data.
+
+- Class: text_question
+  # with BiocTerm this could be an expression / command question?
+  # is there a way do dynamically determine where the lesson files are & print the corresponding output?
+  # -> could also make this a question /command with BiocTerm maybe
+  Output: The example data of this lesson is generally of high quality, but in many cases some samples have low quality reads that should be trimmed and of course all samples need to be processed the same way. A good program to perfrom read trimming is trim_galore. With which command could you perform trimming of the SRR11412215 sample?  
+  CorrectAnswer: trim_galore SRR11412215.chr20.fq.gz
+  AnswerTests: omnitest(correctVal='trim_galore SRR11412215.chr20.fq.gz')
+  Hint: trim_galore <filename>
+
+- Class: text
+  Output: trim_galore has a lot of options, however it will usually a quite good good even with default parameters. One important thing to remeber is to pass the --paired options if you have paired-end files. The other options often start becoming relevant when you need to handle specific problems or particularities of the samples.
+
+- Class: mult_question
+  Output: Check the options or trim_galore (trim_galore --help): which of the following measures can the program not utilize to remove reads?
+  AnswerChoices: Overlap with known contaminants;Minimal read length;Maximal read length;Read Quality
+  CorrectAnswer: Overlap with known contaminants
+  AnswerTests: omnitest(correctVal= 'Overlap with known contaminants')
+  Hint: trim_galore reads on the fastq file with all its contained information.
