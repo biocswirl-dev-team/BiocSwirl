@@ -5,6 +5,9 @@
 
 BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format. This project was the People's Choice Award for the Vancouver Bioinformatics Hackathon Hackseq2019. 
 
+### Install 
+
+Please follow these instructions to manually install our courses: https://github.com/swirldev/swirl_courses/wiki/Legacy-Manual-Install-Instructions-for-Swirl-Courses
 
 ### Background 
 
