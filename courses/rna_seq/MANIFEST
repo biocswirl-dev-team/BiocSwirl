@@ -3,9 +3,8 @@ fastq_download
 fastq_trimming
 Read_alignment_quantification
 Gene_Count_Pre-Processing
-k-Means
 PCA
 DESeq2
 Examine_DESEq2_results
 Pathway_Analysis
-Heatmap
+

@@ -3,7 +3,7 @@
   Lesson: PCA
   Author: Julia Philipp
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: none
   Version: 2.4.5
 
 
@@ -36,7 +36,7 @@
   Hint: Try typing rownames(sampleDistMatrix) <- dds$condition
   
 - Class: cmd_question
-  Output: Now it's finally time to plot our heatmap. Type ?pheatmap() to understand the arguments needed for this function.
+  Output: Now it's finally time to plot our heatmap. Type ?pheatmap() to understand the arguments needed for this function. Look at the help document that popped up on the right.
   CorrectAnswer: ?pheatmap()
   AnswerTests: omnitest(correctExpr='?pheatmap()')
   Hint: Type ?pheatmap()
@@ -48,7 +48,7 @@
   Hint: Try this command pheatmap(sampleDistMatrix, clustering_distance_rows = sampleDist, clustering_distance_cols = sampleDist, col = colors) 
   
 - Class: figure
-  Output: Look at this figure you just created!
+  Output: Look at this figure you just created! Take some time to understand what this figure shows you.
   Figure: pheatmap.R
   FigureType: new
   
@@ -56,7 +56,7 @@
   Output: Which sample is the most different from all the others?
   AnswerChoices: Series1_NHBE_SARS.Cov.2_2;Series1_NHBE_SARS.Cov.2_3;Series1_NHBE_Mock_3
   CorrectAnswer: Series1_NHBE_Mock_3
-  AnswerTests: omnitest(correctVal='Series1_NHBE_SARS.Cov.2_3')
+  AnswerTests: omnitest(correctVal='Series1_NHBE_Mock_3')
   Hint: The lighter the color, the more different the sample!
   
 
@@ -79,7 +79,7 @@
   Output: PCA shows our samples on a two-dimensional plot where they spread out in the two directions that explain most of the differences between the samples (x axis = most differences, y = second most differences). In a successful RNA-seq experiment these directions frequently represent the difference between experimental conditions and replicates. The percent difference explained by these directions is commonly shown in the axis labels.
   
 - Class: mult_question
-  Output: Difference between which groups of samples contributes the most to the variance in this dataset?
+  Output: The differences between which groups of samples contributes the most to the variance in this dataset?
   AnswerChoices: replicates;condition
   CorrectAnswer: condition
   AnswerTests: omnitest(correctVal='condition')

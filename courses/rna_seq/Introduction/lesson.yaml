@@ -7,4 +7,13 @@
   Version: 2.4.5
 
 - Class: text
-  Output: Welcome to the BiocSwirl RNA-seq course! This lesson is still empty
+  Output: Welcome to the BiocSwirl RNA-seq course! This lesson is still empty. 
+  
+- Class: text
+  Output: Eventually, this will introduce students to the concept of RNA-seq data analysis.
+  
+- Class: text
+  Output: This class follows the workflow described here - https://bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html
+  
+- Class: text
+  Output: For more information, check out the file Session-contents.md

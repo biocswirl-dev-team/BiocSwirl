@@ -62,6 +62,11 @@
   AnswerTests: omnitest(correctExpr='summary(res)')
   Hint: Try typing summary(res)
   
+- Class: text_question
+  Output: According to the summary, how many genes with a non-zero read count are included in this dataset?
+  CorrectAnswer: '15721'
+  AnswerTests: omnitest(correctVal = '15721')
+  
 #correction for multiple testing
 - Class: text
   Output: In high-throughout experiments, it is important not to use the raw pvalues but to adjust for multiple testing. Explain the need for multiple testing more

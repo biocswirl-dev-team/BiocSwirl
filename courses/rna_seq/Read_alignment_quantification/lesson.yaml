@@ -31,10 +31,10 @@
 
 - Class: text
   Output: While mapping reads to the genome and primarily save their positions allows for mayn different types analysis, in with RNAseq experiments one is usually interest in the number of reads that belong to each gene or transcript. To obtain these numbrs after mapping reads to the genome, it is also necessary to *count reads*. There are multiple programs available to do so that usually take bam files as input. A common one is htseq, which is based on python and also provides packages to write your own counting scripts in python.
-  #BiocTerm: pythoen / htseq excourse?
+  #BiocTerm: python / htseq excourse?
   
 - Class: cmd_question
-  Output: There also exists an R function to count bam files called featureCounts (from the Rusbread package). Use the featureCounts function to assign gene counts for the example bam file included with this course (the file name is stored in the variable bamfile) to an object 'counts'. Remeber that the sample from the exmaple dataset come from human cell lines.
+  Output: There also exists an R function to count bam files called featureCounts (from the Rsubread package). Use the featureCounts function to assign gene counts for the example bam file included with this course (the file name is stored in the variable bamfile) to an object 'counts'. Remember that the sample from the example dataset come from human cell lines. The current human genome assembly is "hg38". Use that as value for the "annot.inbuilt" parameter. 
   CorrectAnswer: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
   AnswerTests: omnitest(correctExpr="counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')")
   Hint: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
@@ -46,10 +46,10 @@
   Output: Many of the tools for transcriptome alignment have become popular in recent years (salmon, sailfish, kallisto among others). One common theme to them is that they deploy a 'quasi-alignment' strategy that skips the generation of clear positional mapping of reads to transcripts. Furthermore they do not just count reads, but actually come with various model to directly calculate read abundance by using normalisation and correction for library size and other features like GC content that can induce bias in reads.
 
 - Class: text
-  Output the tximport package and function allow you to directly import the output of many different quasi-alignment programs into R for further processing.
+  Output: the tximport package and function allow you to directly import the output of many different quasi-alignment programs into R for further processing.
 
 - Class: cmd_question
-  Output: Use the tximport function to read the counts generated for the SRR11412215 example into an object called txi, do include the txOut=T option, to avoid supplying additional transcript to gene mappings.
+  Output: Use the tximport function to read the counts generated for the SRR11412215 example into an object called txi, do include the txOut=T option, to avoid supplying additional transcript to gene mappings. The count files are assigned to "salmon.files".
   CorrectAnswer: txi <- tximport(salmon.files, type = 'salmon', txOut=T)
   AnswerTests: any_of_exprs("txi <- tximport(salmon.files, type = 'salmon', txOut=T)", "txi <- tximport(salmon.files, txOut=T, type = 'salmon')")
   Hint: txi <- tximport(salmon.files, type = 'salmon', txOut=T)

@@ -13,7 +13,7 @@
   Output: Because the actual raw data produced by RNA sequencing depends on the technology used and often contains multiple mixed samples, it is not very feasible to store and distribute these files directly. Instead the files that are most commonly used as raw data are FASTQ files.
 
 - Class: text_question
-  Output: Fastq files are very similar to fasta files, which are used to store multiple sequences in one file. Similarly fastq files store the raw sequences of the reads, but they do more than that. Do you know what additional information a fastq file contain stores?
+  Output: Fastq files are very similar to fasta files, which are used to store multiple sequences in one file. Similarly fastq files store the raw sequences of the reads, but they do more than that. What additional information does a fastq file contain?
   CorrectAnswer: Quality
   AnswerTests: val_matches('[Q|q]uality')
   Hint: What could the 'q' stand for? RNA sequencing is not perfect and can make errors!
@@ -47,7 +47,7 @@
   Output: While the SRA run selector allows you to filter and select specific samples you may be interest in, it does not actually allow you to download the fastq files directly. To get the fastq files you first need to download a list of the SRR accession IDs. These IDs can be used by programs the SRA toolkit (mainly prefetch and fastq-dump) to diretcly download the fastq-files from the NCBI servers. Further information on how to use the SRA toolkit to download data from NCBI can be found on its documentation 'https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc' For the remaining lessons dealing with fastq files, you should use the data supplied with this course, which are 6 samples from the GSE147507 dataset, but only contain reads belonging to a simple chromosome to reduce file size & analysis runtime.
 
 - Class: text
-  Output: Take a look at the fastq files - the command less is hightly recommended since it can look into the files even when they are compressed to reduce file size.
+  Output: Take a look at the fastq files - the command "less" is highly recommended since it can look into the files even when they are compressed to reduce file size.
 
 - Class: exact_question
   Output: A fastq file usually has many entries - one for each sequence. How many lines are there for each entry?

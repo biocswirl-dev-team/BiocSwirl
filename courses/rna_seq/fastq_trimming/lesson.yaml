@@ -7,10 +7,10 @@
   Version: 2.4.5
 
 - Class: text
-  Output: Fastq files you obtain from RNA-seq (whether they were deposited online or you are new data) will almost always contain some reads or bases with very low quality. Additionally some reads might only cover short RNA fragments, which means that the sequencing adapters used to generated the library are also part of the read sequence. In addition to an introduction to removing these reads or bases, this lesson will cover how to generally asses the quality of RNAseq data in fastq format.
+  Output: The fastq files you obtain from RNA-seq (whether they were deposited online or you are receiving your own new data) will almost always contain some reads or bases with very low quality. Additionally some reads might only cover short RNA fragments, which means that the sequencing adapters used to generated the library are also part of the read sequence. In addition to an introduction to removing these reads or bases, this lesson will cover how to generally asses the quality of RNAseq data in fastq format.
   
 - Class: text
-  Output: Assesmnet of read quality is often checked using the fastQC program.
+  Output: Assessment of read quality is often performed using the fastQC program. Find out more about this program here - https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 - Class: text_question
   # with BiocTerm this could be an expression / command question?
