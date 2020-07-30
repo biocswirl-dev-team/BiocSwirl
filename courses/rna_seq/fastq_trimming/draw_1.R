@@ -1,6 +1,5 @@
 library(png)
 
-p1 <- readPNG(file.path(.get_course_path(), 'rna_seq', 'fastq_trimming', 'per-base-quality.png'))
 
 plot.new()
 lim <- par()

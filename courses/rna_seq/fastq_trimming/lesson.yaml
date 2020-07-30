@@ -1,7 +1,7 @@
 - Class: meta
   Course: RNA-seq analysis
   Lesson: fastq_trimming
-  Author: Nicolai von Kügelgen
+  Author: Nicolai von Kügelgen, Julia Philipp
   Type: Standard
   Organization: MDC / BIMSB
   Version: 2.4.5
@@ -49,8 +49,8 @@
   
 - Class: mult_question
   Output: Check the fastqc report distributed with this lesson for overrepresented sequences (if this does not work the table from the report is also loaded into R as overrepresentedSequences). Is there a reason for concern regarding overamplification of certain sequences with this sample?
-  AnswerChoices: Yes, the presence of overrepresented Sequences is a concern;No, contribution of overrepresented Sequences is negligible;No, only overrepresneted ribosomal RNA is a reason for concern
-  CorrectAnswer: No, contribution of overrepresented Sequences is negligible
+  AnswerChoices: Yes, the presence of overrepresented sequences is a concern;No, contribution of overrepresented Sequences is negligible;No, only overrepresneted ribosomal RNA is a reason for concern
+  CorrectAnswer: No, contribution of overrepresented sequences is negligible
   AnswerTests: omnitest(correctVal= 'No, contribution of overrepresented Sequences is negligible')
   Hint: FastQC checks each sample for the most common sequences and checks them against a small database of known sequences.
   
@@ -73,7 +73,7 @@
   Output: trim_galore has a lot of options, however it will usually a quite good good even with default parameters. One important thing to remeber is to pass the --paired options if you have paired-end files. The other options often start becoming relevant when you need to handle specific problems or particularities of the samples.
 
 - Class: mult_question
-  Output: Check the options or trim_galore (trim_galore --help): which of the following measures can the program not utilize to remove reads?
+  Output: Check the options or trim_galore (trim_galore --help). Which of the following measures can the program not utilize to remove reads?
   AnswerChoices: Overlap with known contaminants;Minimal read length;Maximal read length;Read Quality
   CorrectAnswer: Overlap with known contaminants
   AnswerTests: omnitest(correctVal= 'Overlap with known contaminants')
