@@ -25,30 +25,57 @@
   Output: This program will produce a single html report for each fastq file it is run on, it can also be run on multiple files at the same time. An example of such a report is included with the files for this lesson, if you can't run it yourself.
   
 - Class: figure
-  Output: One of the most important details in the quality report is the average sequencing quality of the reads. The picture shown here is very exemplary and depicts a slightly lower quaility at the first few bases of the reads and generally high, but decreasing quality over the length of the average reads.
+  Output: One of the most important details in the quality report is the average sequencing quality of the reads. The picture shown here is very exemplary and depicts a slightly lower quality at the first few bases of the reads and generally high, but decreasing quality over the length of the average reads.
   Figure: draw_1.R
   FigureType: new
+  
+- Class: mult_question
+  Output: Take some time to look at the sequencing quality report. Which positions within the reads appear to have the highest average quality?
+  AnswerChoices: positions 1-5;positions 6-19;positions 20-69, positions 75-124;positions 125-150
+  CorrectAnswer: positions 6-19
+  AnswerTests: omnitest(correctVal= "positions 6-19")
+  Hint: The quality score of the reads is shown on the y-axis. The position in bp within the reads is shown on the x-axis.
 
 - Class: figure
-  Output: Another quality measure for RNAseq reads is the distribution of bases over all reads - given the large number of reads generated it should result in mostly random distribution. One common expection is again that the first few sequencing cycles often produce somewhat abberant features.
+  Output: Another quality measure for RNAseq reads is the distribution of bases over all reads - given the large number of reads generated it should result in mostly random distribution. One common exception is again that the first few sequencing cycles often produce somewhat abberant features.
   Figure: draw_2.R
   FigureType: new
 
 - Class: mult_question
-  Output: In what kind of case could a stronger bias for certain bases at the start of the reads be expected, without indicating low read quality?
+  Output: In which case could a stronger bias for certain bases at the start of the reads be expected, without indicating low read quality?
   AnswerChoices: Reads are barcoded;Readthrough of short reads;Overrepresented sequences
   CorrectAnswer: Reads are barcoded
   AnswerTests: omnitest(correctVal= 'Reads are barcoded')
   Hint: Only one of these is not a reason for concern!
   
+- Class: figure
+  Output: Let's look at the sequence length distribution. Here we can examine if the generated sequence fragments are of uniform or varying lengths. Varing lengths can be cause for concern regarding the sequencing quality, depending on the sequencing platform used.
+  Figure: draw_3.R
+  FigureType: new
+  
+- Class: mult_question
+  Output: What is the approximate length of the marjority of sequencing reads?
+  AnswerChoices: 30-34bp, 140-144bp, 150-152bp
+  CorrectAnswer: 150-152bp
+  AnswerTests: omnitest(correctVal = '150-152bp')
+  Hint: Where is the peak?
+  
 - Class: text
   Output: Reads or UMIs (unique molecular identifiers) can sometimes lead to a strong bias in the first few bases of the reads, even though the barcode/UMI sequences should ideally be fully randomised.
 
 - Class: text
-  Output: One of the most common probelms that can make RNAseq samples virtually unusable for analysis is the overamplification of very few sequences (often from ribosomal RNA), which can then make up a ver large amount of the reads.
+  Output: One of the most common problems that can make RNAseq samples virtually unusable for analysis is the overamplification of very few sequences (often from ribosomal RNA), which can then make up a ver large amount of the reads.
   
+- Class: cmd_question
+  Output: Let's check the full fastqc report distributed with this lesson for overrepresented sequences. To open the html file in your browser, type browseURL(report_html). Take your time exploring the report, then navigate to the section titled "overrepresented sequences".
+  CorrectAnswer: browseURL(report_html)
+  AnswerTests: omnitest(correctVal = 'browseURL(report_html)')
+  Hint: Type browseURL(report_html)
+
+# if browser thing doesn't work the data is also loaded as overrepresentedSequences
+
 - Class: mult_question
-  Output: Check the fastqc report distributed with this lesson for overrepresented sequences (if this does not work the table from the report is also loaded into R as overrepresentedSequences). Is there a reason for concern regarding overamplification of certain sequences with this sample?
+  Output: Is there a reason for concern regarding overamplification of certain sequences with this sample?
   AnswerChoices: Yes, the presence of overrepresented sequences is a concern;No, contribution of overrepresented Sequences is negligible;No, only overrepresneted ribosomal RNA is a reason for concern
   CorrectAnswer: No, contribution of overrepresented sequences is negligible
   AnswerTests: omnitest(correctVal= 'No, contribution of overrepresented Sequences is negligible')
