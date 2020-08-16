@@ -46,7 +46,7 @@
   Output: Many of the tools for transcriptome alignment have become popular in recent years (salmon, sailfish, kallisto among others). One common theme to them is that they deploy a 'quasi-alignment' strategy that skips the generation of clear positional mapping of reads to transcripts. Furthermore they do not just count reads, but actually come with various model to directly calculate read abundance by using normalisation and correction for library size and other features like GC content that can induce bias in reads.
 
 - Class: text
-  Output the tximport package and function allow you to directly import the output of many different quasi-alignment programs into R for further processing.
+  Output: the tximport package and function allow you to directly import the output of many different quasi-alignment programs into R for further processing.
 
 - Class: cmd_question
   Output: Use the tximport function to read the counts generated for the SRR11412215 example into an object called txi, do include the txOut=T option, to avoid supplying additional transcript to gene mappings.
