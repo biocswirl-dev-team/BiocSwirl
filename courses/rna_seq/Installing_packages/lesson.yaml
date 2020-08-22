@@ -1,0 +1,54 @@
+- Class: meta
+  Course: rna_seq
+  Lesson: Installing packages
+  Author: Julia Philipp
+  Type: Standard
+  Organization: None
+  Version: 2.4.5
+
+- Class: text
+  Output: Before we begin with your class of choice, let's take a quick look at how to download and install R and Bioconductor packages.
+  
+- Class: text
+  Output: Packages are units of shareable R code and contain predefined functions. Loading and installing these packages allows us to use these (often elaborate) functions and not having to write our own for the same purpose.
+  
+- Class: text
+  Output: Bioconductor is a open source and open development software project for the analysis of genomic/high throughput datasets. The project is based mostly on R packages, e.g. the DESeq2 package that contains functions to help with a differential expression analysis.
+  
+- Class: cmd_question
+  Output: Packages from The Comprehensive R Archive Network (CRAN) can be downloaded using the function install.packages(). Within the parenthesis of the function, as a parameter, type the name of the package you would like to install in quotation marks. Let's try to install the package "pheatmaps". Watch for potential prompts that might come up during the installation process.
+  CorrectAnswer: install.packages("pheatmap")
+  AnswerTests: omnitest(correctExpr='install.packages("pheatmap")')
+  Hint: Try typing install.packages("pheatmap")
+  
+- Class: cmd_question
+  Output: The Bioconductor project uses a different installer/manager for their packages. So, in case it is not installed yet, we will do that. Use what you just learned to install the R package "BiocManager"
+  CorrectAnswer: install.packages("BiocManager")
+  AnswerTests: omnitest(correctExpr='install.packages("BiocManager")')
+  Hint: Try typing install.packages("BiocManager")
+  
+  # this one is a little iffy on my computer
+- Class: cmd_question
+  Output: With the BiocManager package installed, we can now install Bioconductor packages. Type BiocManager::install("DESeq2") to install the Bioconductor package DESeq2.
+  CorrectAnswer: BiocManager::install("DESeq2")
+  AnswerTests: omnitest(correctExpr='BiocManager::install("DESeq2")')
+  Hint: You might want to read the question again.
+  
+- Class: cmd_question
+  Output: Before we can use the packages we just installed, we have to load them into our working environment. To load a package, use the function library() or require() with the package name as a parameter, no quotation marks needed. Try loading the package pheatmap.
+  CorrectAnswer: library(pheatmap)
+  AnswerTests: any_of_exprs('library(pheatmap)', 'require(pheatmap)')
+  Hint: Try typing library(pheatmap).
+  
+- Class: cmd_question
+  Output: Now load the DESeq2 package.
+  CorrectAnswer: library(DESeq2)
+  AnswerTests: any_of_exprs('library(DESeq2)', 'require(DESeq2)')
+  Hint: Try typing library(DESEq2).
+  
+- Class: cmd_question
+  Output: A helpful feature of the Bioconductor packages, is the extensive documentation that the authors usually make available. To see the documentation available for a package, use the command browseVignettes(). Open the documentation for the DESeq2 package.
+  CorrectAnswer: browseVignettes("DESeq2")
+  AnswerTests: omnitest(correctExpr='browseVignettes("DESeq2")')
+  Hint: Try typing browseVignettes("DESeq2")
+  
