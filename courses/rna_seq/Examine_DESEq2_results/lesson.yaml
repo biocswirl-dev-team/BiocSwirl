@@ -49,12 +49,139 @@
   
 # MA plot
 ## what is a MA plot
+- Class: text
+  Output: A so-called MA plot is a two-dimensional scatterplot used to visualize gene-expression changes between two different conditions as a function of the number of normalized reads mapped to those genes.
+  
+- Class: text
+  Output: The MA plot typically displays the change in gene expression as log2 fold change on the y-axis and the log of mean normalized expression counts of both samples on the x-axis.  
 
 ## make one
+# better explanation for shrinkage? I don't have one
+- Class: cmd_question
+  Output: The authors of the DESeq2 package recommend shrinking the log2 fold changes before plotting. You can do that using the function lfcShrink(). Use it on the res_dds object, with coef="condition_treatment_vs_mock" and type="apeglm" as parameters and assign it to "res_shrink".
+  CorrectAnswer: res_shrink <- lfcShrink(res_dds, coef="condition_treatment_vs_mock", type="apeglm")
+  AnswerTests: omnitest(correctExpr='res_shrink <- lfcShrink(res_dds, coef="condition_treatment_vs_mock", type="apeglm")')
+  Hint: Try typing res_dds <- lfcShrink(res_dds, coef="condition_treatment_vs_mock", type="apeglm")
 
+- Class: cmd_question
+  Output: After shrinking the log2 fold changes, we can plot the MA plot with the command plotMA(). Use it on the res_shrink object you just created. Also, use the paramter ylim=c(-5,5) to determine the limits of the y-axis that are to be plotted.
+  CorrectAnswer: plotMA(res_shrink, ylim=c(-5,5))
+  AnswerTests: omnitest(correctExpr="plotMA(res_shrink, ylim=c(-5,5))")
+  Hint: Try typing plotMA(res_shrink, ylim=c(-5,5))
+  
+- Class: figure
+  Output: Take a second to look at your MA plot!
+  Figure: plotMA.R
+  FigureType: new
+  
+# interpretation for MA plot
+- Class: mult_question
+  Output: What is this plot telling you?
+  AnswerChoices: Most genes are more highly expressed in treatment compared to mock;Most genes are more highly expressed in mock compared to treatment
+  CorrectAnswer: Most genes are more highly expressed in treatment compared to mock
+  AnswerTests: omnitest(correctVal='Most genes are more highly expressed in treatment compared to mock')
+  Hint: A positive log fold change indicates a higher expression in the treatment group compared to the mock group
 
-# volcano plot
+# attention to genes with very low normalized count, might be noise?
 
+# why volcano plot
+- Class: text
+  Output: A volcano plot is most commonly used in publications to visualize the results of differential gene-expression results. Volcano plots typically display the log2 fold change of gene expression on the x-axis and the -log2 transformed p-value or adjusted p-value on the y-axis. This usually leads to a pattern of data points looking like a volcano.
+
+# make a volcano plot
+- Class: cmd_question
+  Output: Let's make a volcano plot, which is really just a scatterplot. Use the function plot() and the data in "res". This object contains both the log2 fold change and the adjusted pvalues.
+  CorrectAnswer: plot(x=res$log2FoldChange, y=-log2(res$padj))
+  AnswerTests: omnitest(correctExpr='plot(x=res$log2FoldChange, y=-log2(res$padj))')
+  Hint: Try typing plot(x=res$log2FoldChange, y=-log2(res$padj))
+  
+- Class: figure
+  Output: Take a look at your first volcano plot!
+  Figure: volcano1.R
+  FigureType: new
+  
+# make it more publication quality
+- Class: text
+  Output: Let's work on making this plot an actual, publication quality figure!
+  
+- Class: cmd_question
+  Output: Let's start with labeling the x and y axes properly. Use the same command for the plot and add the parameters xlab= and ylab=. Label the x-axis with "log2FoldChange" and the y-axis with "-log2(adjusted p-value)". Also, try changing the appearance of the data point with the parameter pch=16
+  CorrectAnswer: plot(x=res$log2FoldChange, y=-log2(res$padj), xlab="log2FoldChange", ylab="-log2(adjusted p-value)", pch=16)
+  AnswerTests: omnitest(correctExpr='plot(x=res$log2FoldChange, y=-log2(res$padj), xlab="log2FoldChange", ylab="-log2(adjusted p-value)", pch=16)')
+  Hint: Try typing plot(x=res$log2FoldChange, y=-log2(res$padj), xlab="log2FoldChange", ylab="-log2(adjusted p-value)", pch=16)
+  
+- Class: figure
+  Output: Much better!
+  Figure: volcano2.R
+  FigureType: new
+  
+- Class: cmd_question
+  Output: Now, we will add horizontal and vertical lines to the plot to represent the pvalue and log2FoldChange cutoff to what we consider significant results. In base R (what we're working with right now), the lines are added after the main graph was plotted, with the command abline. The parameters h= and v= determine the y-value and x-value for horizontal lines and vertical lines respectively. Try drawing a horizontal line with abline(h= 0.1)
+  CorrectAnswer: abline(h=0.1)
+  AnswerTests: omnitest(correctExpr='abline(h=0.1)')
+  Hint: You might want to read the question again.
+  
+- Class: figure
+  Output: Getting there!
+  Figure: volcano3.R
+  FigureType: new
+  
+- Class: cmd_question
+  Output: Now, add two vertical lines, that intersect the x-axis and -1 and 1. You can do this with one command
+  CorrectAnswer: abline(v=c(-1,1))
+  AnswerTests: omnitest(correctExpr='abline(v=c(-1,1))')
+  Hint: Try typing abline(v=c(-1,1))
+  
+- Class: figure
+  Output: Looking good!
+  Figure: volcano4.R
+  FigureType: new
+  
+# maybe highlight a specific gene
+- Class: cmd_question
+  Output: We can highlight a gene of interest, e.g. IL6, with the command points(). The object IL6_data contains the data from res you'll need. It has the same column names as res. Try using the function points() on it, and use the parameter col="red" and pch = 16. 
+  CorrectAnswer: points(IL6_data$log2FoldChange, -log2(IL6_data$padj), col = "red", pch = 16)
+  AnswerTests: omnitest(correctExpr='points(IL6_data$log2FoldChange, -log2(IL6_data$padj), col = "red", pch = 16)')
+  Hint: This one was a little more complicated! Try typing points(IL6_data$log2FoldChange, -log2(IL6_data$padj), col = "red", pch = 16)
+  
+
+- Class: figure
+  Output: Look at you go!
+  Figure: volcano5.R
+  FigureType: new
+ 
+- Class: cmd_question
+  Output: Now add a legend by typing legend("topleft",c("IL6"), fill = c("red"))
+  CorrectAnswer: legend("topleft",c("IL6"), fill = c("red"))
+  AnswerTests: omnitest(correctExpr='legend("topleft",c("IL6"), fill = c("red"))')
+  Hint: Type legend("topleft",c("IL6"), fill = c("red"))
+  
+- Class: figure
+  Output: Look at you go!
+  Figure: volcano6.R
+  FigureType: new
+  
+- Class: text
+  Output: The R package ggplot2 comes with even more options to customize plots and is therefore recommended for generating truly publication-quality figures
+# do we need a ggplot course?
 
 # heatmap
+- Class: text
+  Output: The final plot we are going to generate in this lesson, is a heatmap. The rows in a heatmap showing genomic data typically correspond to genes and the columns correspond to samples or treatments. The resulting cells are filled with a color based on the data, in our case gene expression
+  
+- Class: text
+  Output: Visualizing gene expression data with heatmaps allows for comparison across samples or different treatments for many genes at the same time.
+  
+- Class: cmd_question
+  Output: Using the function pheatmap() on the object topGenes will generate a pretty heatmap without you having to specify any parameters. topGenes contains the top 30 most variable genes from the rlog transformed dds (we looked at this in the previous lesson). Try it out!
+  CorrectAnswer: pheatmap(topGenes)
+  AnswerTests: omnitest(correctExpr='pheatmap(topGenes)')
+  Hint: Try typing pheatmap(topGenes)
+  
+- Class: figure
+  Output: Take some time to understand all the components of this plot you just generated!
+  Figure: pheatmap1.R
+  FigureType: new
+
+# multiple choice question about it
 

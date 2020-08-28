@@ -10,5 +10,8 @@
 }
 
 load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","res_sig.RData"))
+load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","res_dds.RData"))
 load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","res.RData"))
+load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","IL6_data.RData"))
+load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","topGenes.RData"))
 load(file.path(.get_course_path(), "rna_seq", "PCA","dds.RData"))

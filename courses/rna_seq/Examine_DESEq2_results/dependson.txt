@@ -1,3 +1,4 @@
 DESeq2
 ggplot2
 pheatmap
+apeglm

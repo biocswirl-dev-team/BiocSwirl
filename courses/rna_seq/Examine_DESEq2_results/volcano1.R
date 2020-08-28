@@ -1,0 +1,1 @@
+plot(x=res$log2FoldChange, y=-log2(res$padj))
