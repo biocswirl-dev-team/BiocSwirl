@@ -7,4 +7,27 @@
   Version: 2.4.5
 
 - Class: text
-  Output: Welcome to the BiocSwirl RNA-seq course! This lesson is still empty
+  Output: Another useful analysis of differentially expressed genes can be gene set enrichment analysis (GSEA) that determines if a significant portion of genes from one set (e.g. differentially expressed genes) belong to a specific group of genes e.g transcription factors etc.
+  
+- Class: text
+  Output: Before starting this analysis, we will have to extract the top 30 most variable genes from our results again. 
+  
+- Class: cmd_question
+  Output: We can extract the rownames (which are the gene names) of the data that went into the heatmap to analyse for gene set enrichment. Use the command rownames() on topGenes to get the gene names. Use the function cat() with the parameter sep = "\n" around the rownames command to print out the gene names in a format that's better suited for copy and paste. Copy the resulting list.
+  CorrectAnswer: cat(rownames(topGenes), sep = "\n")
+  AnswerTests: omnitest(correctExpr = 'cat(rownames(topGenes), sep = "\n")')
+  Hint: Try typing cat(rownames(topGenes), sep = "\n")
+  
+- Class: video
+  Output: Copy the list of genes names you just generated and use the online, interactive tool "Enrichr" to perform gene set enrichment analysis.
+  VideoLink: https://amp.pharm.mssm.edu/Enrichr/
+  
+- Class: text
+  Output: On the enrichr website, enter your list of gene names into the submission box and hit submit. The results might take a few seconds to load. Take your time to navigate through the different tabs of results. Different tabs indicate different groups of predefined gene sets that are being tested for enrichment.
+  
+- Class: mult_question
+  Output: Navigate to the Ontologies tab and look at the results for the "GO Biological Process 2018" gene set. Which term is most enriched in our top genes?
+  AnswerChoices: cytokine-mediated signaling pathway;cytokine activity;arthritis;inflammatory bowel disease
+  CorrectAnswer: cytokine-mediated signaling pathway
+  AnswerTests: omnitest(correctVal='cytokine-mediated signaling pathway')
+  Hint: It's something cytokine related.

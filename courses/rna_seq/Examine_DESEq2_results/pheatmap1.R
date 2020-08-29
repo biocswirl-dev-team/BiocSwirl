@@ -1,1 +1,1 @@
-pheatmap(topGenes)
+pheatmap(topGenes, annotation_col = anno_data)

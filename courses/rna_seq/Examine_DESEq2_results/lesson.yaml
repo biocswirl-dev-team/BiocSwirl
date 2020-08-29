@@ -173,10 +173,10 @@
   Output: Visualizing gene expression data with heatmaps allows for comparison across samples or different treatments for many genes at the same time.
   
 - Class: cmd_question
-  Output: Using the function pheatmap() on the object topGenes will generate a pretty heatmap without you having to specify any parameters. topGenes contains the top 30 most variable genes from the rlog transformed dds (we looked at this in the previous lesson). Try it out!
-  CorrectAnswer: pheatmap(topGenes)
-  AnswerTests: omnitest(correctExpr='pheatmap(topGenes)')
-  Hint: Try typing pheatmap(topGenes)
+  Output: Using the function pheatmap() on the object topGenes will generate a pretty heatmap without you having to specify any parameters. topGenes contains the top 30 most variable genes from the rlog transformed dds (we looked at this in the previous lesson). The object anno_data contains the label information for the heatmap. Add it to the pheatmap function as the parameter annotation_col. Try it out!
+  CorrectAnswer: pheatmap(topGenes, annotation_col = anno_data)
+  AnswerTests: omnitest(correctExpr='pheatmap(topGenes, annotation_col = anno_data)')
+  Hint: Try typing pheatmap(topGenes, annotation_col = anno_data)
   
 - Class: figure
   Output: Take some time to understand all the components of this plot you just generated!
@@ -184,4 +184,12 @@
   FigureType: new
 
 # multiple choice question about it
+- Class: mult_question
+  Output: Find our gene of interest IL6 in the heatmap. Which of the following applies?
+  AnswerChoices: IL6 is more highly expressed in the treatment condition; IL6 is more highly expressed in the mock condition
+  CorrectAnswer:  IL6 is more highly expressed in the treatment condition
+  AnswerTests: omnitest(correctVal='IL6 is more highly expressed in the treatment condition')
+  
+  
+  
 
