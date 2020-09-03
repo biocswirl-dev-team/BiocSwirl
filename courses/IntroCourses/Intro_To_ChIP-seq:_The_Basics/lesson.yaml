@@ -1,0 +1,45 @@
+- Class: meta
+  Course: IntroCourses
+  Lesson: Intro To ChIP-seq: The Basics
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+
+- Class: text
+  Output: Chromatin immunoprecipitation followed by sequencing, or ChIP-seq for short, is a sequencing methodology used to identify protein binding to DNA, and also to histone modifications across the genome. This is done by pulling down all of the sites that contain these proteins or modifications across the genome of your cell population of interest, and then sequencing the sites that are pulled down. While there are many uses for this methodology, its strength lies in its ability to identify regular functions of your protein or modification of interest, in the context of gene expression in your cells of interest. The differences between histon marks (part II) and protein based (part III) analyses will be covered in later lessons. Here we will just cover the basics of ChIP-seq!
+  
+- Class: text
+  Output: The sample preparation for a ChIP-seq experiment can be somewhat complex. 
+  
+- Class: text
+  Output: First, the DNA is cross-linked to formaldehyde. This step ensures that you get enough DNA to actually perform the experiment.
+  
+- Class: text
+  Output: Next, the DNA is fragmented to a size small enough for later steps to be successful.
+  
+- Class: text 
+  Output:  Next is the immunoprecipitation step. In this step, an antibody is used to select for, or "pull down," only the regions of the genome that contain the feature you are interested in studying. 
+  
+- Class: text 
+  Output: Next, the DNA is extracted and purified, and finally it is amplified by PCR. This is all somewhat complicated, but very effective at allowing you to study the factors that regulate gene expression!
+  
+  
+- Class: mult_question
+  Output: What allows you to determine what is being "pulled down" in a ChIP-seq experiment?
+  AnswerChoices: Fragmentation; Purification; Cross-linking; Antibody choice
+  CorrectAnswer: Antibody choice
+  AnswerTests: omnitest(correctVal=' Antibody choice')
+  Hint: Antibodies are used in many experimental techniques to detect factors of interest
+  
+- Class: mult_question
+  Output: What is the correct order of steps to prepare a ChIP-seq experiment?
+  AnswerChoices: Crosslink>Fragment>Immunoprecipitate>Extract>Purify; Purify>Extract>Fragment>Crosslink>Immunoprecipitate; Dodge>Duck>Dip>Dive>Dodge
+  CorrectAnswer: Crosslink>Fragment>Immunoprecipitate>Extract>Purify
+  AnswerTests: omnitest(correctVal='Crosslink>Fragment>Immunoprecipitate>Extract>Purify')
+  Hint: The long process of a ChIP preparation involves collecting DNA, breaking it down, pulling down what you're interested in, extracting that DNA you've pulled down, and making sure it is pure enough to sequence
+  
+- Class: text 
+  Output: Now that you understand how samples are prepped, we can discuss the different use cases of a ChIP-seq experiment, or you can skip ahead to how to analyze the already collected data!
+  
