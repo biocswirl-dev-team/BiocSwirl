@@ -1,0 +1,57 @@
+- Class: meta
+  Course: IntroCourses
+  Lesson: Intro To RNA-seq
+  Author: Matthew Moss
+  Type: Standard
+  Organization: Donald And Barbara Zucker School of Medicine at Hofstra/Northwell
+  Version: 2.4.5
+
+
+- Class: text
+  Output: Bulk RNA-seq is a method to quantify the global gene expression in a cell population of interest. It does this by sequencing the RNA present in the cell, also known as the transcriptome, and then quantifying it bioinformatically. This is then most often used for differential expression analysis, which is the comparison between the expression of all genes in two or more samples of interest. There are then other downstream analyses made possible by the global transcriptome analysis performed.
+  
+- Class: text 
+  Output: Note: Everything in this introductory lesson only applies to bulk RNA-seq. Single cell RNA-seq will be covered in a different lesson!
+  
+  
+- Class: mult_question
+  Output: If differential expression analysis is the comparisson of all genes' expression between two samples, than what is a differentially expressed gene (DEG)?
+  AnswerChoices: A gene that exists in your analysis of gene expression; A gene that does not change between your conditions of interest; A gene that is different between your conditions of interest
+  CorrectAnswer: A gene that is different between your conditions of interest
+  AnswerTests: omnitest(correctVal='A gene that is different between your conditions of interest')
+  Hint: If a gene is differentially expressed, this means its expression is different between conditions
+  
+  
+- Class: text
+  Output: The process for getting this data is relatively simple. First, RNA is extracted from the cell. It is then converted to its complementary DNA (cDNA), in order to increase the stability of the molecule. It is then amplified by PCR, and finally sent to sequencing. 
+  
+- Class: mult_question
+  Output: True or false: DNA is a more stable biomolecule than RNA?
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal='True')
+  Hint: Because it is single stranded, RNA degrades much more easily than DNA
+  
+- Class: text
+  Output: There are several choices one needs to consider during the design of an RNA-seq experiment. As the goal of RNA-seq experiments is often comparison of gene expression between samples, it is important to determine what biological questions you're asking before doing the actual sequencing. This is especially important in the context of heterogeneous cell populations (i.e. tumors, the brain, the immune system, etc.), as the heterogeneity will make it difficult to determine what is driving the changes in gene expression between conditions. It is for this reason that it is best to identify as homogeneous a population as possible for the study you are performing. 
+  
+- Class: mult_question
+  Output: Which tissue type would be most ideal for an RNA-seq analysis?
+  AnswerChoices: A whole mouse fetal brain; All of the myeloid cells contained in the breast; A collection of cardiac wall muscle cells; A sample of all bacteria contained in the gut
+  CorrectAnswer: A collection of cardiac wall muscle cells
+  AnswerTests: omnitest(correctVal='A collection of cardiac wall muscle cells')
+  Hint: The best samples for RNA-seq contain homogeneous cell types
+  
+  
+- Class: text
+  Output: It is also important to chose a proper number of biological replicates. The NIH defines biological replicates as "parallel measurements of biologically distinct samples that capture random biological variation, which may itself be a subject of study or a source of noise." What this means in plain english is that you need to do your sequencing of multiple samples of the same condition in order to determine which gene expression changes are due to random noise between samples vs. which are due to actual biological differences. Most guides recommend at least four biological replicates per condition, though this is often ignored. Because of the way RNA-seq data is analyzed computationally, this can lead to important differentially expressed genes being missed during your analysis.  
+  
+- Class: text
+  Output: A final thing to consider is what method of RNA isolation you will be looking at. Traditionally, RNA-seq data has been collected using polyadenylated transcripts. What this means is that any transcript collected would be from a protein coding gene. This leaves out microRNA (miRNA) and long noncoding RNA (lncRNA) which could have regulatory importance, but it also solves the problem of ribosomal RNA (rRNA), which can make up 95% of the RNA in a cell and is generally not relevent to your analysis. Recent developments have allowed for the depletion of rRNA while preserving the other types of RNA in the cell, though this is would not be the case if analyzing older RNA-seq datasets.
+  
+- Class: mult_question
+  Output: Of these choices, which will produce the most accurate and reproducible RNA-seq data set?
+  AnswerChoices: A poly-adenylated RNA-seq library of all immune cells in the spleen, 1 biological replicate; A whole RNA transcriptome of every cell in a tumor, 4 biological replicates; An rRNA depleted RNA-seq library of cotrical neuron cells, 6 biological replicates
+  CorrectAnswer: An rRNA depleted RNA-seq library of cotrical neuron cells, 6 biological replicates
+  AnswerTests: omnitest(correctVal='An rRNA depleted RNA-seq library of cotrical neuron cells, 6 biological replicates')
+  Hint: The best RNA-seq experiments are of homogeneous cell types with as many biological replicates as possible to capture random variability
