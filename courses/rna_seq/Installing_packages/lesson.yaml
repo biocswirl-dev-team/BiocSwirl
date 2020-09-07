@@ -55,6 +55,8 @@
 - Class: cmd_question
   Output: It's important to cite the authors of these packages, if these are used in analyses that are published. You can use the function citation() to access information about the authors and publications associated with the package, including a LaTex friendly citation. Try it out on the DESeq2 package.
   CorrectAnswer: citation("DESeq2")
+  AnswerTests: expr_uses_func('citation')
+  Hint: Try typing citation("DESeq2")
   
   
   

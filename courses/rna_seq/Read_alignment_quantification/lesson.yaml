@@ -3,7 +3,7 @@
   Lesson: Read_alignment_quantification
   Author: Nicolai von Kügelgen, Julia Philipp
   Type: Standard
-  Organization: MDC / BIMSB
+  Organization: 
   Version: 2.4.5
 
 - Class: text
@@ -38,6 +38,10 @@
   CorrectAnswer: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
   AnswerTests: omnitest(correctExpr="counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')")
   Hint: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
+  
+
+#- Class: cmd_question
+#  Output: There also exists an R function to count bam files called summarizeOVerlaps (from the GenomicAlignment package). The command we'll need is There also exists an R function to count bam files called  
   
 - Class: text
   Output: In contrast to alignment of reads to the full genome, the strategy of mapping reads to the transcriptome allows faster processing and usually directly generates gene or transcript counts in a single step.

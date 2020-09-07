@@ -1,2 +1,1 @@
-Rsubread
-tximport
+BiocManager

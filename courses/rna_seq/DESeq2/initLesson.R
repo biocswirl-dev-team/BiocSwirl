@@ -11,3 +11,8 @@
 
 load(file.path(.get_course_path(), "rna_seq", "PCA","rlog_dds.RData"))
 load(file.path(.get_course_path(), "rna_seq", "PCA","dds.RData"))
+
+if (!requireNamespace("DESeq2", quietly = TRUE))
+  BiocManager::install("DESeq2")
+
+library("DESeq2")

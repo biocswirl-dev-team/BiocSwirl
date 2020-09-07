@@ -66,6 +66,7 @@
   Output: According to the summary, how many genes with a non-zero read count are included in this dataset?
   CorrectAnswer: '15721'
   AnswerTests: omnitest(correctVal = '15721')
+  Hint: Check the very top of the output from summary(res).
   
 #correction for multiple testing
 - Class: text

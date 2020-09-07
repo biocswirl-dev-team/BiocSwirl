@@ -16,3 +16,9 @@ load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","IL6_data
 load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","topGenes.RData"))
 load(file.path(.get_course_path(), "rna_seq", "Examine_DESeq2_results","anno_data.RData"))
 load(file.path(.get_course_path(), "rna_seq", "PCA","dds.RData"))
+
+if (!requireNamespace("DESeq2", quietly = TRUE))
+  BiocManager::install("DESeq2")
+
+if (!requireNamespace("apeglm", quietly = TRUE))
+  BiocManager::install("apeglm")

@@ -189,6 +189,7 @@
   AnswerChoices: IL6 is more highly expressed in the treatment condition; IL6 is more highly expressed in the mock condition
   CorrectAnswer:  IL6 is more highly expressed in the treatment condition
   AnswerTests: omnitest(correctVal='IL6 is more highly expressed in the treatment condition')
+  Hint: Take a look at the heatmap. Red indicates higher expression than blue.
   
   
   
