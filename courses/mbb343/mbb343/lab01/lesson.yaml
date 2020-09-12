@@ -1,0 +1,104 @@
+- Class: meta
+  Course: mbb343
+  Lesson: lab01
+  Author: Julia Philipp, Bruno Grande
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+- Class: text
+  Output: There are a lot of moving parts in data science, but what better place to start than with the tools. While basic data science can be accomplished using programs with graphical user interfaces like Excel, programming languages are readily scalable and can open up a world of possibilities. They also tend to bring together a community of like-minded individuals. In this series of tutorials, we choose R over other languages such as Python and Julia because it was designed with data at its heart and is surrounded by a thriving, inclusive, and helpful community.
+  
+- Class: text
+  Output: Another reason we choose R is its tight integration with the RStudio integrated development environment (IDE). IDEs serve to streamline programming, which has many moving parts. One key benefit of RStudio compared to other IDEs is that it shares the same free and open-source philosophy as the R programming language. We believe in the democratization of data science. Over the coming tutorials, you will come to appreciate the many features offered by RStudio. For today, we will focus on its integrated text editor and R console. 
+
+- Class: text
+  Output: In this tutorial, you will become familiar with the RStudio interface and start writing your first R code. If this is your first time programming, then you're in for a rewarding journey! You will be introduced to fundamental programming concepts like operators and variables. You will also see functions in actions and why they're so useful in programming. Finally, you will already start practising how to seek for help using online resources. This skill is critical for any data scientist.
+
+# instructions on how to use the R interface
+# doesn't really make too much sense here
+
+- Class: text
+  Output: Mathematical Operators!
+  
+- Class: text 
+  Output: Now that you have a handle on the RStudio interface, you can get your hands dirty with some R code! You can start writing any code posted below in a new R script and run each line using the Run button (or keyboard shortcut).
+
+- Class: cmd_question
+  Output: Let's start with a simple calculation and break it down. Here, you are adding two numbers, 1 and 100, together using the `+` operator. When this bit of R code is run in the Console, you get the total, which is 101. For now, you can ignore the `[1]` appearing before the total. It will make more sense after the next tutorial.
+  CorrectAnswer: 1+100
+  AnswerTests: any_of_exprs('1+100', '100+1')
+  Hint: Try typing 1+100
+
+- Class: text
+  Output: "As expected, you have access to the usual set of arithmetic operations in R. They follow the same precedence as in mathematics, namely:"
+
+- Class: text
+  Output: "Parentheses: `(` and `)`"
+  
+- Class: text
+  Output: "Exponents: `^`"
+  
+- Class: text
+  Output: "Multiply: `*`"
+  
+- Class: text
+  Output: "Divide: `/`"
+  
+- Class: text
+  Output: "Add: `+`"
+  
+- Class: text
+  Output: "Subtract: `-`"
+  
+- Class: cmd_question
+  Output: "To demonstrate operator precedence, run the following line of R code, also known as a statement:  3 + 5 * 2 The result you will get (`13`) is consistent with the multiplication being calculated before the addition."
+  CorrectAnswer: 3 + 5 * 2
+  AnswerTests: omnitest(correctExpr='3 + 5 * 2')
+  Hint: Try typing 3 + 5 * 2
+
+- Class: cmd_question
+  Output: "Just like in arithmetic, you can override the order of operations with parentheses, as follows: (3 + 5) * 2 The following statement outputs `16`, which is the correct output if the addition is performed before the multiplication."
+  CorrectAnswer: (3 + 5) * 2
+  AnswerTests: omnitest(correctExpr='(3 + 5) * 2')
+  Hint: Try typing (3 + 5) * 2
+  
+- Class: text
+  Output: You can also choose to add parentheses to improve readability, even if they don't change the precedence of the operations. There is a careful balance to strike with parentheses. As you can see in the first example below, too many parentheses can hinder readability. Ultimately, this is a stylistic choice that is up to personal preference.
+  
+- Class: text
+  Output: (3 + (5 * (2 ^ 2))) - is hard to read
+  
+- Class: text
+  Output: 3 + 5 * 2 ^ 2 - is clear if you remember the rules
+  
+- Class: text
+  Output: 3 + 5 * (2 ^ 2) - if you forget some rules, this might help
+  
+# explain commenting here
+
+#- Class: cmd_question
+#  Output: "try typing #this is a comment"
+#  CorrectAnswer: "#"this is a comment
+#  AnswerTests: omnitest(correctExpr='#this is a comment')
+#  Hint: try this
+
+- Class: text
+  Output: "Sooner or later, you will eventually hear the verb 'comment out', usually in the context of 'turning off' some chunk of code. This refers to the act of prefixing the lines of code in question with the comment character (`#` in R). It's useful to comment out old lines of code that are no longer relevant, but you want to keep them for future reference. "
+
+- Class: text
+  Output: If you generate an output consisting of a very small or large number, you might run into the scientific notation. For example, the fraction two millionths is displayed as `2e-06`, which can be interpreted as $2 \times 10^{-6}$. It's important to note that the `e` here has nothing to do with the Euler's number, $e$.
+
+- Class: cmd_question
+  Output: "See for yourself by executing the expression 2 / 1000000"
+  CorrectAnswer: 2 / 1000000
+  AnswerTests: omnitest(correctExpr='2 / 1000000')
+  Hint: Try typing 2 / 1000000
+  
+- Class: text
+  Output: In addition to seeing the notation in the output, you can use it yourself to express very small or large numbers. The output may or may not be in scientific notation, depending on how small/large the number is and how your R is configured. For more information, you can look up the `scipen` (_i.e._ penalty for scientific notation) under the R options using `?options`.
+
+
+  
+  
+
