@@ -1,1 +1,51 @@
+Using Genome Association and Prediction Integrated Tool (GAPIT) to perform Genome Wide Association Study. 
+GAPIT implements a series of methods for Genome Wide Association and Genomic Selection.
+Dependencies :
+Biobase                 (Base functions for bioconductor )
+BiocGenerics            (S4 generic functions used in bioconductor)
+BiocManager             (Access the Bioconductor package repository)
+#Swirl & Swirlify       (After Packing)        
+curl & RCurl            (Managing urls)  
+Install all of them before proceeding
+
+#Step 1 : Creating Directories & Downloading the Tutorial Data
+```{r}
+setwd("/Users/Public")
+dir.create("GWAS_GAPIT")
+setwd("/Users/Public/GWAS_GAPIT")
+library("Biobase")
+library("BiocGenerics")
+library("BiocManager")
+library("curl")
+library("RCurl")
+download.file(url = "http://zzlab.net/GAPIT/GAPIT_Tutorial_Data.zip", destfile="GAPIT_Tutorial_Data.zip")
+unzip("GAPIT_Tutorial_Data.zip")
+setwd("/Users/Public/GWAS_GAPIT/GAPIT_Tutorial_Data")
+```
+#Step 2 : Getting GAPIT Functions & Libraries
+```{r}
+source("http://zzlab.net/GAPIT/GAPIT.library.R")
+source("http://zzlab.net/GAPIT/gapit_functions.txt")
+source("http://www.zzlab.net/GAPIT/emma.txt")
+```
+#Step 3 : Calling the Packages
+```{r}
+library("multtest")       #Resampling-based multiple hypothesis testing
+library("gplots")         #Plotting Graphs
+library("LDheatmap")      #Graphical Display of pairwise linkage disequilibria between SNPs
+library("genetics")       #population genetics
+library("MASS")           #Support functions & datasets for venables & Ripley's MASS
+library("compiler") 
+library("RColorBrewer")   #ColourBrewer Package
+library("scatterplot3d")  #3D Scatterplot
+```
+#Step 4 : Reading files & Calling GAPIT
+```{r}
+setwd("/Users/Public/GWAS_GAPIT/GAPIT_Tutorial_Data")
+myY <- read.table("mdp_traits.txt", head = TRUE)
+myG <- read.table("mdp_genotype_test.hmp.txt", head = FALSE)
+myGAPIT <- GAPIT( Y=myY,G=myG,PCA.total=3 )
+```
+/Users/Public/GWAS_GAPIT/GAPIT_Tutorial_Data has the output
+
 
