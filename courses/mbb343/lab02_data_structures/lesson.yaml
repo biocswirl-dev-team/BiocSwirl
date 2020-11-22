@@ -7,4 +7,88 @@
   Version: 2.4.5
 
 - Class: text
-  Output: Welcome to the data structures lesson
+  Output: In the previous tutorial, you learned how to navigate the RStudio interface and ran your first bits of R code. You should now be familair with operators like `+` (mathematical) and `==` (logical) as well as functions like `sqrt()`. 
+  
+- Class: text
+  Output: "Don't worry: you don't have to remember every function and their respective arguments (_i.e._ inputs). You can use Google and the R help pages for this, like every other data scientist. "
+  
+- Class: text
+  Output: Today, we're going to take a look at what data looks like in R. Each programming language organizes their data in different ways. These are known as data structures. This tutorial will focus on the most important data structure in R, the data frame, and its key component, the vector. These data structures are fundamental to data science in R, so pay close attention. 
+  
+- Class: text
+  Output: You will be exploring the Canadian COVID-19 statistics for the first six months of 2020. The data was originally downloaded from the [EU Open Data Portal](https://data.europa.eu/euodp/en/data/dataset/covid-19-coronavirus-data). It was lightly processed for this tutorial. 
+  
+- Class: text
+  Output: Data Frames!
+  
+# Loading Data frames
+- Class: text
+  Output: "Let's start by loading the data. You will learn more about this process in a future tutorial. For now, you are going to simply load the data from the Internet and preview it. The `read.csv()` function can take a file path or a URL and returns a data frame. Let's see it in action!"
+  
+- Class: cmd_question
+  Output: Try typing 'covid <- read.csv("https://bit.ly/cov-ca")'
+  CorrectAnswer: covid <- read.csv("https://bit.ly/cov-ca")
+  AnswerTests: omnitest(correctExpr='covid <- read.csv("https://bit.ly/cov-ca")')
+  Hint: Just type covid <- read.csv("https://bit.ly/cov-ca")
+  
+- Class: cmd_question
+  Output: Now, look at the data we loaded and assigned to 'covid'
+  CorrectAnswer: covid
+  AnswerTests: omnitest(correctExpr='covid')
+  Hint: Just type covid
+  
+- Class: text
+  Output: "As you can see, a data frame is nothing more than a two-dimensional table consisting of rows and columns. This one has six rows (one for each month) and five columns. The columns contain different types of information: either integers or text. In many respects, data frames look like Excel tables. However, data frames in R are strictly rectangular. Every column has the same length, and the same rule applies to rows. This doesn't mean you can't have missing data. Rather, you will see missing data indicated by the value `NA` (not seen here in `covid`)."
+  
+- Class: cmd_question
+  Output: Class (and the function 'class()') is another way to refer to what kind of data structure is stored in a variable. Here, we can confirm that the `covid` variable contains a data frame. Use the class() function to confirm.
+  CorrectAnswer: class(covid)
+  AnswerTests: omnitest(correctExpr='class(covid)')
+  Hint: Try typing 'class(covid)'
+  
+# Exploring the data frame
+- Class: text
+  Output: "As we saw in the previous tutorial, functions can be very useful. In fact, there are a number of functions that work well with data frames. Notably, the `nrow()` and `ncol()` functions can be used to count the number of rows and columns in the input, respectively. Admittedly, this is more useful with larger datasets."
+  
+- Class: cmd_question
+  Output: Try the function "ncol()" on our covid data frame.
+  CorrectAnswer: ncol(covid)
+  AnswerTests: omnitest(correctExpr='ncol(covid)')
+  Hint: Try typing 'ncol(covid)'
+  
+- Class: cmd_question
+  Output: Try the function "nrow()" on our covid data frame
+  CorrectAnswer: nrow(covid)
+  AnswerTests: omnitest(correctExpr='nrow(covid)')
+  Hint: Try typing 'nrow(covid)'
+  
+- Class: cmd_question
+  Output: Another useful function is called `summary()` which will display statistics for numeric columns and tabulate values in text columns. Try it out!
+  CorrectAnswer: summary(covid)
+  AnswerTests: omnitest(correctExpr='summary(covid)')
+  Hint: Try typing 'summary(covid)'
+  
+- Class: cmd_question
+  Output: The `head()` and `tail()` functions are useful for extracting the first or last few rows in a data frame. These are especially useful for larger data frames. Try using head(). 
+  CorrectAnswer: head(covid)
+  AnswerTests: omnitest(correctExpr='head(covid)')
+  Hint: Try typing 'head(covid)'
+  
+- Class: text
+  Output: Vectors!
+
+# Performing Operations on Vectors 
+- Class: cmd_question
+  Output: "That's enough boring stuff for now. Let's start actually handling the data. The most basic operation you can do with a data frame is extracting a column. There are several ways of doing this, but the simplest is the `$` operator. For example, if we want to extract the `cases` column, which contains the number of new COVID-19 cases during each month in Canada. You can clearly see the rapid increase in cases and eventual plateau once social distancing slowed down the outbreak. Try it out!"
+  CorrectAnswer: covid$cases
+  AnswerTests: omnitest(correctExpr='covid$cases')
+  Hint: Try typing 'covid$cases'
+
+- Class: text
+  Output: "It might be surprising to see the column laid out horizontally. That's because it's no longer considered a column of the data frame after we use the `$` operator. Specifically, columns consist of a data structure known as a vector."
+
+  
+
+
+
+
