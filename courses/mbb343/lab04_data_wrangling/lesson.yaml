@@ -1,0 +1,10 @@
+- Class: meta
+  Course: mbb343
+  Lesson: lab04_data_wrangling
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to the data wrangling lesson
