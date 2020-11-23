@@ -86,8 +86,90 @@
 
 - Class: text
   Output: "It might be surprising to see the column laid out horizontally. That's because it's no longer considered a column of the data frame after we use the `$` operator. Specifically, columns consist of a data structure known as a vector."
-
   
+- Class: cmd_question
+  Output: Vectors can contain multiple elements. E.g. in the case of covid$cases, it contains multiple integers. R allows for some functions and operations to be applied to each element of the vector. This is called vectorization. Try dividing each element in the vector covid$cases by 1000 and assigning the result to covd$cases_1000, which will create a new column in the data frame.
+  CorrectAnswer: covid$cases_1000 <- covid$cases / 1000
+  AnswerTests: omnitest(correctExpr='covid$cases_1000 <- covid$cases/1000')
+  Hint: Try typing 'covid$cases_1000 <- covid$cases / 1000'
+  
+- Class: cmd_question
+  Output: Let's check our work by recalling the covid data frame.
+  CorrectAnswer: covid
+  AnswerTests: omnitest(correctExpr='covid')
+  Hint: Try typing 'covid'
+  
+- Class: cmd_question
+  Output: Vectorization also works with pasting strings and elements from the vectors together. Try typing 'paste("Canada had", covid$cases_1000, "thousand cases in", covid$month)' and see what happens!
+  CorrectAnswer: paste("Canada had", covid$cases_1000, "thousand cases in", covid$month)
+  AnswerTests: omnitest(correctExpr='paste("Canada had", covid$cases_1000, "thousand cases in", covid$month)')
+  Hint: Copy the command from the question!
+  
+# Types of vectors
+- Class: text
+  Output: "Some operations on vectors might fail. For example this one 'covid$month + covid$cases_1000' will produce the following error: 'non-numeric argument to binary operator'"
+ 
+- Class: text
+  Output: This error came up because we tried to add up two different types of vectors. There are six different types of vectors in total. Vectors can contain integers (abbreviated to 'int'), numeric elements ('num'), strings or characters ('chr'), logical elements (TRUE/FALSE) ('logi'), raw sequences of bytes ('raw'), or complex values ('cplx').
+  
+- Class: cmd_question
+  Output: With the function typeof() you can find out what type of vector you're working with. Try it out on covid$cases!
+  CorrectAnswer: typeof(covid$cases)
+  AnswerTests: omnitest(correctExpr='typeof(covid$cases)')
+  Hint: Try typing 'typeof(covid$cases)'
+  
+- Class: cmd_question
+  Output: The function str() will compactly display the structure of an R object. If you use it on 'covid', you will see what type of vector each column of the data frame is. Try it out!
+  CorrectAnswer: str(covid)
+  AnswerTests: omnitest(correctExpr='str(covid)')
+  Hint: Try typing 'str(covid)'
+  
+- Class: mult_question
+  Output: Which type of vector is covid$month?
+  AnswerChoices: complex;raw;integer;numeric;logical;character
+  CorrectAnswer: character
+  AnswerTests: omnitest(correctVal = 'character')
+  Hint: Check the output of 'str(covid)'
+  
+- Class: cmd_question
+  Output: You can create vectors of any type using the function vector(). The argument 'mode' describes the type of vector, the argument length describes how many elements the vector should contain. Try creating a character vector with 3 elements and assign it to 'new_vector'. You can type ?vector() for more information about the function.
+  CorrectAnswer: new_vector <- vector(mode = "character", length = 3)
+  AnswerTests: omnitest(correctExpr = 'new_vector <- vector(mode = "character", length = 3)')
+  Hint: Try typing 'new_vector <- vector(mode = "character", length = 3)'
+  
+- Class: cmd_question
+  Output: Now look at your newly created vector with str().
+  CorrectAnswer: str(new_vector)
+  AnswerTests: omnitest(correctExpr = 'str(new_vector)')
+  Hint: Try typing 'str(new_vector)'
+  
+# Concatenation
+
+# Type coercion
+
+# Factors
+- Class: text
+  Output: Factors!
+  
+# Lists
+- Class: text
+  Output: Lists!
+  
+# Matrix
+- Class: text
+  Output: The Matrix!
+  
+# subsetting
+
+# vector subsetting using indices
+
+# vector subsetting using names
+
+# vector subsetting using  logical operations
+
+# list subsetting
+
+# data frame subsetting
 
 
 
