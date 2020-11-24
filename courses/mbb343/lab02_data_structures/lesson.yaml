@@ -144,16 +144,122 @@
   Hint: Try typing 'str(new_vector)'
   
 # Concatenation
-
+- Class: text
+  Output: The function c() allows you to concatenate multiple elements of the same (or different - more on that later) type into a vector
+  
+- Class: cmd_question
+  Output: Try concatenating the logical elements 'TRUE','FALSE',and 'FALSE' into a vector and assign it to 'lgl_vector'.
+  CorrectAnswer: lgl_vector <- c(TRUE, FALSE, FALSE)
+  AnswerTests: omnitest(correctExpr = 'lgl_vector <- c(TRUE, FALSE, FALSE)')
+  Hint: Try typing 'lgl_vector <- c(TRUE, FALSE, FALSE)'
+  
+- Class: cmd_question
+  Output: Now test which type the vector is that you just created.
+  CorrectAnswer: typeof(lgl_vector)
+  AnswerTests: omnitest(correctExpr = 'typeof(lgl_vector)')
+  Hint: Try using the function typeof() on 'lgl_vector'
+  
+- Class: cmd_question
+  Output: Now, try concatenating the numbers 1, 0.34, and 11.45 into a vector and assign it to 'num_vector'
+  CorrectAnswer: num_vector <- c(1,0.34,11.45)
+  AnswerTests: omnitest(correctExpr = 'num_vector <- c(1,0.34,11.45)')
+  Hint: Try typing 'num_vector <- c(1,0.34,11.45)'
+  
 # Type coercion
-
+- Class: text
+  Output: In theory, you can concatenate different types of elements into mixed vectors as well. In practice, this is rarely convenient.
+  
+- Class: cmd_question
+  Output: "In the next few steps, we will create a vector containing mixed type elements and observe what happens to its contents. Let's start by concatenating two logical elements. Try this: 'mixed_vector <- c(FALSE, TRUE)'"
+  CorrectAnswer: mixed_vector <- c(FALSE, TRUE)
+  AnswerTests: omnitest(correctExpr = 'mixed_vector <- c(FALSE, TRUE)')
+  Hint: Just copy the code from the prompt
+  
+- Class: cmd_question
+  Output: Look at the vector you just created!
+  CorrectAnswer: mixed_vector
+  AnswerTests: omnitest(correctExpr = 'mixed_vector')
+  Hint: Try typing 'mixed_vector'
+  
+- Class: cmd_question
+  Output: Now, we will add a numeric element (0.3) to the mixed vector. This can be done by concatenating the mixed vector and 0.3 and assigning the result to 'mixed vector' again. Give it a try!
+  CorrectAnswer: mixed_vector <- c(mixed_vector, 0.3)
+  AnswerTests: omnitest(correctExpr = 'mixed_vector <- c(mixed_vector, 0.3)')
+  Hint: Try typing 'mixed_vector <- c(mixed_vector, 0.3)'
+  
+- Class: cmd_question
+  Output: Look at mixed_vector again and see how it changed!
+  CorrectAnswer: mixed_vector
+  AnswerTests: omnitest(correctExpr = 'mixed_vector')
+  Hint: Try typing 'mixed_vector'
+  
+- Class: cmd_question
+  Output: Finally, we will add a string ("four") to the mixed vector. 
+  CorrectAnswer: mixed_vector <- c(mixed_vector, "four")
+  AnswerTests: omnitest(correctExpr = 'mixed_vector <- c(mixed_vector, "four")')
+  Hint: Try typing 'mixed_vector <- c(mixed_vector, "four")'
+  
+- Class: cmd_question
+  Output: Look at mixed_vector again and see how it changed!
+  CorrectAnswer: mixed_vector
+  AnswerTests: omnitest(correctExpr = 'mixed_vector')
+  Hint: Try typing 'mixed_vector'
+  
+- Class: cmd_question
+  Output: We can forcibly change the type of the vector in a process called coercion. Coercion functions are e.g. as.numeric(), coercing a vector into a numeric one, or as.logical(), turning every element of a vector into a logical element. Be aware, that this can lead to a loss of information. Try coercing 'mixed_vector' into a numeric vector.
+  CorrectAnswer: as.numeric(mixed_vector)
+  AnswerTests: omnitest(correctExpr = 'as.numeric(mixed_vector)')
+  Hint: Try typing as.numeric(mixed_vector)
+  
+- Class: cmd_question
+  Output: Let's go back to our covid data frame. Try changing the vector covid$cases_1000 from numeric to integer, using the coercion function as.integer(). Be sure to assign the result to covid$cases_1000 again.
+  CorrectAnswer: covid$cases_1000 <- as.integer(covid$cases_1000)
+  AnswerTests: omnitest(correctExpr = 'covid$cases_1000 <- as.integer(covid$cases_1000)')
+  Hint: Try typing 'covid$cases_1000 <- as.integer(covid$cases_1000)'
+ 
 # Factors
 - Class: text
   Output: Factors!
   
+- Class: text
+  Output: Factors are a type of R object, not unlike vectors. However, in addition its elements, it further categorizes its elements and stores these categories as levels. Factors are especially useful for columns of data frames with very limited unique values. For example columns containing gender information, countries, or months.
+  
+- Class: cmd_question
+  Output: To better understand what a factor is, try extracting covid$month, turning it into a factor with the function factor() and assign it to 'months'.
+  CorrectAnswer: months <- factor(covid$month)
+  AnswerTests: omnitest(correctExpr = 'months <- factor(covid$month)')
+  Hint: Try typing 'months <- factor(covid$month)'
+  
+- Class: cmd_question
+  Output: Now look at the object you just created
+  CorrectAnswer: months
+  AnswerTests: omnitest(correctExpr = 'months')
+  Hint: Just type 'months'
+  
+- Class: text
+  Output: The factor 'months' contains two sets of information. First, the character strings as found in our data frame. Then, those data organized into categories (levels) and sorted alphabetically.
+  
+- Class: cmd_question
+  Output: You can extract specifically the levels of a factor using the function levels(). Try it on 'months'!
+  CorrectAnswer: levels(months)
+  AnswerTests: omnitest(correctExpr = 'levels(months)')
+  Hint: Try typing 'levels(months)'
+
+- Class: cmd_question
+  Output: You can also manually set the levels of a factor. Try executing the following: 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))'
+  CorrectAnswer: factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))
+  AnswerTests: omnitest(correctExpr = 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))')
+  Hint: Try typing 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))'
+  
 # Lists
+
 - Class: text
   Output: Lists!
+  
+- Class: text
+  Output: Lists have a similar structure to data frames, they can contain several vectors of different types. However, the different vectors in a list can have different lengths.  
+  
+# continue here
   
 # Matrix
 - Class: text
