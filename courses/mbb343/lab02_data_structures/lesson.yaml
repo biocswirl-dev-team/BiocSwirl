@@ -260,14 +260,75 @@
   Output: Lists have a similar structure to data frames, they can contain several vectors of different types. However, the different vectors in a list can have different lengths.  
   
 # continue here
+- Class: cmd_question
+  Output: Execute the following to create a list with different types of elements: 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")'
+  CorrectAnswer: list_example <- list(FALSE, TRUE, 2L, 3.0, "four")
+  AnswerTests: omnitest(correctExpr = 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")￼'
+  Hint: Copy the code from the prompt and execute it.
+  
+- Class: cmd_question
+  Output: Now recall 'list_example' to see what a list can look like
+  CorrectAnswer: list_example
+  AnswerTests: omnitest(correctExpr = 'list_example')
+  Hint: Try typing 'list_example'.
+  
+- Class: text
+  Output: We'll learn how to access these vectors via subsetting in a minute!
+
+- Class: cmd_question
+  Output: Another way of creating a list is by naming each vector and assigning the elements in one go. Like so: 'another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)' Try it!
+  CorrectAnswer: another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)
+  AnswerTests: omnitest(correctExpr = 'another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)')
+  Hint: Copy the code above!
+
+  
+- Class: cmd_question
+  Output: "Now, let's look at 'another_list'"
+  CorrectAnswer: another_list
+  AnswerTests: omnitest(correctExpr = 'another_list')
+  Hint: Try typing 'another_list'
+
+  
+- Class: cmd_question
+  Output: You can access named vectors like you're used to access columns from a data frame. Try looking at the "numbers" vector of "another_list".
+  CorrectAnswer: another_list$numbers
+  AnswerTests: omnitest(correctExpr = 'another_list$numbers')
+  Hint: Try typing 'another_list$numbers'
   
 # Matrix
 - Class: text
   Output: The Matrix!
   
+- Class: text
+  Output: A matrix is a two-dimensional R object, almost like a table. It is actually a vector with the additional attributes of dimensions (rows and columns).
+  
+- Class: text
+  Output: A matrix can be created with the function matrix(), which takes a vector with the elements that will populate the matrix, as well as ncol and nrow attributes that are describing the dimensions of the matrix.
+  
+- Class: cmd_question
+  Output: "Try out the following: 'matrix_example <- matrix(1:24, ncol=6, nrow=4)'. It will use the vector of integers ranging from 1 to 24 to populate a matrix with 4 rows and 6 columns."
+  CorrectAnswer: matrix_example <- matrix(1:24, ncol=6, nrow=4)
+  AnswerTests: omnitest(correctExpr = 'matrix_example <- matrix(1:24, ncol=6, nrow=4)')
+  Hint: Try copying the code from above.
+  
+- Class: cmd_question
+  Output: Remember can test if a variable is a matrix using the function class(). Try it out on 'matrix_example'
+  CorrectAnswer: class(matrix_example)
+  AnswerTests: omnitest(correctExpr = 'class(matrix_example)')
+  Hint: Try typing 'class(matrix_example)'
+  
+- Class: text
+  Output: The difference between data frames and matrices is that different columns of a data frame can contain different types of elements while all columns of a matrix have to contain the same type of elements.
+  
+- Class: text
+  Output: Matrices are typically used to store numerical or integer values and are often used like mathematical matrices. By comparison, data frames can be used to store a variety of data for a variety of data wrangling purposes.
+  
 # subsetting
-
+- Class: text
+  Output: Subsetting! Let's figure out to extract subsets of data from all kinds of R objects.
+  
 # vector subsetting using indices
+
 
 # vector subsetting using names
 
