@@ -246,7 +246,7 @@
   Hint: Try typing 'levels(months)'
 
 - Class: cmd_question
-  Output: You can also manually set the levels of a factor. Try executing the following: 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))'
+  Output: You can also manually set the levels of a factor. Try executing the following - 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))'
   CorrectAnswer: factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))
   AnswerTests: omnitest(correctExpr = 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))')
   Hint: Try typing 'factor(covid$month, levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun"))'
@@ -261,9 +261,9 @@
   
 # continue here
 - Class: cmd_question
-  Output: Execute the following to create a list with different types of elements: 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")'
+  Output: Execute the following to create a list with different types of elements - 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")'
   CorrectAnswer: list_example <- list(FALSE, TRUE, 2L, 3.0, "four")
-  AnswerTests: omnitest(correctExpr = 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")￼'
+  AnswerTests: omnitest(correctExpr = 'list_example <- list(FALSE, TRUE, 2L, 3.0, "four")')
   Hint: Copy the code from the prompt and execute it.
   
 - Class: cmd_question
@@ -276,7 +276,7 @@
   Output: We'll learn how to access these vectors via subsetting in a minute!
 
 - Class: cmd_question
-  Output: Another way of creating a list is by naming each vector and assigning the elements in one go. Like so: 'another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)' Try it!
+  Output: Another way of creating a list is by naming each vector and assigning the elements in one go. Like so 'another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)' Try it!
   CorrectAnswer: another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)
   AnswerTests: omnitest(correctExpr = 'another_list <- list(title = "Numbers", numbers = 1:10, data = TRUE)')
   Hint: Copy the code above!
@@ -327,10 +327,54 @@
 - Class: text
   Output: Subsetting! Let's figure out to extract subsets of data from all kinds of R objects.
   
+- Class: cmd_question
+  Output: "Let's quickly create vector for you to practice on. Assign covid$cases to 'x'."
+  CorrectAnswer: x <- covid$cases
+  AnswerTests: omnitest(correctExpr = 'x <- covid$cases')
+  Hint: Try typing 'x <- covid$cases'
+  
+- Class: cmd_question
+  Output: Add covid$month as the names to the vector.
+  CorrectAnswer: names(x) <- covid$month
+  AnswerTests: omnitest(correctExpr = 'names(x) <- covid$month')
+  
 # vector subsetting using indices
-
-
+- Class: cmd_question
+  Output: The first option for subsetting is using indices in square brackets. Remember, R is a 1 based language, so 1 will be the first possible index. Now, try to extract the first element of x!
+  CorrectAnswer: x[1]
+  AnswerTests: omnitest(correctExpr = 'x[1]')
+  Hint: Try typing 'x[1]'
+  
+- Class: cmd_question
+  Output: "You can extract multiple elements from a vector by creating a vector of indices using c() and placing that vector inside the square brackets. Like so: x[c(1,3,4)]. Try it out!"
+  CorrectAnswer: x[c(1,3,4)]
+  AnswerTests: omnitest(correctExpr = 'x[c(1,3,4)]')
+  Hint: Copy the code from the prompt and execute it.
+  
+- Class: cmd_question
+  Output: If you would like to extract the entire vector with the exception of one element, you can do so with negative indices. Try extracting everything but the second elements from x!
+  CorrectAnswer: x[-2]
+  AnswerTests: omnitest(correctExpr = 'x[-2]')
+  Hint: Try typing 'x[-2]'
+  
+- Class: cmd_question
+  Output: You can also exclude multiple elements by creating a vector of indices within the square brackets like we covered earlier. Both of the following are correct - 'x[c(-1, -5)]' or 'x[-c(1, 5)]'. Try one!  
+  CorrectAnswer: x[c(-1, -5)]
+  AnswerTests: any_of_exprs('x[c(-1, -5)]', 'x[-c(1, 5)]')
+  Hint: Try copying either piece of code from the prompt.
+  
 # vector subsetting using names
+- Class: cmd_question
+  Output: Instead of indices, you can also subset using the names of the vector elements in the square brackets. Try extracting the covid cases for the month of February ("Feb").
+  CorrectAnswer: x["Feb"]
+  AnswerTests: omnitest(correctExpr = 'x["Feb"]')
+  Hint: Try typing x["Feb"]
+  
+- Class: cmd_question
+  Output: Similarly, you can extract multiple elements by name. Try extracting covid cases for the months of February and April.
+  CorrectAnswer: x[c("Feb","Apr")]
+  AnswerTests: omnitest(correctExpr = 'x[c("Feb","Apr")]')
+  Hint: Try typing 'x[c("Feb","Apr")]'
 
 # vector subsetting using  logical operations
 
