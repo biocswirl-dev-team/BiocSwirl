@@ -37,6 +37,7 @@
   
 - Class: cmd_question
   Output: Now it's finally time to plot our heatmap. Type ?pheatmap() to understand the arguments needed for this function. Look at the help document that popped up on the right.
+
   CorrectAnswer: ?pheatmap()
   AnswerTests: omnitest(correctExpr='?pheatmap()')
   Hint: Type ?pheatmap()
@@ -49,6 +50,7 @@
   
 - Class: figure
   Output: Look at this figure you just created! Take some time to understand what this figure shows you.
+
   Figure: pheatmap.R
   FigureType: new
   

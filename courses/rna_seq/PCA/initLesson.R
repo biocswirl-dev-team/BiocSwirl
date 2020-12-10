@@ -11,9 +11,11 @@
 
 load(file.path(.get_course_path(), "rna_seq", "PCA","rlog_dds.RData"))
 load(file.path(.get_course_path(), "rna_seq", "PCA","dds.RData"))
+
 colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
 
 if (!requireNamespace("DESeq2", quietly = TRUE))
   BiocManager::install("DESeq2")
 
 library(DESeq2)
+

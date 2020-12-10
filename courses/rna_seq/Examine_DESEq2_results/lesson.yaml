@@ -49,6 +49,7 @@
   
 # MA plot
 ## what is a MA plot
+
 - Class: text
   Output: A so-called MA plot is a two-dimensional scatterplot used to visualize gene-expression changes between two different conditions as a function of the number of normalized reads mapped to those genes.
   
@@ -192,5 +193,5 @@
   Hint: Take a look at the heatmap. Red indicates higher expression than blue.
   
   
-  
+
 

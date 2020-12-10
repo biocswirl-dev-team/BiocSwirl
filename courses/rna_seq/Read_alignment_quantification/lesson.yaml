@@ -4,6 +4,7 @@
   Author: Nicolai von Kügelgen, Julia Philipp
   Type: Standard
   Organization: 
+
   Version: 2.4.5
 
 - Class: text
@@ -31,17 +32,13 @@
 
 - Class: text
   Output: While mapping reads to the genome and primarily save their positions allows for mayn different types analysis, in with RNAseq experiments one is usually interest in the number of reads that belong to each gene or transcript. To obtain these numbrs after mapping reads to the genome, it is also necessary to *count reads*. There are multiple programs available to do so that usually take bam files as input. A common one is htseq, which is based on python and also provides packages to write your own counting scripts in python.
+
   #BiocTerm: python / htseq excourse?
-  
 - Class: cmd_question
   Output: There also exists an R function to count bam files called featureCounts (from the Rsubread package). Use the featureCounts function to assign gene counts for the example bam file included with this course (the file name is stored in the variable bamfile) to an object 'counts'. Remember that the sample from the example dataset come from human cell lines. The current human genome assembly is "hg38". Use that as value for the "annot.inbuilt" parameter. 
   CorrectAnswer: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
   AnswerTests: omnitest(correctExpr="counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')")
   Hint: counts <- featureCounts(bamfile, annot.inbuilt = 'hg38')
-  
-
-#- Class: cmd_question
-#  Output: There also exists an R function to count bam files called summarizeOVerlaps (from the GenomicAlignment package). The command we'll need is There also exists an R function to count bam files called  
   
 - Class: text
   Output: In contrast to alignment of reads to the full genome, the strategy of mapping reads to the transcriptome allows faster processing and usually directly generates gene or transcript counts in a single step.

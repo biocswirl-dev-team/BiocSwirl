@@ -8,9 +8,10 @@
 
 - Class: text
   Output: The fastq files you obtain from RNA-seq (whether they were deposited online or you are receiving your own new data) will almost always contain some reads or bases with very low quality. Additionally some reads might only cover short RNA fragments, which means that the sequencing adapters used to generated the library are also part of the read sequence. In addition to an introduction to removing these reads or bases, this lesson will cover how to generally asses the quality of RNAseq data in fastq format.
-  
+
 - Class: text
   Output: Assessment of read quality is often performed using the fastQC program. Find out more about this program here - https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+
 
 - Class: text_question
   # with BiocTerm this could be an expression / command question?
@@ -48,6 +49,7 @@
   AnswerTests: omnitest(correctVal= 'Reads are barcoded')
   Hint: Only one of these is not a reason for concern!
   
+
 - Class: figure
   Output: Let's look at the sequence length distribution. Here we can examine if the generated sequence fragments are of uniform or varying lengths. Varing lengths can be cause for concern regarding the sequencing quality, depending on the sequencing platform used.
   Figure: draw_3.R
@@ -59,7 +61,7 @@
   CorrectAnswer: 150-152bp
   AnswerTests: omnitest(correctVal = '150-152bp')
   Hint: Where is the peak?
-  
+
 - Class: text
   Output: Reads or UMIs (unique molecular identifiers) can sometimes lead to a strong bias in the first few bases of the reads, even though the barcode/UMI sequences should ideally be fully randomised.
 
@@ -78,6 +80,7 @@
   Output: Is there a reason for concern regarding overamplification of certain sequences with this sample?
   AnswerChoices: Yes, the presence of overrepresented sequences is a concern;No, contribution of overrepresented Sequences is negligible;No, only overrepresneted ribosomal RNA is a reason for concern
   CorrectAnswer: No, contribution of overrepresented sequences is negligible
+
   AnswerTests: omnitest(correctVal= 'No, contribution of overrepresented Sequences is negligible')
   Hint: FastQC checks each sample for the most common sequences and checks them against a small database of known sequences.
   
@@ -101,6 +104,7 @@
 
 - Class: mult_question
   Output: Check the options or trim_galore (trim_galore --help). Which of the following measures can the program not utilize to remove reads?
+
   AnswerChoices: Overlap with known contaminants;Minimal read length;Maximal read length;Read Quality
   CorrectAnswer: Overlap with known contaminants
   AnswerTests: omnitest(correctVal= 'Overlap with known contaminants')

@@ -1,0 +1,37 @@
+- Class: meta
+  Course: neuroinformatics
+  Lesson: Differences between snRNA-seq and scRNA-seq
+  Author: Elizabeth Hutchins
+  Type: Standard
+  Version: 1.0
+
+#Introduction
+
+- Class: text
+  Output: "Welcome to the lesson on snRNA-seq and scRNA-seq in seurat. This lesson further explores differences between scRNA-Seq and snRNA-Seq datasets. We are following the seurat tutorial here: https://scrnaseq-course.cog.sanger.ac.uk/website/seurat-chapter.html. For this lesson, we will assume that you have already finished the scrna-snrna introduction lesson."
+
+#Dataset
+
+- Class: text
+  Output: "The dataset used in this lesson, which contains scRNA-seq, snRNA-seq, and bulk RNA-seq data from mouse visual cortex, is from Bakken et al., 2018, Single-nucleus and single-cell transcriptomes compared in matched cortical cell types: doi.org/10.1371/journal.pone.0209648. The data was pulled from the following github repo: https://github.com/AllenInstitute/NucCellTypes. The loaded "sampAll" object contains sample metrics, and the "countR" object contains raw counts. Sample names and types corresponding to the count table are in the sampAll object. "samplAll$exp_component_name" are the sample names and "samplAll$Type" are the type of dataset."
+
+- Class: text
+  Output: Now that you have explored some of the differences between snRNA-Seq data and scRNA-Seq data, you will run both datasets through seurat, including QC, normalization, JackStraw, clustering cells, and UMAP plot generation, for both scRNA-seq and snRNA-seq datasets.
+
+#setup seurat object: CreateSeuratObject()
+
+#QC: mito content, genes detected
+
+#normalization: NormalizeData()
+
+#Detect variable genes: FindVariableFeatures()
+
+#scaling data: ScaleData()
+
+#linear dimensionality reduction: RunPCA()
+
+# JackStraw for significant principal components: JackStraw()
+
+#clustering cells: FindNeighbors(), FindClusters()
+
+#View clusters with UMAP: RunUMAP()

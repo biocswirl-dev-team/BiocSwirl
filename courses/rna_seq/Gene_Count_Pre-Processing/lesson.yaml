@@ -31,6 +31,7 @@
   CorrectAnswer: dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)
   AnswerTests: omnitest(correctExpr='dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)')
   Hint: Try dds <- DESeqDataSetFromMatrix(dataset, colData, design= ~ condition)
+
   
 - Class: cmd_question
   Output: Not all genes are expressed in all cell types. Therefore, we will end up with lots of zeros in the gene count table. Take a look at the head of the gene count table that we created previously. You can access data from the deseq object using assay().
@@ -39,11 +40,13 @@
   Hint: Try the function head(assay())
   
 # include question here?  
+
 - Class: text_question
   Output: Which is the first gene in the table with a read count of zero across all samples and replicates?
   CorrectAnswer: 'DDX11L1'
   AnswerTests: val_matches('[D|d][D|d][X|x]11[L|l]1')
   Hint: The gene names are displayed as the rownames of the matrix.
+
   
   
 # remove genes with zero counts

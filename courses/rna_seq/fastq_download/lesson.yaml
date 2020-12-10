@@ -49,6 +49,7 @@
 - Class: text
   Output: Take a look at the fastq files - the command "less" is highly recommended since it can look into the files even when they are compressed to reduce file size.
 
+
 - Class: exact_question
   Output: A fastq file usually has many entries - one for each sequence. How many lines are there for each entry?
   CorrectAnswer: 4
