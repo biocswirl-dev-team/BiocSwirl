@@ -11,6 +11,3 @@ load_all()
 load all courses
 This function will load and install all available BiocSwirl courses for you
 }
-\examples{
-load_all()
-}

@@ -11,6 +11,3 @@ load_course_demo()
 demo load course function
 This function will load and install a the mbb343 course
 }
-\examples{
-load_course_demo()
-}

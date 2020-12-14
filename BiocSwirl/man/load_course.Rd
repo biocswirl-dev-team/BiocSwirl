@@ -8,12 +8,9 @@ This function will load and install a specificed BiocSwirl course for you}
 load_course(course)
 }
 \arguments{
-\item{course=, }{options are 'mbb343' and 'rna_seq. More information on available courses via list_courses()}
+\item{course}{options are 'mbb343' and 'rna_seq. More information on available courses via list_courses()}
 }
 \description{
 load all courses
 This function will load and install a specificed BiocSwirl course for you
-}
-\examples{
-load_course('mbb343')
 }
