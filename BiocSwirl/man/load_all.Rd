@@ -2,12 +2,13 @@
 % Please edit documentation in R/load_courses.R
 \name{load_all}
 \alias{load_all}
-\title{load all courses
-This function will load and install all available BiocSwirl courses for you}
+\title{This function will load and install all available BiocSwirl courses for you}
 \usage{
 load_all()
 }
 \description{
-load all courses
 This function will load and install all available BiocSwirl courses for you
+}
+\examples{
+load_all()
 }

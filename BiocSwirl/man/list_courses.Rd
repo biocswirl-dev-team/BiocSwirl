@@ -2,12 +2,13 @@
 % Please edit documentation in R/load_courses.R
 \name{list_courses}
 \alias{list_courses}
-\title{list courses
-This function will list all available BiocSwirl courses available for installation}
+\title{This function will list all available BiocSwirl courses available for installation}
 \usage{
 list_courses()
 }
 \description{
-list courses
 This function will list all available BiocSwirl courses available for installation
+}
+\examples{
+list_courses()
 }

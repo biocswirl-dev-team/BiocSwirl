@@ -2,15 +2,16 @@
 % Please edit documentation in R/load_courses.R
 \name{load_course}
 \alias{load_course}
-\title{load all courses
-This function will load and install a specificed BiocSwirl course for you}
+\title{A function to load and install a specificed BiocSwirl course for you}
 \usage{
 load_course(course)
 }
 \arguments{
-\item{course}{options are 'mbb343' and 'rna_seq. More information on available courses via list_courses()}
+\item{course}{options are 'mbb343' and 'rna_seq'. More information on available courses via list_courses()}
 }
 \description{
-load all courses
-This function will load and install a specificed BiocSwirl course for you
+A function to load and install a specificed BiocSwirl course for you
+}
+\examples{
+load_course('mbb343')
 }

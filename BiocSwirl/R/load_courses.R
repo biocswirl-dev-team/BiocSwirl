@@ -5,51 +5,31 @@ course_directory <- data.frame(course_name = c("mbb343"), github_username = c("J
 
 
 ## list courses
-#' list courses
 #' This function will list all available BiocSwirl courses available for installation
 #' @export
-#' @example
+#' @examples
 #' list_courses()
 list_courses <- function(){
   course_directory[,c("course_name","description")]
 }
 
+
 ## load_course function
-# add available courses to documentation as well
-
-#' demo load course function
-#' This function will load and install a the mbb343 course
+#' A function to load and install a specificed BiocSwirl course for you
+#' @param course options are 'mbb343' and 'rna_seq'. More information on available courses via list_courses()
 #' @export
-#' @example
-#' load_course_demo()
-load_course_demo <- function(){
-  # test if course is installed already?
-
-  # look up string in table to install appropriate course
-
-  # install from github
-  swirl::install_course_github(github_username = "JuliaPhilipp",
-                               course_name = "mbb343",
-                               branch = "main")
-
-  # success message!
-  print("course installed successfully")
-
-  # open swirl immediately?
-}
-
-#' load all courses
-#' This function will load and install a specificed BiocSwirl course for you
-#' @param course options are 'mbb343' and 'rna_seq. More information on available courses via list_courses()
-#' @export
-#' @example
+#' @examples
 #' load_course('mbb343')
 
 load_course <- function(course){
   # test if course is installed already?
 
+
   # check if course string is legit
-  # issue warning if not
+  # issue error message if not
+  if (!course %in% course_directory$course_name){
+    stop(paste(course,"is not a valid course name. Use list_courses() to check for available courses."))
+  }
 
   # look up string in table to install appropriate course
   selected_course <- course_directory[which(course_directory$course_name == course),]
@@ -60,18 +40,16 @@ load_course <- function(course){
                                branch = selected_course$branch)
 
   # success message!
-  print(paste(course, "course installed successfully"))
+  message(paste(course, "course installed successfully"))
 
   # open swirl immediately?
 }
 
 
 # load all available courses
-
-#' load all courses
 #' This function will load and install all available BiocSwirl courses for you
 #' @export
-#' @example
+#' @examples
 #' load_all()
 
 load_all <- function(){
@@ -86,7 +64,6 @@ load_all <- function(){
   }
 
   # success message!
-  print("all courses installed successfully!")
+  message("all courses installed successfully!")
 }
-
 
