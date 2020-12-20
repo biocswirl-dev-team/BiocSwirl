@@ -7,11 +7,12 @@
 load_course(course)
 }
 \arguments{
-\item{course}{options are 'mbb343' and 'rna_seq'. More information on available courses via list_courses()}
+\item{course}{options are 'RNAseq' and 'Intro_to_Data_Science'. More information on available courses via list_courses()}
 }
 \description{
 A function to load and install a specificed BiocSwirl course for you
 }
 \examples{
-load_course('mbb343')
+load_course('RNAseq')
+load_course('Intro_to_Data_Science')
 }
