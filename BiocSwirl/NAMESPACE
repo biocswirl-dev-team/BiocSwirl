@@ -3,3 +3,4 @@
 export(list_courses)
 export(load_all)
 export(load_course)
+export(load_courses_warning)
