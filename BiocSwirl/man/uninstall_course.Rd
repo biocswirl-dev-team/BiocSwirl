@@ -14,6 +14,6 @@ This function will uninstall a selected course
 }
 \examples{
 \dontrun{
-uninstall_course('BiocSwirl_RNAseq')
+uninstall_course('RNAseq')
 }
 }

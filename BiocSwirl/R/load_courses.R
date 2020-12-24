@@ -53,7 +53,7 @@ load_course <- function(course) {
     },
     finally={
       message(paste(course, "successfully installed"))
-      message("You can now start by typing 'swirl()'")
+      message("You can now start by typing 'start_course()'")
     }
   )
   return(out)
