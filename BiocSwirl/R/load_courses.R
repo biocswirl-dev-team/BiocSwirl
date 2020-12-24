@@ -2,7 +2,9 @@
 #' This function will list all available BiocSwirl courses available for installation
 #' @export
 #' @examples
+#' \dontrun{
 #' list_courses()
+#' }
 list_courses <- function(){
   course_directory[,c("course_name","description")]
 }
@@ -13,8 +15,10 @@ list_courses <- function(){
 #' @param course options are 'RNAseq' and 'Intro_to_Data_Science'. More information on available courses via list_courses()
 #' @export
 #' @examples
+#' \dontrun{
 #' load_course('RNAseq')
 #' load_course('Intro_to_Data_Science')
+#' }
 
 load_course <- function(course) {
   if (!course %in% course_directory$course_name){
@@ -26,7 +30,7 @@ load_course <- function(course) {
 
   # test if course is installed already?
   if (file.exists(paste0(swirl_courses_dir(),"/",selected_course$course_full))){
-    warning(paste(course, "is already installed"))
+    stop(paste(course, "is already installed"))
   }
   out <- tryCatch(
     {
@@ -61,7 +65,9 @@ load_course <- function(course) {
 #' This function will load and install all available BiocSwirl courses for you
 #' @export
 #' @examples
+#' \dontrun{
 #' load_all()
+#' }
 
 load_all <- function(){
   message("Installing all BiocSwirl courses will take a while. Please be patient")
@@ -79,3 +85,14 @@ load_all <- function(){
   message("all courses installed successfully!")
 }
 
+# start course
+#' This function will start the course environment for you
+#' @export
+#' @examples
+#' \dontrun{
+#' start_course()
+#' }
+
+start_course <- function(){
+  swirl::swirl()
+}

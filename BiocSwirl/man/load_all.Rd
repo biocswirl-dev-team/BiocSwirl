@@ -10,5 +10,7 @@ load_all()
 This function will load and install all available BiocSwirl courses for you
 }
 \examples{
+\dontrun{
 load_all()
+}
 }

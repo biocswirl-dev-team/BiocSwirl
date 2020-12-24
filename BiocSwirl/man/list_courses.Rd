@@ -10,5 +10,7 @@ list_courses()
 This function will list all available BiocSwirl courses available for installation
 }
 \examples{
+\dontrun{
 list_courses()
+}
 }

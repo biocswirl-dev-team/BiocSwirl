@@ -13,6 +13,8 @@ load_course(course)
 A function to load and install a specificed BiocSwirl course for you
 }
 \examples{
+\dontrun{
 load_course('RNAseq')
 load_course('Intro_to_Data_Science')
+}
 }

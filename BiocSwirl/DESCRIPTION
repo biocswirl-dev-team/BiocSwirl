@@ -1,13 +1,18 @@
 Package: BiocSwirl
 Title: Install and Launch BiocSwirl Courses
-Version: 0.0.0.9000
+Version: 0.99.0
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Julia",
+           family = "Philipp",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: This package is a thin wrapper for swirl, aiding in the installation of BiocSwirl coding classes. series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format.
+           email = "philipp.julia92@gmail.com",
+           comment = c(ORCID = "0000-0001-7236-7379"))
+    person(given = "Lisa",
+           family = "Cao",
+           role = c("aut", "cre"),
+           email = "lisanatashacao@gmail.com",
+           comment = c(ORCID = "orcid-id"))
+Description: This package is a thin wrapper for swirl, aiding in the installation of BiocSwirl coding classes. BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -17,5 +22,5 @@ Imports:
     swirl
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-
+BugReports: "https://github.com/biocswirl-dev-team/BiocSwirl/issues"
 

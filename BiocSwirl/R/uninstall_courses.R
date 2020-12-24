@@ -1,0 +1,47 @@
+# check which courses are installed
+#' This function will list all the installed BiocSwirl courses
+#' @export
+#' @examples
+#' \dontrun{
+#' installed_courses()
+#' }
+installed_courses <- function(){
+  list.files(path = swirl_courses_dir(), pattern = "^BiocSwirl_", ignore.case = FALSE)
+}
+
+# uninstall selected course
+#' This function will uninstall a selected course
+#' @export
+#' @param course string identifying one of the installed BiocSwirl courses that should be uninstalled. check installed_courses().
+#' @examples
+#' \dontrun{
+#' uninstall_course('BiocSwirl_RNAseq')
+#' }
+
+uninstall_course <- function(course){
+  full_course_path <- file.path(swirl_courses_dir(), course)
+  if(file.exists(full_course_path)){
+    unlink(full_course_path, recursive=TRUE, force=TRUE)
+    message(paste(course, "course uninstalled successfully!"))
+  } else{
+    stop("Course not found!")
+  }
+}
+
+# uninstall all BiocSwirl courses
+#' This function will uninstall all the installed BiocSwirl courses
+#' @export
+#' @examples
+#' \dontrun{
+#' uninstall_all_courses()
+#' }
+
+uninstall_all_courses <- function(){
+  courses <- list.files(path = swirl_courses_dir(), pattern = "^BiocSwirl_", ignore.case = FALSE)
+  for (i in 1:length(courses)){
+    full_course_path <- file.path(swirl_courses_dir(), courses[i])
+    unlink(full_course_path, recursive=TRUE, force=TRUE)
+    message(paste(courses[i], "Course uninstalled successfully!"))
+  }
+}
+
