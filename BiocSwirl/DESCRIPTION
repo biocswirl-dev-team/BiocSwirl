@@ -22,5 +22,5 @@ Imports:
     swirl
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
-BugReports: "https://github.com/biocswirl-dev-team/BiocSwirl/issues"
+BugReports: https://github.com/biocswirl-dev-team/BiocSwirl/issues
 
