@@ -7,6 +7,16 @@ BiocSwirl is a series of in-depth swirlify generated courses used to teach bioin
 
 ### Install 
 
+Submission to Bioconductor pending.
+
+```{r Installation}
+# install.packages("devtools")
+# library(devtools)
+devtools::install_github("biocswirl-dev-team/BiocSwirl")
+library(BiocSwirl)
+ ```
+
+Alternatively, the BiocSwirl courses can be installed independently. 
 Please follow these instructions to manually install our courses: https://github.com/swirldev/swirl_courses/wiki/Legacy-Manual-Install-Instructions-for-Swirl-Courses
 
 ### Background 
@@ -15,7 +25,7 @@ There have been many resources available to interdisciplinary researchers for ye
 
 Bioinformatics has grown in adoption in many traditional non-computer science fields that lack the time and energy to go truly in depth past copying and pasting code found online. Swirlstats and terminal-based Python courses such as browser-based Codeacademy, have shown to be efficient course structures to teach data science and statistics to complete beginners.  
 
-During a 3-day hackathon, we developed `swirlify()`-style console/terminal based courses for the purposes of teaching bioinformatics workflow steps and good coding practices. The philosophy is to keep the GUI use and application switching as minimal as possible but the content itself very rich and informative. 
+We developed `swirlify()`-style console/terminal based courses for the purposes of teaching bioinformatics workflow steps and good coding practices. The philosophy is to keep the GUI use and application switching as minimal as possible but the content itself very rich and informative. 
 
 See also ![BiocTerm](https://github.com/biocswirl-dev-team/BiocTerm) for out interface companion to the course materials. The interface (BiocTerm) and R package (BiocSwirl) can be used independently of each other but are best used together for people who are interested in making the most of their learning experience.
 
@@ -58,12 +68,19 @@ b. Cell cycle phase classification from gene expression data
 c. HVG and marker gene identification  
 - Visualizations for high-throughput data
 
+### Current courses available
+<p align=center><img src="https://github.com/STRIDES-Codes/CSHL-BiocSwirl/blob/main/BiocSwirl%20course%20structure.png"></p1>
+
+
 ### Further reference:
-[Vignette](vignettes/package_intro.Rmd) - in progress
+[Vignette](https://github.com/biocswirl-dev-team/BiocSwirl/blob/bioc_package/BiocSwirl/vignettes/biocswirl.Rmd) - Install/Uninstall/Start Courses
+
+### Publication
+coming soon.
 
 ### Contributing
 
-We are always looking for pull requests and active contributers, if you are interested in designing a course for us or have a feature in mind please submit an issue before doing a pull request. We are currently looking for help developing on Windows systems, bioinformatics workflows and concepts, and support for even more languages in BiocTerm. 
+We are always looking for pull requests and active contributors, if you are interested in designing a course for us or have a feature in mind please submit an issue before doing a pull request. We are currently looking for help developing on Windows systems, bioinformatics workflows and concepts, and support for even more languages in BiocTerm. 
 
 ### Team members:
 
@@ -75,6 +92,13 @@ We are always looking for pull requests and active contributers, if you are inte
 | Mariam Arab | mariamarab | User Environment & Installation |
 | Kate Tyshchenko | ktyshchenko | Documentation, Course Material |
 | Paaksum Wong | paaksum | Course Material (main) |
-| Sourav Singh | souravsingh | Course Material |   
+| Sourav Singh | souravsingh | Course Material | 
+| Julia Philipp | JuliaPhilipp | Manuscript & Couse Development |
+| Matthew Moss | mmoss609 | Course Development |
+| Almas Khan | almas2019 | Course Development |
+| Denitsa Vasileva | deni678 | Course Development |
+| Jasdeep Singh | | Course Development |
+
 
 [Details about hackseq19 project](github.com/lisancao/biocswirl/biocswirl_dev/hackseq_plan)
+[Details about CSHL codeathon project](github.com/STRIDES-Codes/CSHL-BiocSwirl)
