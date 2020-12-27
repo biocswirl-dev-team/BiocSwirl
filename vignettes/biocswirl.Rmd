@@ -1,0 +1,53 @@
+---
+title: "BiocSwirl - Course Installation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{BiocSwirl Course Installation}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+## BiocSwirl
+BiocSwirl is a series of in-depth swirlify generated courses used to teach bioinformatics workflows in R/Bioconductor using an interactive and easy to digest format. 
+
+For more information visit https://github.com/biocswirl-dev-team/BiocSwirl.
+
+### BiocSwirl Installation
+```{r, eval = FALSE}
+install.packages("devtools")
+library(devtools)
+devtools::install_github("biocswirl-dev-team/BiocSwirl")
+```
+
+
+### Course Installation
+
+```{r, eval = FALSE}
+# list all available BiocSwirl courses
+list_courses()
+
+# install selected course. 
+# copy name from output of list_courses()
+load_course(course ='RNAseq')
+```
+
+### Start Course
+To start the course environment, excute the command below. No parameters are necessary. The command will start an interactive environment that will allow you to navigate to your course.
+```{r, eval = FALSE}
+start_course()
+```
+
+### Uninstall course
+```{r, eval=FALSE}
+# list all installed BiocSwirl courses
+installed_courses()
+
+# uninstall selected course
+uninstall_course(course = 'RNAseq')
+
+# uninstall all BiocSwirl courses 
+# this will not uninstall other swirl courses
+uninstall_all_courses()
+```
+
