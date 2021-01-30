@@ -87,6 +87,7 @@ load_all <- function(){
 
 # start course
 #' This function will start the course environment for you
+#' @import swirl
 #' @export
 #' @examples
 #' \dontrun{
