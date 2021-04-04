@@ -82,12 +82,12 @@ coming soon.
 
 We are always looking for pull requests and active contributors, if you are interested in designing a course for us or have a feature in mind please submit an issue before doing a pull request. We are currently looking for help developing on Windows systems, bioinformatics workflows and concepts, and support for even more languages in BiocTerm. 
 
-### Team members:
+### Current & Previous Contributers:
 
 | Name | GitHub ID | Work done |
 | ---- | --------- | --------- |
 | Lisa N. Cao | lisancao | User Environment & Interface Development |
-| Jackie Lu | jql6 | User Environment & Interface Development (tmux) |
+| Jackie Lu | jql6 | User Environment & Interface Development |
 | Jeremy Fan | zhemingfan | User Environment & Interface Development |
 | Mariam Arab | mariamarab | User Environment & Installation |
 | Kate Tyshchenko | ktyshchenko | Documentation, Course Material |
@@ -98,7 +98,9 @@ We are always looking for pull requests and active contributors, if you are inte
 | Almas Khan | almas2019 | Course Development |
 | Denitsa Vasileva | deni678 | Course Development |
 | Jasdeep Singh | | Course Development |
-
+| Nicolai von Kügelgen | Nicolai-vKuegelgen | Course Development |
+| Elizabeth Hutchins | e-hutchins | Course Development | 
+| Benson Lee | bensonlee5 | User Environment & Interface Development |
 
 [Details about hackseq19 project](github.com/lisancao/biocswirl/biocswirl_dev/hackseq_plan)
 [Details about CSHL codeathon project](github.com/STRIDES-Codes/CSHL-BiocSwirl)
